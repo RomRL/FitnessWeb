@@ -1,5 +1,5 @@
 import React from "react";
-import { MDBContainer, MDBRow,MDBCol } from "mdb-react-ui-kit";
+import { MDBRow,MDBCol } from "mdb-react-ui-kit";
 import InformativeModal from "./InformativeModal";
 
 export default function HelpAndTitle(props) {

@@ -9,7 +9,7 @@ import WeightInput from "../componenets/TrainingPageComp/WeightInput.jsx";
 import Footer from "../componenets/General/Footer.jsx";
 import HelpAndTitle from "../componenets/General/HelpAndTtile.jsx";
 import RadioButton from "../componenets/General/RadioButton.jsx";
-import { MDBContainer, MDBRow } from "mdb-react-ui-kit";
+import { MDBContainer } from "mdb-react-ui-kit";
 
 
 export function TrainingForm() {
@@ -44,7 +44,7 @@ export function TrainingForm() {
 
   const addTrainingProgram = async (newWeight) => {
     const response = addTrainingToUser(selectedTraining.name, newWeight);
-    if (newWeight == "" || newWeight === undefined || newWeight > 250 || newWeight < 40) {
+    if (newWeight === "" || newWeight === undefined || newWeight > 250 || newWeight < 40) {
       setModalOption("emptyInput");
       setShowModal(true);
       return;

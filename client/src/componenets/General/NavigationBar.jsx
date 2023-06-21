@@ -1,5 +1,5 @@
-import { React, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { React,  useState } from "react";
+import {  useNavigate } from "react-router-dom";
 
 import {
   MDBContainer,
@@ -11,9 +11,6 @@ import {
   MDBNavbarItem,
   MDBNavbarLink,
   MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
   MDBCollapse,
 } from "mdb-react-ui-kit";
 import getURL from "../../assets/assetsUrls";

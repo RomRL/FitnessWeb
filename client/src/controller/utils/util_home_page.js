@@ -220,7 +220,7 @@ export function calculateDaysInProgram(selectedTrainings) {
         }
     }
 
-    const Result = "";
+    let Result = "";
     for (const program in daysInProgram) {
         Result += `$You were in ${program} for ${daysInProgram[program]} days.$`;
     }

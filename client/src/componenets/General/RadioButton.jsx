@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDBBtnGroup, MDBRadio, MDBCol, MDBRow } from 'mdb-react-ui-kit';
+import { MDBRadio, MDBCol, MDBRow } from 'mdb-react-ui-kit';
 function RadioButton(props) {
   const { options, selectedOption, onOptionChange } = props;
 
