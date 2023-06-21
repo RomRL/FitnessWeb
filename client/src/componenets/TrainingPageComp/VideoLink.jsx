@@ -11,10 +11,8 @@ export default function VideoLink(props) {
       <iframe
         src={src}
         title="YouTube video"
-        allowFullScreen
         animation="fade-in-down"
-        
-
+        allowFullScreen
       ></iframe>
     </div>
 

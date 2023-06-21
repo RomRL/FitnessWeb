@@ -33,7 +33,7 @@ function MuscleInfo({ muscle, dataVals }) {
                 </p>
               ) : index === 2 ? (
                 <p>
-                  <iframe width="350" height="220" src={dataVals.link[index]} title="Video" allowFullscreen></iframe>
+                  <iframe width="350" height="220" src={dataVals.link[index]} title="Video" allowFullScreen></iframe>
                 </p>
               ) : null}
             </div>
