@@ -142,7 +142,7 @@ function RegistrationForm({ handleRegistration }) {
                           required
                           label="Height"
                           type="number"
-                          min={0}
+                          min={50}
                           max={210}
                           size="lg"
                           wrapperClass="mb-4"
@@ -161,7 +161,7 @@ function RegistrationForm({ handleRegistration }) {
                           onChange={(event) => setWeight(event.target.value)}
                           id="Weight"
                           required
-                          min={0}
+                          min={40}
                           max={250}
                           label="Weight"
                           type="number"

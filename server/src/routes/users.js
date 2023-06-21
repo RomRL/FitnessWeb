@@ -114,8 +114,8 @@ router.put("/update/:id", async (req, res) => {
 });
 
 //update user height
-router.put("/updateHeight/:id", async (req, res) => {
-  const userID = req.params.id;
+router.put("/updateHeight", async (req, res) => {
+  const userID = "6471ebdd01e6cc92d6ce0ad1";
   const { height } = req.body;
   try {
     const user = await UserModel.updateOne(

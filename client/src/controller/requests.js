@@ -99,6 +99,23 @@ export const getUser = async () => {
     return false;
   }
 };
+//Update Height
+export const updateHeight = async (height) => {
+  try {
+    const response = await createRequest(
+      "put",
+      `/auth/updateHeight/${localStorage.getItem("userId")}`,
+      {
+        height: height,
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("Error updating height:", error);
+    return false;
+  }
+};
 
 //----------------------Training Programas----------------------//
 export const getTrainingProgramas = async (muscle) => {

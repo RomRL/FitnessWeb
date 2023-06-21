@@ -44,7 +44,6 @@ export function NavigationBar(props) {
         >
           <MDBIcon icon="bars" fas />
         </MDBNavbarToggler>
-
         <MDBCollapse navbar show={showBasic}>
           <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
             {!access_token ? (

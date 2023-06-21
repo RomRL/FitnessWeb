@@ -31,10 +31,12 @@ import {
   calculateWeightLoss,
   calculateWeightLossPerProgram,
 } from "../controller/utils/util_home_page.js";
+import RightModal from "../componenets/General/RightModal.jsx";
 
 
 function UserHomePage() {
   const [user, setUser] = useState({});
+  const [height, setHeight] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(true);
   const [data, setData] = useState({
@@ -63,6 +65,7 @@ function UserHomePage() {
     } else {
       const val = response;
       setUser(val);
+      setHeight(val.height);
       setAllData(val);
       setError(false);
     }
@@ -124,7 +127,8 @@ function UserHomePage() {
               <MDBCol sm="8">
                 {/* User Details Card  */}
 
-                <DetailsCard user={user} training={data.currentTraining} />
+                <DetailsCard user={user} height={height} training={data.currentTraining} />
+                <RightModal height={height} setHeight={setHeight} ></RightModal>
                 <MDBRow className="row-cols-1 row-cols-md-3 g-4">
                   {/* Include Max and Min Weight */}
                 </MDBRow>
