@@ -12,24 +12,22 @@ function RadioButton(props) {
   };
 
   return (
-    <MDBRow className='mb-3' style={{ display: 'flex', justifyContent: 'flex-start' }}>
-        {options.map((option) => (
-          <MDBCol  md='2' key={option}>
-            <MDBRadio
-              className='mx-1'
-              btn
-              btnColor='dark'
-              id={`btn-radio${option}`}
-              name='options'
-              wrapperClass='mx-1'
-              label={option}
-              checked={option === selectedOption}
-              onChange={() => handleOptionChange(option)}
-            />
-          </MDBCol>
-        ))}
+<MDBRow  className='btn-group mb-5' style={{ background: '#f4f3f8a6' }}  >
+  {options.map((option) => (
+    <MDBCol key={option} >
+      <MDBRadio 
+        btn
+        btnColor='dark'
+        id={`btn-radio${option}`}
+        name='options'
+        label={option}
+        checked={option === selectedOption}
+        onChange={() => handleOptionChange(option)}
 
-    </MDBRow>
+      />
+    </MDBCol>
+  ))}
+</MDBRow>
 
   );
 }

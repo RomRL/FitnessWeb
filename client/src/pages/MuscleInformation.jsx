@@ -5,7 +5,7 @@ import {
   getTrainingProgramasName,
 } from "../controller/requests.js";
 import ErrorPage from "./ErrorPage.jsx";
-import TPMainComponent from "../componenets/TrainingProgramsComp/TPMainComponent.jsx";
+import MIMainComponent from "../componenets/MuscleInformationComp/MIMainComponent.jsx";
 import Footer from "../componenets/General/Footer.jsx";
 import HelpAndTitle from "../componenets/General/HelpAndTtile.jsx";
 
@@ -106,7 +106,7 @@ const MuscleInformation = () => {
           
             "
         />
-        <TPMainComponent
+        <MIMainComponent
           musclesNames={musclesNames}
           muscle={muscle}
           handleMuscleChange={handleMuscleChange}
