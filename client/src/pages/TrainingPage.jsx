@@ -42,7 +42,7 @@ export function TrainingForm() {
 
   const addTrainingProgram = async (newWeight) => {
     const response = addTrainingToUser(selectedTraining.name, newWeight);
-    if (newWeight == "" || newWeight === undefined || newWeight > 250 || newWeight < 0) {
+    if (newWeight == "" || newWeight === undefined || newWeight > 250 || newWeight < 40) {
       setModalOption("emptyInput");
       setShowModal(true);
       return;

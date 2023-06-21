@@ -14,7 +14,7 @@ function Footer() {
       <MDBBtn className='m-1' style={{ backgroundColor: '#333333' }} href='https://github.com/sbhtknni/fitness-web'>
         <MDBIcon fab icon='github' />
       </MDBBtn>
-        <p>© RD company since 2023</p>
+        <p>© RD company since 2020</p>
       </footer>
     );
 }
