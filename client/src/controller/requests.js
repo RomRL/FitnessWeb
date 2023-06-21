@@ -3,7 +3,7 @@
 import axios from "axios";
 const access_token = localStorage.getItem("access_token");
 const format = {
-  baseUrl: "https://fitness-api-7tqf.onrender.com",
+  baseUrl: "https://fitness-api-974s.onrender.com",
   headers: {
     Authorization: `Bearer ${access_token}`,
   },
