@@ -8,6 +8,7 @@ import {
   MDBModalBody,
   MDBModalFooter,
     MDBInput,
+    MDBValidation,
     MDBValidationItem,
 } from 'mdb-react-ui-kit';
 import { Modal } from "react-bootstrap";
@@ -16,13 +17,13 @@ import { updateHeight } from '../../controller/requests';
 export default function RightModal(props) {
   const {height,setHeight} = props;
   const [topRightModal, setTopRightModal] = useState(false);
-
+  const [editHeight, setEditHeight] = useState(false);
 const changeHeight = () => {
-    setHeight(height);
-    const response = updateHeight(height);
+    const response =  updateHeight(editHeight);
     if (response === false) {
         alert("error");
     }
+    setHeight(editHeight);
     setTopRightModal(false);
     };
 
@@ -31,7 +32,7 @@ const changeHeight = () => {
   };
   return (
     <>
-      <MDBBtn onClick={toggleShow}>Top right</MDBBtn>
+      <MDBBtn color='danger' onClick={toggleShow}>Edit Highet</MDBBtn>
 
       <Modal
         animationDirection='right'
@@ -41,7 +42,7 @@ const changeHeight = () => {
       >
         <MDBModalDialog position='top-right' side>
           <MDBModalContent>
-            <MDBModalHeader className='bg-info text-white'>
+            <MDBModalHeader className='bg-dark text-white'>
               <MDBModalTitle>Set Height</MDBModalTitle>
               <MDBBtn
                 color='none'
@@ -50,18 +51,18 @@ const changeHeight = () => {
               ></MDBBtn>
             </MDBModalHeader>
             <MDBModalBody>
-                {/* enter height and send to server requst */}
+                <MDBValidation isValidated>                {/* enter height and send to server requst */}
                 
                 <div className='col-9'>
                   <p>Set Height</p>
                 </div>
-                <MDBValidationItem
+                <MDBValidationItem 
                         feedback="Choose height between 0-210"
-                        invalid>
-                        <MDBInput
-                          value={height}
+                        invalid >
+                        <MDBInput 
+                          value={editHeight}
                           name="Height"
-                          onChange={(event) => setHeight(event.target.value)  }
+                          onChange={(event) => setEditHeight(event.target.value)  }
                           id="Height"
                           required
                           label="Height"
@@ -74,10 +75,13 @@ const changeHeight = () => {
                           style={{ color: "black" }}
                         />
                       </MDBValidationItem>                {/* enter weight and send to server requst */}
+                      </MDBValidation>
+
             </MDBModalBody>
+
             <MDBModalFooter>
-              <MDBBtn color='info' onClick={changeHeight} >Go to the cart  </MDBBtn>
-              <MDBBtn outline color='info' onClick={toggleShow}>
+              <MDBBtn color='dark' onClick={changeHeight} >Go to the cart  </MDBBtn>
+              <MDBBtn  color='danger' onClick={toggleShow}>
                 Close
               </MDBBtn>
             </MDBModalFooter>

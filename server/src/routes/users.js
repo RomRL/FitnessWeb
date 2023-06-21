@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import { UserModel } from "../models/Users.js";
 import bcrypt from "bcryptjs";
 import { config } from "dotenv";
+import { validateToken } from "./validate.js";
 const router = express.Router(); //Create Router
 
 config();
@@ -37,7 +38,6 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  
   const { email, password } = req.body;
   try {
     const user = await UserModel.findOne({ email });
@@ -114,15 +114,26 @@ router.put("/update/:id", async (req, res) => {
 });
 
 //update user height
-router.put("/updateHeight", async (req, res) => {
-  const userID = "6471ebdd01e6cc92d6ce0ad1";
+router.put("/updateHeight",validateToken ,async (req, res) => {
+  const userID = req.user.id
+  console.log("------height----", req.body);
   const { height } = req.body;
   try {
-    const user = await UserModel.updateOne(
-      { _id: userID },
-      { height: height },
-      { bmi: BMICalculation(user.weight, height) }
+    console.log("height", height);
+    //Serch user by userID in mongoDB get his weight and update height and bmi
+    const response = await UserModel.findById(userID, "weight");
+    //Update user height and bmi in mongoDB according to his weight and new height
+    const user = await UserModel.findByIdAndUpdate(
+      userID,
+      {
+        height: height,
+        bmi: BMICalculation(response.weight, height),
+      },
+      { new: true }
+
     );
+
+    console.log("user", user);
     if (!user) {
       console.log("User ", userID, " does not exist");
       return res.status(400).json({ message: "User does not exist" });
@@ -130,7 +141,7 @@ router.put("/updateHeight", async (req, res) => {
     console.log("User ", userID, " height updated successfully");
     res.status(200).json({ messege: "User height updated successfully" });
   } catch (error) {
-    console.log("Cant update height For user ", userID, " Error", error);
+    console.log("Cant update height For user Error", error);
     res.status(500).json({ message: "Server Error" });
   }
 });
@@ -145,4 +156,5 @@ export function BMICalculation(weight, height) {
   // Return BMI rounded to two decimal places
   return bmi.toFixed(2);
 }
+
 export { router as usersRouter };

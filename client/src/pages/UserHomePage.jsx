@@ -127,14 +127,11 @@ function UserHomePage() {
               <MDBCol sm="8">
                 {/* User Details Card  */}
 
-                <DetailsCard user={user} height={height} training={data.currentTraining} />
-                <RightModal height={height} setHeight={setHeight} ></RightModal>
-                <MDBRow className="row-cols-1 row-cols-md-3 g-4">
+                <DetailsCard user={user} height={height} training={data.currentTraining} setHeight={setHeight} />
                   {/* Include Max and Min Weight */}
-                </MDBRow>
-              </MDBCol>
-            </MDBRow>
 
+             </MDBCol>
+            </MDBRow>
 
             <MDBRow className="row-cols-1 row-cols-md-3 g-4">
 

@@ -104,7 +104,7 @@ export const updateHeight = async (height) => {
   try {
     const response = await createRequest(
       "put",
-      `/auth/updateHeight/${localStorage.getItem("userId")}`,
+      `/auth/updateHeight`,
       {
         height: height,
       }

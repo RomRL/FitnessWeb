@@ -4,9 +4,10 @@ import {
   MDBCardBody,
 } from "mdb-react-ui-kit";
 import RowOfDetails from "./RowOfDetails";
+import RightModal from "../General/RightModal";
 
 export default function DetailsCard(props) {
-  const { user, training ,height } = props;
+  const { user, training ,height,setHeight } = props;
   return (
       <MDBCard className="mb-3 d-flex align-items-startmb-5">
         <MDBCardBody>
@@ -20,6 +21,11 @@ export default function DetailsCard(props) {
           ) : (
             <RowOfDetails type="Current Program" value="choose one program" />
           )}
+          <div className="d-flex justify-content-center">
+          <RightModal  height={height} setHeight={setHeight} ></RightModal>
+          </div>
+          <br/>
+
         </MDBCardBody>
       </MDBCard>
   );
