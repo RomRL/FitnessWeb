@@ -12,7 +12,6 @@ function GraphComponent({ selectedTrainings }) {
   });
     const weights = selectedTrainings.map((training) => training.weight);
   const trainingNames  = selectedTrainings.map((training) => training.name);
-  const totalTrainings = selectedTrainings.length;
 
 // Create the chart data
 const chartData = {

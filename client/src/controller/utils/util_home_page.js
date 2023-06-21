@@ -3,7 +3,7 @@ export function calculateAverage(weights) {
     for (let i = 0; i < weights.length; i++) {
         sum += weights[i];
     }
-    return sum / weights.length;
+    return (sum / weights.length).toFixed(2);
 }
 
 export function calculateMax(weights) {
@@ -14,7 +14,7 @@ export function calculateMax(weights) {
         }
     }
     if (max != null)
-        return max.toFixed(2);
+        return max;
 }
 // export function maxWeight = calculateMax(weights);
 
@@ -220,7 +220,7 @@ export function calculateDaysInProgram(selectedTrainings) {
         }
     }
 
-    const Result = "";
+    let Result = "";
     for (const program in daysInProgram) {
         Result += `$You were in ${program} for ${daysInProgram[program]} days.$`;
     }
