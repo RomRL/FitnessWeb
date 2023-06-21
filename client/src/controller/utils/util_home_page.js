@@ -209,8 +209,6 @@ export function findMaxAverageWeightLossPerDay(averageWeightLossPerDay) {
 
 //How much days in each program
 export function calculateDaysInProgram(selectedTrainings) {
-    console.log(selectedTrainings);
-    debugger;
     const daysInProgram = {};
     for (let i = 0; i < selectedTrainings.length - 2; i++) {
         const currentTraining = selectedTrainings[i];

@@ -27,7 +27,7 @@ export const getTrainings = async () => {
 
     return response.data.trainings;
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching trainings:", error);
     return false;
   }
 };
@@ -41,7 +41,7 @@ export const addTrainingToUser = async (trainingName, new_weight) => {
     });
     return response.data;
   } catch (error) {
-    console.error(error);
+    console.error("Error adding training to user:", error);
     return false;
   }
 };
@@ -57,8 +57,7 @@ export const login = async (email, password) => {
 
     return response;
   } catch (error) {
-    console.error(error);
-
+    console.error("Cant Log In",error);
     return false;
   }
 };
@@ -82,7 +81,7 @@ export const register = async (
     });
     return response;
   } catch (error) {
-    console.error(error);
+    console.error("Error registering:", error);
     return false;
   }
 };
@@ -96,8 +95,7 @@ export const getUser = async () => {
     );
     return response.data.user;
   } catch (error) {
-    console.log(error);
-    console.error(error);
+    console.error("Error fetching user:", error);
     return false;
   }
 };
@@ -109,8 +107,6 @@ export const getTrainingProgramas = async (muscle) => {
     return response.data;
   } catch (error) {
     console.error("Error fetching muscleInformation:", error);
-    console.log(error);
-    console.error(error);
     return [];
   }
 };
@@ -122,9 +118,6 @@ export const getTrainingProgramasName = async () => {
     return response.data.map((training) => training.muscle);
   } catch (error) {
     console.error("Error fetching muscleInformation:", error);
-    console.log(error);
-    console.error(error);
-
     return false;
   }
 };

@@ -46,8 +46,6 @@ export default function UserPage(props) {
       try {
         const response = await axios.get(`https://fitness-api-7tqf.onrender.com/auth/${localStorage.getItem('userId')}`);
         const data = response.data;
-        console.log("data", data.user)
-
         setEmail(data.user.email);
         setBMI(data.user.bmi);
         setFirstName(data.user.firstName);
@@ -55,8 +53,6 @@ export default function UserPage(props) {
         setHeight(data.user.height);
         setWeight(data.user.weight);
         setselectedTrainings(data.user.selectedTrainings);
-        console.log("selectedTrainingssssssss::",selectedTrainings)
-
         setDates(data.user.selectedTrainings.map((training) => training.startDate));
         setWeights(data.user.selectedTrainings.map((training) => training.weight));
         setTrainingNames(data.user.selectedTrainings.map((training) => training.name));

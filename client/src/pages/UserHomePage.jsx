@@ -93,7 +93,6 @@ function UserHomePage() {
       weightLoss: calculateWeightLoss(user.selectedTrainings),
       weightLossPerProgram: calculateWeightLossPerProgram(user.selectedTrainings),
     };
-    console.log("Weights are ", weights.length);
     
     setData(updatedData);
   };

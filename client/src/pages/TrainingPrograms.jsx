@@ -8,8 +8,7 @@ import ErrorPage from "./ErrorPage.jsx";
 import TPMainComponent from "../componenets/TrainingProgramsComp/TPMainComponent.jsx";
 import Footer from "..//componenets/General/Footer.jsx";
 import HelpAndTitle from "../componenets/General/HelpAndTtile.jsx";
-import { MDBRadio, MDBBtnGroup } from 'mdb-react-ui-kit';
-
+import { MDBRadio, MDBBtnGroup } from "mdb-react-ui-kit";
 
 const TrainingProgramas = () => {
   const [muscle, setMuscle] = useState("");
@@ -29,30 +28,27 @@ const TrainingProgramas = () => {
     const getDataMusclesNamesFromDB = async () => {
       await getMusclesNames();
       setLoading(false);
-
     };
     getDataMusclesNamesFromDB();
   }, []);
 
-// get all muscles information from DB
-useEffect(() => {
-  const getData = async () => {
-    await fetchmuscleInformation();
-  };
-  getData();
-// eslint-disable-next-line 
-}, [muscle]);
+  // get all muscles information from DB
+  useEffect(() => {
+    const getData = async () => {
+      await fetchmuscleInformation();
+    };
+    getData();
+    // eslint-disable-next-line
+  }, [muscle]);
 
   // get all muscles names from DB and set it to musclesNames
   const getMusclesNames = async () => {
     const response = await getTrainingProgramasName();
     if (response === false) {
-        console.log("response", response);
       setLoading(false);
       return;
     } else {
       setError(false);
-
       setMusclesNames(response);
     }
   };
@@ -101,17 +97,16 @@ useEffect(() => {
   if (!loading && !error) {
     return (
       <MainLayout>
-              <HelpAndTitle
+        <HelpAndTitle
           title="Muscle Information"
-            button_name="Need Help ?"
-            headline="Muscle Information "
-            body="#Please make sure you choose the muscle that you want to learn about $click on radio button option$
+          button_name="Need Help ?"
+          headline="Muscle Information "
+          body="#Please make sure you choose the muscle that you want to learn about $click on radio button option$
             #After you choose the muscle you will see the information about the muscle 
             #You can click on the link to see the video about the muscle
-            
+          
             "
         />
-       
         <TPMainComponent
           musclesNames={musclesNames}
           muscle={muscle}
