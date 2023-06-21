@@ -21,6 +21,7 @@ export const validateToken = (req, res, next) => {
     const enc = process.env.SECRET_KEY;
     const verified = jwt.verify(tokenWithoutBearer, enc);
     req.user = verified;
+    console.log("User id : ", req.user.id);
     next();
   } catch (error) {
     console.log("Invalid token provided by user id : ", req.user.id);

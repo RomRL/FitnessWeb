@@ -14,6 +14,7 @@ import {
 export default function ProfilePicture(props) {
     const {user} = props;
   return (
+    
     <MDBCol sm="4">
     <MDBCard className="mb-4" >
     <MDBCardBody className="text-center">
@@ -31,6 +32,7 @@ export default function ProfilePicture(props) {
       <div className="d-flex justify-content-center mb-2">
         <MDBBtn color='dark' href='/training'>Change Now  </MDBBtn>
       </div>
+      <br/>
     </MDBCardBody>
   </MDBCard>
 </MDBCol>
