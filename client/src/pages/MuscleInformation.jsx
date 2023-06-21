@@ -6,11 +6,10 @@ import {
 } from "../controller/requests.js";
 import ErrorPage from "./ErrorPage.jsx";
 import TPMainComponent from "../componenets/TrainingProgramsComp/TPMainComponent.jsx";
-import Footer from "..//componenets/General/Footer.jsx";
+import Footer from "../componenets/General/Footer.jsx";
 import HelpAndTitle from "../componenets/General/HelpAndTtile.jsx";
-import { MDBRadio, MDBBtnGroup } from "mdb-react-ui-kit";
 
-const TrainingProgramas = () => {
+const MuscleInformation = () => {
   const [muscle, setMuscle] = useState("");
   const [error, setError] = useState(true);
   const [musclesNames, setMusclesNames] = useState([]);
@@ -118,4 +117,4 @@ const TrainingProgramas = () => {
     );
   }
 };
-export default TrainingProgramas;
+export default MuscleInformation;
