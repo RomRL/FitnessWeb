@@ -4,7 +4,7 @@ import { Modal, Button } from "react-bootstrap";
 const TrainingModal = ({ showModal, setShowModal, modalOption }) => {
   return (
     <Modal show={showModal} onHide={() => setShowModal(false)}>
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title>Add Training Program</Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -18,7 +18,7 @@ const TrainingModal = ({ showModal, setShowModal, modalOption }) => {
         )}
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={() => setShowModal(false)}>
+        <Button variant="primary" onClick={() => window.location.reload()}> 
           Close
         </Button>
       </Modal.Footer>
