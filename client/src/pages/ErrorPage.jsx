@@ -34,6 +34,7 @@ export function ErrorPage(props) {
     );
   } else {
     return (
+
       <MainLayout>
         <div
           style={{
