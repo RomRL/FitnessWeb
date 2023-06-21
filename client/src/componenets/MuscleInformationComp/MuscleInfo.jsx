@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 function MuscleInfo({ muscle, dataVals }) {
   return (
-    <div className="container">
-      <div className="jumbotron">
+    <div className="container ">
+      <div className="jumbotron ">
         <div className="container">
           <h1 className="display-3">Muscle {muscle}</h1>
           <p>{dataVals.generalInformation}</p>

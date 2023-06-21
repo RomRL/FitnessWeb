@@ -11,7 +11,7 @@ export default function HelpAndTitle(props) {
           
             <MDBRow className='mb-3'>
               <MDBCol className="col-md-10">
-              <h3 className="fw-bolder  mt-4">{title}</h3>
+              <h1 className="display-5 fw-bolder mt-5">{title}</h1>
               </MDBCol>
               <MDBCol>
                 <InformativeModal   
