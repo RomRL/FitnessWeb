@@ -1,35 +1,36 @@
 import React from 'react';
-import { MDBBtnGroup, MDBRadio } from 'mdb-react-ui-kit';
+import { MDBBtnGroup, MDBRadio, MDBCol, MDBRow } from 'mdb-react-ui-kit';
 function RadioButton(props) {
   const { options, selectedOption, onOptionChange } = props;
 
   const handleOptionChange = (option) => {
     if (option !== selectedOption) {
       onOptionChange(option);
-       
+
 
     }
   };
 
   return (
-
-    <MDBBtnGroup shadow='5'  >
+    <MDBRow className='mb-3' style={{ display: 'flex', justifyContent: 'flex-start' }}>
         {options.map((option) => (
-          <MDBRadio
-            className='mx-1'
-            key={option}
-            btn
-            btnColor='dark'
-            id={`btn-radio${option}`}
-            name='options'
-            wrapperClass='mx-1'
-            label={option}
-            checked={option === selectedOption}
-            onChange={() => handleOptionChange(option) }
-          />
+          <MDBCol  md='2' key={option}>
+            <MDBRadio
+              className='mx-1'
+              btn
+              btnColor='dark'
+              id={`btn-radio${option}`}
+              name='options'
+              wrapperClass='mx-1'
+              label={option}
+              checked={option === selectedOption}
+              onChange={() => handleOptionChange(option)}
+            />
+          </MDBCol>
         ))}
-      </MDBBtnGroup>
-  
+
+    </MDBRow>
+
   );
 }
 

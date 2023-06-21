@@ -8,24 +8,21 @@ export default function HelpAndTitle(props) {
   return (
     <>
           <br/>
-          <MDBContainer>
-            <MDBRow>
+          
+            <MDBRow className='mb-3'>
               <MDBCol className="col-md-10">
               <h3 className="fw-bolder  mt-4">{title}</h3>
-
               </MDBCol>
               <MDBCol>
                 <InformativeModal   
                 button_name={button_name}
                 headline={headline}
-                body={body}></InformativeModal>
-                
-            
+                body={body}></InformativeModal>        
               </MDBCol>
             </MDBRow>
             <div className="d-flex justify-content-xl-evenly">
             </div>
-          </MDBContainer>
+         
     </>
   );
 }

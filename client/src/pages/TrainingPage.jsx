@@ -9,6 +9,8 @@ import WeightInput from "../componenets/TrainingPageComp/WeightInput.jsx";
 import Footer from "../componenets/General/Footer.jsx";
 import HelpAndTitle from "../componenets/General/HelpAndTtile.jsx";
 import RadioButton from "../componenets/General/RadioButton.jsx";
+import { MDBContainer, MDBRow } from "mdb-react-ui-kit";
+
 
 export function TrainingForm() {
   const [selectedTraining, setSelectedTraining] = useState();
@@ -69,37 +71,35 @@ export function TrainingForm() {
     return (
       <MainLayout>
         <div className="container ">
-          <HelpAndTitle
-            title="Choose Training Program"
-            button_name="Need Help ?"
-            headline="Add New Training "
-            body="#Please make sure you choose the training program that is right for you $click on radio button option$
+          <MDBContainer>
+            <HelpAndTitle
+              title="Choose Training Program"
+              button_name="Need Help ?"
+              headline="Add New Training "
+              body="#Please make sure you choose the training program that is right for you $click on radio button option$
                  #Make sure you enter a weight within a normal range $enter a vaild number , will become green when ok $
                 #Click Submit"
-          />
-          <br />
-          <RadioButton
-            options={trainings.map((training) => training.name)}
-            selectedOption={selectedTraining ? selectedTraining.name : ""}
-            onOptionChange={handleTrainingChange}
-          />
+            />
+            <br />
+            
+              <RadioButton
+                options={trainings.map((training) => training.name)}
+                selectedOption={selectedTraining ? selectedTraining.name : ""}
+                onOptionChange={handleTrainingChange}
+              />
 
-          <br />
-          <br />
+            <br />
+            <br />
+          </MDBContainer>
           {selectedTraining && (
-            <div>
-              <WeightInput
-                addTrainingProgram={addTrainingProgram}></WeightInput>
 
-              <br />
 
-              <h5 className="fw-bolder  mt-4"> Instructions:</h5>
-              <InstructionsFormatter text={selectedTraining.instructions} />
-              <LoadLinks video_urls={selectedTraining.videoUrls} />
-              <h5 className=" d-flex justify-content-center fw-bolder  mt-4">
+            <><WeightInput
+              addTrainingProgram={addTrainingProgram}></WeightInput><br /><h5 className="fw-bolder  mt-4"> Instructions:</h5><InstructionsFormatter text={selectedTraining.instructions} /><LoadLinks video_urls={selectedTraining.videoUrls} /><h5 className=" d-flex justify-content-center fw-bolder  mt-4">
                 Selected Training: {selectedTraining.name}
-              </h5>
-            </div>
+              </h5></>
+
+
           )}
 
           <TrainingModal
