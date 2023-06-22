@@ -7,8 +7,8 @@ export default function BigCard(props) {
 
   return (
     <>
-      <MDBCol >
-        <MDBCard className="h-100">
+      <MDBCol md='4'>
+        <MDBCard className="h-100 ">
           <MDBCardImage style={{ height: "200px", width: "100%" }}
             src={img_src}
             alt="..."
