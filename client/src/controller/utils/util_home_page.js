@@ -107,7 +107,7 @@ export function calculateWeightLoss(selectedTrainings) {
 
 
 //Calaculate for each program the weight loss
-export function calculateWeightLossPerProgram(selectedTrainings) {
+export function calculateWeightLossPerProgram(selectedTrainings,sentance) {
     const weightLossPerProgram = {};
     for (let i = 0; i < selectedTrainings.length - 1; i++) {
         const currentTraining = selectedTrainings[i];
@@ -118,6 +118,9 @@ export function calculateWeightLossPerProgram(selectedTrainings) {
         } else {
             weightLossPerProgram[currentTraining.name] = weightLoss;
         }
+    }
+    if ( !sentance){
+        return weightLossPerProgram;    
     }
     let Result = "";
 
@@ -159,75 +162,89 @@ function findMaxWeightLoss(weightLossPerProgram) {
 //     return Math.round(Math.abs((firstDateObj - lastDateObj) / oneDay));
 // }
 
+// Calculate the days In Each Program
+export function calculateDaysInEachProgram(dates , selectedTrainings ) {
+// this is the data foramt
+//step 1: modify the data format to be like this yyyy-mm-dd
+  // Step 1: Modify the data format to be like 'yyyy-mm-dd'
+  console.log("Selected:", dates);
+  const modifiedData = [];
+  for (let i = 0; i < dates.length; i++) {
+    const training = dates[i].split(','); // Split by comma
+    const date = training[0] ? training[0].slice(0, 10) : ''; // Check if date exists
+    const name = training[1] || ''; // Check if name exists
+    const modifiedTraining = `${date},${name}`;
+    modifiedData.push(modifiedTraining);
+  }
+  console.log("Modified:", modifiedData);
+  //Modified: ['2023-06-19,Cardio Workout', '2023-06-22, HIIT Circuit', '2023-06-22,Cardio Workout', '2023-06-22,Strength Training']
+  //For this example, we have 4 days in Cardio Workout, 1 day in HIIT Circuit, and 1 day in Strength Training.
+  // Step 2: Calculate total days in each program , HOW ?
+  // Cardio Workout: 4 days : started at 2023-06-19, ended at 2023-06-22 => 3 days + started at 2023-06-22 ended at 2023-06-22 => 4 days
+  // HIIT Circuit: 1 day : started at 2023-06-22, ended at 2023-06-22 => 1 day
+    // Strength Training: 1 day : started at 2023-06-22, ended at 2023-06-22 => 1 day
+  //Implement the logic
+    const daysInEachProgram = {};
+    for (let i = 0; i < modifiedData.length - 1; i++) {
+        const currentTraining = modifiedData[i];
+        const nextTraining = modifiedData[i + 1];
+        const days = calculateDaysBetweenDates(currentTraining.split(',')[0], nextTraining.split(',')[0]);
+        if (daysInEachProgram[currentTraining.split(',')[1]]) {
+            daysInEachProgram[currentTraining.split(',')[1]] += days;
+        } else {
+            daysInEachProgram[currentTraining.split(',')[1]] = days;
+        }
+    }
+    console.log("Days in each program:", daysInEachProgram);
+    //Step 3 : For each program, calculate the average weight loss per day using 
+    //Calculate the weight loss per program
+    const weightLossPerProgram = calculateWeightLossPerProgram(selectedTrainings);
+    console.log("Weight loss per program:", weightLossPerProgram);
+    // Weight loss per program: {Cardio Workout: 64, " HIIT Circuit": 1}
+    // Step 4: Calculate the average weight loss per day
+    const averageWeightLossPerDay = {};
+    for (const program in daysInEachProgram) {
+        averageWeightLossPerDay[program] = weightLossPerProgram[program] / daysInEachProgram[program];
+    }
+    console.log("Average weight loss per day:", averageWeightLossPerDay);
+    // Average weight loss per day: {Cardio Workout: 21.333333333333332, " HIIT Circuit": 1}
+    // Step 5: Find the program with the most average weight loss per day
+    const maxAverageWeightLossPerDay = findMaxAverageWeightLossPerDay(averageWeightLossPerDay);
+    console.log("Max average weight loss per day:", maxAverageWeightLossPerDay);
+    // Max average weight loss per day: HIIT Circuit
+    // Step 6: Return all the data
+    return {
+        "daysInEachProgram": daysInEachProgram,
+        "weightLossPerProgram": weightLossPerProgram,
+        "averageWeightLossPerDay": averageWeightLossPerDay,
+        "maxAverageWeightLossPerDay": maxAverageWeightLossPerDay
+    };
+}
 
 function calculateDaysBetweenDates(date1, date2) {
+    if ( date1 == date2) {
+        return 1;
+    }
     const dateObject1 = new Date(date1);
     const dateObject2 = new Date(date2);
   
-    const timeDifferenceMs = Math.abs(dateObject2 - dateObject1);
-    const daysDifference = Math.ceil(timeDifferenceMs / (1000 * 60 * 60 * 24));
-  
+    const timeDifference = dateObject2.getTime() - dateObject1.getTime();
+    const daysDifference = timeDifference / (1000 * 3600 * 24);
     return daysDifference;
-  }
-
-//For each program calculate the average weight loss per day
-export function calculateAverageWeightLossPerDay(selectedTrainings) {
-    const weightLossPerProgram = {};
-    const daysInProgram = {};
-    for (let i = 0; i < selectedTrainings.length - 1; i++) {
-        const currentTraining = selectedTrainings[i];
-        const nextTraining = selectedTrainings[i + 1];
-        const weightLoss = nextTraining.weight - currentTraining.weight;
-        if (weightLossPerProgram[currentTraining.name]) {
-            weightLossPerProgram[currentTraining.name] += weightLoss;
-            daysInProgram[currentTraining.name] += calculateDaysBetweenDates(currentTraining.date, nextTraining.date);
-        } else {
-            weightLossPerProgram[currentTraining.name] = weightLoss;
-            daysInProgram[currentTraining.name] = calculateDaysBetweenDates(currentTraining.date, nextTraining.date);
-        }
     }
-    const averageWeightLossPerDay = {};
-    for (const program in weightLossPerProgram) {
-        averageWeightLossPerDay[program] = (weightLossPerProgram[program] / daysInProgram[program]).toFixed(2);
-    }
-    findMaxAverageWeightLossPerDay(averageWeightLossPerDay);
 
-}
 
-//find the program with the most average weight loss per day
-export function findMaxAverageWeightLossPerDay(averageWeightLossPerDay) {
+function findMaxAverageWeightLossPerDay(averageWeightLossPerDay) {
     let maxAverageWeightLossPerDay = 0;
     let maxProgram = "";
     for (const program in averageWeightLossPerDay) {
-        if (averageWeightLossPerDay[program] < maxAverageWeightLossPerDay) {
+        if (averageWeightLossPerDay[program] > maxAverageWeightLossPerDay) {
             maxAverageWeightLossPerDay = averageWeightLossPerDay[program];
             maxProgram = program;
         }
     }
     return maxProgram;
 }
-
-//How much days in each program
-export function calculateDaysInProgram(selectedTrainings) {
-    const daysInProgram = {};
-    for (let i = 0; i < selectedTrainings.length - 2; i++) {
-        const currentTraining = selectedTrainings[i];
-        const nextTraining = selectedTrainings[i + 1];
-        if (daysInProgram[currentTraining.name]) {
-            daysInProgram[currentTraining.name] += calculateDaysBetweenDates(currentTraining.date, nextTraining.date);
-        } else {
-            daysInProgram[currentTraining.name] = calculateDaysBetweenDates(currentTraining.date, nextTraining.date);
-        }
-    }
-
-    let Result = "";
-    for (const program in daysInProgram) {
-        Result += `$You were in ${program} for ${daysInProgram[program]} days.$`;
-    }
-
-    return Result;
-}
-
 
 
 

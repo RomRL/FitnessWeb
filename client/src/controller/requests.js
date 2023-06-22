@@ -1,12 +1,9 @@
 //This page will include all the requests to the backend
 
 import axios from "axios";
-const access_token = localStorage.getItem("access_token");
 const format = {
-  baseUrl: "https://fitness-api-974s.onrender.com",
-  headers: {
-    Authorization: `Bearer ${access_token}`,
-  },
+  baseUrl: "http://localhost:5000",
+
 };
 
 //Create request with parameters
@@ -14,8 +11,9 @@ const createRequest = (method, url, data) => {
   return axios({
     method: method,
     url: `${format.baseUrl}${url}`,
-    headers: format.headers,
-    data: data,
+    headers: {
+      Authorization: `Bearer ${ localStorage.getItem("access_token")}`,
+    },    data: data,
   });
 };
 
