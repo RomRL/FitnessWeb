@@ -31,8 +31,8 @@ import {
   calculateNormalWeight,
   calculateDaysInEachProgram,
 } from "../controller/utils/util_home_page.js";
-import ExpertCard from "../componenets/UserPageComp/ExpertCard.jsx";
-import ExpertTable from "../componenets/UserPageComp/ExpertTable.jsx";
+import ExpertCard from "../componenets/UserHomePageComp/ExpertCard.jsx";
+import ExpertTable from "../componenets/UserHomePageComp/ExpertTable.jsx";
 
 
 function UserHomePage() {
@@ -174,7 +174,7 @@ function UserHomePage() {
             </MDBRow>
 
             <MDBRow className=" row-cols-md-2 g-4 py-4">
-              <MDBCol md='7'>
+              <MDBCol md='4'>
                 <MDBCard className="h-100" >
                   <MDBCardHeader className="fw-bolder text-center">
                     Usage percentage of programs
@@ -187,8 +187,10 @@ function UserHomePage() {
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>
+
+              
               <ExpertCard data={data.averageWeightLossPerProgram}/>
-              <ExpertTable data={data.averageWeightLossPerProgram}></ExpertTable>
+              
             </MDBRow>
 
             
