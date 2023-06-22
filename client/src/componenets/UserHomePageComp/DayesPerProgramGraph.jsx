@@ -17,9 +17,6 @@ const DaysPerProgramGraph = (props) => {
     const daysInEachProgram = Object.values(dataArr.daysInEachProgram);
     const labels = Object.keys(dataArr.daysInEachProgram);
     const data = Object.values(dataArr.daysInEachProgram);
-  
-    console.log(daysInEachProgram)
-    console.log(labels)
   const chartData = {
     labels,
     datasets: [
@@ -35,8 +32,8 @@ const DaysPerProgramGraph = (props) => {
   const options = {
     plugins: {
       title: {
-        display: true,
-        text: 'Chart.js Bar Chart - Stacked',
+        display: false,
+        text: '',
       },
     },
     responsive: true,
