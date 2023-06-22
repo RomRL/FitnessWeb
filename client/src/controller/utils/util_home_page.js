@@ -20,46 +20,32 @@ export function calculateMax(weights) {
 
 // calculate how much wehigt you need to loss to be in normal bmi (18.5-24.9)
 export function calculateNormalWeight(height, weight) {
-  height = height / 100;
-  var bmi = weight / (height * height);
-  var normalRangeMin = 18.5 * height * height;
-  var normalRangeMax = 22.9 * height * height;
-
-  if (bmi < 18.5) {
-    var weightToGain = (normalRangeMin - weight).toFixed(2);
-    return (
-      "You need to Gain weight$Normal weight range: " +
-      normalRangeMin.toFixed(2) +
-      " kg - " +
-      normalRangeMax.toFixed(2) +
-      "#Gain at least " +
-      weightToGain +
-      " kg  to be within the normal range."
-    );
-  } else if (bmi > 22.9) {
-    var weightToLose = (weight - normalRangeMax).toFixed(2);
-    return (
-      "You need to lose weight$Normal weight range: " +
-      normalRangeMin.toFixed(2) +
-      " kg - " +
-      normalRangeMax.toFixed(2) +
-      "#Lose at least " +
-      weightToLose +
-      " kg  to be within the normal range."
-    );
-  } else {
-    return (
-      "Your BMI is " +
-      bmi.toFixed(2) +
-      ". #You should maintain this weight as it . $Normal weight range: " +
-      normalRangeMin.toFixed(2) +
-      " kg - " +
-      normalRangeMax.toFixed(2) +
-      " kg."
-    );
+    height = height / 100;
+    var bmi = weight / (height * height);
+    var normalRangeMin = 18.5 * height * height;
+    var normalRangeMax = 22.9 * height * height;
+    
+    if (bmi < 18.5) {
+      var weightToGain = (normalRangeMin - weight).toFixed(2);
+        return {
+            message: "You need to Gain weight$Normal weight range: " + normalRangeMin.toFixed(2) + " kg - " + normalRangeMax.toFixed(2) + "#Gain at least " + weightToGain + " kg  to be within the normal range.",
+            color: "#2370eb"
+        }
+        
+    } else if (bmi > 22.9) {
+        var weightToLose = (weight - normalRangeMax).toFixed(2);
+        return {
+            message: "You need to lose weight$Normal weight range: " + normalRangeMin.toFixed(2) + " kg - " + normalRangeMax.toFixed(2) + "#Lose at least "  + weightToLose + " kg  to be within the normal range.",
+            color: "red"
+        }
+    } else {
+        return {
+            message: "Your BMI is " + bmi.toFixed(2) + ". #You should maintain this weight as it . $Normal weight range: " + normalRangeMin.toFixed(2) + " kg - " + normalRangeMax.toFixed(2) + " kg.",
+            color: "#1ff03f"        }
+    }
   }
-}
-//Calculate the minimum weight in the training
+
+
 export function calculateMin(weights) {
   let min = weights[0];
   for (let i = 1; i < weights.length; i++) {
