@@ -3,14 +3,14 @@ import MainLayout from "../layout/MainLayout.jsx";
 import ErrorPage from "./ErrorPage.jsx";
 import Footer from "../componenets/General/Footer.jsx";
 import ProfilePicture from "../componenets/UserHomePageComp/ProfilePicture.jsx";
-import ProfilePicture from "../componenets/UserHomePageComp/ProfilePicture.jsx";
 import { getUser } from "../controller/requests.js";
-import GraphComponent from "../componenets/UserHomeHomePageComp/WeightsPerDateGraph.jsx";
+import GraphComponent from "../componenets/UserHomePageComp/WeightsPerDateGraph.jsx";
 import DayesPerProgramGraph from "../componenets/UserHomePageComp/DayesPerProgramGraph.jsx";
-import ChartTrainigGraph from "../componenets/UserHomeHomePageComp/UsagePercentageOfProgramsGraph.jsx";
-import DetailsCard from "../componenets/UserHomeHomePageComp/DetailsCard.jsx";
-import BigCard from "../componenets/UserHomeHomePageComp/BigCard.jsx";
+import ChartTrainigGraph from "../componenets/UserHomePageComp/UsagePercentageOfProgramsGraph.jsx";
+import DetailsCard from "../componenets/UserHomePageComp/DetailsCard.jsx";
+import BigCard from "../componenets/UserHomePageComp/BigCard.jsx";
 import getURL from "../assets/assetsUrls.js";
+import ExpertCard from "../componenets/UserHomePageComp/ExpertCard.jsx";
 
 import {
   MDBCol,
@@ -32,8 +32,6 @@ import {
   calculateNormalWeight,
   calculateDaysInEachProgram,
 } from "../controller/utils/util_home_page.js";
-import ExpertCard from "../componenets/UserHomePageComp/ExpertCard.jsx";
-import ExpertTable from "../componenets/UserHomePageComp/ExpertTable.jsx";
 
 
 function UserHomePage() {
@@ -127,7 +125,7 @@ function UserHomePage() {
       <MainLayout>
         <section style={{ backgroundColor: "transpert" }}>
           <MDBContainer className="py-4">
-             <MDBRow className="py-2 g-4">
+            <MDBRow className="py-2 g-4">
               {/* Profile Picture Cube */}
               <ProfilePicture user={user} />
               <MDBCol md='9'>
@@ -145,7 +143,7 @@ function UserHomePage() {
                 text={
                   weights.length === 0
                     ? "You need to work one more time to see the data"
-                    : `#Max $${data.max}$ \n #Min $${data.min}$ \n #Average $${data.average}$ \n #Weight Loss $${data.weightLoss}$ \n`
+                    : `#Max Weight $${data.max.toFixed(2)} kg$  \n #Min $${data.min.toFixed(2)} kg$ \n #Average Weight $${data.average} kg$ \n #Weight Loss $${data.weightLoss}$ \n`
                 }
                 img_src={getURL("weight")}
               />
@@ -154,7 +152,7 @@ function UserHomePage() {
                 text={
                   weights.length === 0
                     ? "You need to work one more time to see the data"
-                    : data.normalWeight.message + data.normalWeight.status
+                    : data.normalWeight.message + data.normalWeight.status  
                 }
                 img_src={getURL("statistics")}
                 picture="https://nutrition.health.gov.lk/wp-content/uploads/2020/12/BMI-1024x569.png"
@@ -187,12 +185,12 @@ function UserHomePage() {
                 </MDBCard>
               </MDBCol>
 
-              
-              <ExpertCard data={data.averageWeightLossPerProgram}/>
-              
+
+              <ExpertCard data={data.averageWeightLossPerProgram} />
+
             </MDBRow>
 
-            
+
             <MDBRow className="py-4 g-4">
               <MDBCol>
                 <MDBCard >
