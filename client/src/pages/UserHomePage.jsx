@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import MainLayout from "../layout/MainLayout.jsx";
 import ErrorPage from "./ErrorPage.jsx";
 import Footer from "../componenets/General/Footer.jsx";
-import ProfilePicture from "../componenets/UserPageComp/ProfilePicture.jsx";
+import ProfilePicture from "../componenets/UserHomePageComp/ProfilePicture.jsx";
 import { getUser } from "../controller/requests.js";
-import GraphComponent from "../componenets/UserPageComp/GraphComponent.jsx";
-import ChartTrainigGraph from "../componenets/UserPageComp/ChartTrainingGraph.jsx";
-import DetailsCard from "../componenets/UserPageComp/DetailsCard.jsx";
-import BigCard from "../componenets/UserPageComp/BigCard.jsx";
+import GraphComponent from "../componenets/UserHomePageComp/GraphComponent.jsx";
+import ChartTrainigGraph from "../componenets/UserHomePageComp/ChartTrainingGraph.jsx";
+import DetailsCard from "../componenets/UserHomePageComp/DetailsCard.jsx";
+import BigCard from "../componenets/UserHomePageComp/BigCard.jsx";
 import getURL from "../assets/assetsUrls.js";
 
 import {
@@ -30,8 +30,8 @@ import {
   calculateNormalWeight,
   calculateDaysInEachProgram,
 } from "../controller/utils/util_home_page.js";
-import ExpertCard from "../componenets/UserPageComp/ExpertCard.jsx";
-import ExpertTable from "../componenets/UserPageComp/ExpertTable.jsx";
+import ExpertCard from "../componenets/UserHomePageComp/ExpertCard.jsx";
+import ExpertTable from "../componenets/UserHomePageComp/ExpertTable.jsx";
 
 
 function UserHomePage() {
