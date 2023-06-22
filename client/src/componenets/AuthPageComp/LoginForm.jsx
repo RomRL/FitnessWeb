@@ -27,7 +27,7 @@ function LoginForm({ email, password, handleEmailChange, handlePasswordChange, h
               maxWidth: "400px",
 
             }}>
-            <MDBCardBody className="p-5 d-flex flex-column align-items-center  ">
+            <MDBCardBody className="addcard p-5 d-flex flex-column align-items-center  ">
               <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
               <p className="text-white-50 mb-5">
                 Please enter your login and password!

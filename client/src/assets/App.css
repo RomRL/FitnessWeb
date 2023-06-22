@@ -1,3 +1,4 @@
+
 img {
   max-width: 100%;
   max-height: 100%;
@@ -75,5 +76,18 @@ background-size: cover;
 }
 .jumbotron{
   background-color:#f4f3f8a6;
+}
+
+
+.card {
+ border-radius: 20px;
+ transition: all .1s;
+}
+
+
+.card:hover {
+  transform: scale(1.05);
+/* box shadow linear gradien */
+  box-shadow: 0 0 10px rgb(147, 147, 147); 
 }
 

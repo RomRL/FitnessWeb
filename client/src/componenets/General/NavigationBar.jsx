@@ -28,7 +28,7 @@ export function NavigationBar(props) {
     navigate("/auth/login");
   };
   return (
-    <MDBNavbar sticky fixed dark expand="lg" bgColor="dark">
+    <MDBNavbar dark expand="lg" bgColor="dark">
       <MDBContainer fluid>
         <MDBNavbarBrand href={!access_token ? "/" : "/userpage"}>
           <img width="30" height="30" src={getURL("logo")} alt="Logo" />
