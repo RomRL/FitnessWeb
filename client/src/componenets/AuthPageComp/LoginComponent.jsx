@@ -7,14 +7,6 @@ import Footer from "..//General/Footer.jsx";
 import "..//..//assets/App.css";
 import { login } from "../../controller/requests";
 
-// bootstrap imports
-import {
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardBody,
-} from "mdb-react-ui-kit";
 
 // Login Function  login to the app
 function LoginComponent() {

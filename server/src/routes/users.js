@@ -55,7 +55,7 @@ router.post("/login", async (req, res) => {
     }
     const enc = process.env.SECRET_KEY;
     // The token contains information about the user's identity.
-    const token = jwt.sign({ id: user._id }, enc, { expiresIn: "900s" });
+    const token = jwt.sign({ id: user._id }, enc, { expiresIn: "1200s" });
     console.log("User logged in successfully");
     res
       .status(200)
