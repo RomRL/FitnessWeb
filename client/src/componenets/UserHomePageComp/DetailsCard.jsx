@@ -9,7 +9,7 @@ import RightModal from "../General/RightModal";
 export default function DetailsCard(props) {
   const { user, training ,height,setHeight,color } = props;
   return (
-      <MDBCard className="mb-3 d-flex align-items-startmb-5">
+      <MDBCard className=" h-100">
         <MDBCardBody>
           <RowOfDetails type="Full Name" value={user.firstName + " " + user.lastName} color = "grey"/>
           <RowOfDetails type="Email" value={user.email} color = "grey"/>
