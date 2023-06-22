@@ -44,7 +44,7 @@ export default function UserPage(props) {
   useEffect(() => {
     const fetchTrainings = async () => {
       try {
-        const response = await axios.get(`https://fitness-api-7tqf.onrender.com/auth/${localStorage.getItem('userId')}`);
+        const response = await axios.get(`https://fitness-api-974s.onrender.com/auth/${localStorage.getItem('userId')}`);
         const data = response.data;
         setEmail(data.user.email);
         setBMI(data.user.bmi);
@@ -119,7 +119,7 @@ export default function UserPage(props) {
     const fetchTrainings = async () => {
       try {
         const response = await axios.put(
-          `https://fitness-api-7tqf.onrender.com/auth/updateHeight/${localStorage.getItem('userId')}`,
+          `https://fitness-api-974s.onrender.com/auth/updateHeight/${localStorage.getItem('userId')}`,
           { height: editFieldValue }
         );
         // Update the state or perform any other necessary actions

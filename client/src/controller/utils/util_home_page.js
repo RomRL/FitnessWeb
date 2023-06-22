@@ -18,6 +18,26 @@ export function calculateMax(weights) {
 }
 // export function maxWeight = calculateMax(weights);
 
+// calculate how much wehigt you need to loss to be in normal bmi (18.5-24.9)
+export function calculateNormalWeight(height, weight) {
+    height = height / 100;
+    var bmi = weight / (height * height);
+    var normalRangeMin = 18.5 * height * height;
+    var normalRangeMax = 22.9 * height * height;
+    
+    if (bmi < 18.5) {
+      var weightToGain = (normalRangeMin - weight).toFixed(2);
+        return "You need to Gain weight$Normal weight range: " + normalRangeMin.toFixed(2) + " kg - " + normalRangeMax.toFixed(2) + "#Gain at least "  + weightToGain + " kg  to be within the normal range.";
+        
+    } else if (bmi > 22.9) {
+      var weightToLose = (weight - normalRangeMax).toFixed(2);
+      return "You need to lose weight$Normal weight range: " + normalRangeMin.toFixed(2) + " kg - " + normalRangeMax.toFixed(2) + "#Lose at least "  + weightToLose + " kg  to be within the normal range.";
+    } else {
+      return "Your BMI is " + bmi.toFixed(2) + ". #You should maintain this weight as it . $Normal weight range: " + normalRangeMin.toFixed(2) + " kg - " + normalRangeMax.toFixed(2) + " kg.";
+    }
+  }
+
+
 export function calculateMin(weights) {
     let min = weights[0];
     for (let i = 1; i < weights.length; i++) {
@@ -27,35 +47,9 @@ export function calculateMin(weights) {
     }
     return min;
 }
-// export function minWeight = calculateMin(weights);
 
-export function calculateVariance(weights) {
-    let sum = 0;
-    for (let i = 0; i < weights.length; i++) {
-        sum += weights[i];
-    }
-    const average = sum / weights.length;
-    let variance = 0;
-    for (let i = 0; i < weights.length; i++) {
-        variance += Math.pow(weights[i] - average, 2);
-    }
-    return (variance / weights.length).toFixed(2);;
-}
-// export function varianceWeight = calculateVariance(weights);
 
-export function calculateStandardDeviation(weights) {
-    return (Math.sqrt(calculateVariance(weights)).toFixed(2));
-}
-// export function standardDeviationWeight = calculateStandardDeviation(weights);
 
-export function calculateMedian(weights) {
-    const sortedWeights = weights.sort();
-    const middle = Math.floor(sortedWeights.length / 2);
-    if (sortedWeights.length % 2 === 0) {
-        return (sortedWeights[middle] + sortedWeights[middle - 1]) / 2;
-    }
-    return sortedWeights[middle];
-}
 // export function medianWeight = calculateMedian(weights);
 
 export function calculatePopularName(trainingNames) {

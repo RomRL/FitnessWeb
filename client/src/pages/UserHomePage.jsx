@@ -23,15 +23,12 @@ import {
   calculateAverage,
   calculateMax,
   calculateMin,
-  calculateVariance,
-  calculateStandardDeviation,
-  calculateMedian,
   calculatePopularName,
   currentTrainingName,
   calculateWeightLoss,
   calculateWeightLossPerProgram,
+  calculateNormalWeight,
 } from "../controller/utils/util_home_page.js";
-import RightModal from "../componenets/General/RightModal.jsx";
 
 
 function UserHomePage() {
@@ -43,7 +40,7 @@ function UserHomePage() {
     max: 0,
     min: 0,
     average: 0,
-    variance: 0,
+    normalWeight: 0,
     standardDeviation: 0,
     median: 0,
     popularName: "",
@@ -88,9 +85,7 @@ function UserHomePage() {
       max: calculateMax(weights),
       min: calculateMin(weights),
       average: calculateAverage(weights),
-      variance: calculateVariance(weights),
-      standardDeviation: calculateStandardDeviation(weights),
-      median: calculateMedian(weights),
+      normalWeight: calculateNormalWeight(user.height,weights[weights.length-1]),
       popularName: calculatePopularName(trainingNames),
       currentTraining: currentTrainingName(trainingNames),
       weightLoss: calculateWeightLoss(user.selectedTrainings),
@@ -146,22 +141,25 @@ function UserHomePage() {
                 img_src={getURL("weight")}
               />
               <BigCard
-                title="Statistics"
+                title="Bmi Statistics"
                 text={
                   weights.length === 0
                     ? "You need to work one more time to see the data"
-                    : `#Varience $${data.variance}$ \n #Standard Deviation $${data.standardDeviation}$ \n #Median $${data.median}$ \n`
+                    : data.normalWeight
                 }
                 img_src={getURL("statistics")}
+                picture="https://nutrition.health.gov.lk/wp-content/uploads/2020/12/BMI-1024x569.png"
+                fillPicture={true}
               />
               <BigCard
                 title="Popular Training"
                 text={
                   weights.length === 0
                     ? "You need to work one more time to see the data"
-                    : `#Popular Training  $${data.popularName}$  #Current Training $${data.currentTraining}$  #Weight Loss Per Program ${data.weightLossPerProgram} \n `
+                    : `$${data.popularName}$  #Current Training $${data.currentTraining}$  #Weight Loss Per Program ${data.weightLossPerProgram} \n `
                 }
                 img_src={getURL("workout")}
+                
               />
             </MDBRow>
 
