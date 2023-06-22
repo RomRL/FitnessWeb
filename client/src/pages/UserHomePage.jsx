@@ -131,7 +131,7 @@ function UserHomePage() {
               <MDBCol sm="8">
                 {/* User Details Card  */}
 
-                <DetailsCard user={user} height={height} training={data.currentTraining} setHeight={setHeight} />
+                <DetailsCard user={user} height={height} training={data.currentTraining} setHeight={setHeight} color={ data.normalWeight.color} />
                   {/* Include Max and Min Weight */}
 
              </MDBCol>
@@ -154,7 +154,7 @@ function UserHomePage() {
                 text={
                   weights.length === 0
                     ? "You need to work one more time to see the data"
-                    : data.normalWeight
+                    : data.normalWeight.message + data.normalWeight.status
                 }
                 img_src={getURL("statistics")}
                 picture="https://nutrition.health.gov.lk/wp-content/uploads/2020/12/BMI-1024x569.png"

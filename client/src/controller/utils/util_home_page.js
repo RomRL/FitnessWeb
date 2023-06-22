@@ -27,13 +27,21 @@ export function calculateNormalWeight(height, weight) {
     
     if (bmi < 18.5) {
       var weightToGain = (normalRangeMin - weight).toFixed(2);
-        return "You need to Gain weight$Normal weight range: " + normalRangeMin.toFixed(2) + " kg - " + normalRangeMax.toFixed(2) + "#Gain at least "  + weightToGain + " kg  to be within the normal range.";
+        return {
+            message: "You need to Gain weight$Normal weight range: " + normalRangeMin.toFixed(2) + " kg - " + normalRangeMax.toFixed(2) + "#Gain at least " + weightToGain + " kg  to be within the normal range.",
+            color: "#2370eb"
+        }
         
     } else if (bmi > 22.9) {
-      var weightToLose = (weight - normalRangeMax).toFixed(2);
-      return "You need to lose weight$Normal weight range: " + normalRangeMin.toFixed(2) + " kg - " + normalRangeMax.toFixed(2) + "#Lose at least "  + weightToLose + " kg  to be within the normal range.";
+        var weightToLose = (weight - normalRangeMax).toFixed(2);
+        return {
+            message: "You need to lose weight$Normal weight range: " + normalRangeMin.toFixed(2) + " kg - " + normalRangeMax.toFixed(2) + "#Lose at least "  + weightToLose + " kg  to be within the normal range.",
+            color: "red"
+        }
     } else {
-      return "Your BMI is " + bmi.toFixed(2) + ". #You should maintain this weight as it . $Normal weight range: " + normalRangeMin.toFixed(2) + " kg - " + normalRangeMax.toFixed(2) + " kg.";
+        return {
+            message: "Your BMI is " + bmi.toFixed(2) + ". #You should maintain this weight as it . $Normal weight range: " + normalRangeMin.toFixed(2) + " kg - " + normalRangeMax.toFixed(2) + " kg.",
+            color: "#1ff03f"        }
     }
   }
 
