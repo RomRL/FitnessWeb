@@ -7,12 +7,11 @@ function RadioButton(props) {
     if (option !== selectedOption) {
       onOptionChange(option);
 
-
     }
   };
 
   return (
-<MDBRow  className='btn-group mb-5' style={{ background: '#f4f3f8a6' }}  >
+<MDBRow  className='btn-group ' style={{ background: '#f4f3f8a6' }}  >
   {options.map((option) => (
     <MDBCol key={option} >
       <MDBRadio 

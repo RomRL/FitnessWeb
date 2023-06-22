@@ -1,7 +1,9 @@
 import React from "react";
+import {  useNavigate } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
 
 const TrainingModal = ({ showModal, setShowModal, modalOption }) => {
+  const navigate = useNavigate();
   return (
     <Modal show={showModal} onHide={() => setShowModal(false)}>
       <Modal.Header>
@@ -17,10 +19,38 @@ const TrainingModal = ({ showModal, setShowModal, modalOption }) => {
           <p>Training program added successfully.</p>
         )}
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="primary" onClick={() => window.location.reload()}> 
-          Close
-        </Button>
+      <Modal.Footer>  
+        {modalOption === "success" && (
+          <Button
+            variant="primary"
+            onClick={() => {
+              setShowModal(false);
+              navigate("/userpage");
+            }}
+          >
+            lets see your progress
+          </Button>
+        )}
+        {modalOption === "error" && (
+          <Button
+            variant="primary"
+            onClick={() => {
+              setShowModal(false);
+            }}
+          >
+            Close
+          </Button>
+        )}
+        {modalOption === "emptyInput" && (
+          <Button
+            variant="primary"
+            onClick={() => {
+              setShowModal(false);
+            }}
+          >
+            Close
+          </Button>
+        )}
       </Modal.Footer>
     </Modal>
   );
