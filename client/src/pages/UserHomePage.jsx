@@ -218,7 +218,7 @@ function UserHomePage() {
                     {weights.length === 0 ? (
                       <p>You need to work one more time to see the data</p>
                     ) : (
-                      <DayesPerProgramGraph data={data.daysInEachProgram} />
+                      <DayesPerProgramGraph dataArr={data.averageWeightLossPerProgram} />
                     )}
                   </MDBCardBody>
                 </MDBCard>

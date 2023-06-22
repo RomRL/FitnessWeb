@@ -1,6 +1,6 @@
 import React from "react";
 import ExpertTable from "./ExpertTable";
-import { MDBCard, MDBCol,MDBCardBody } from "mdb-react-ui-kit";
+import { MDBCard, MDBCol,MDBCardBody,MDBCardText } from "mdb-react-ui-kit";
 export default function ExpertCard(props) {
   const { data } = props;
   //  Format the string to be displayed in the card
@@ -17,8 +17,10 @@ export default function ExpertCard(props) {
   
     <MDBCol  md='8'>
     <MDBCard >
-      <MDBCardBody>
-          <ExpertTable data={data} />
+        <MDBCardBody>
+        <MDBCardText>
+            <ExpertTable data={data} />
+          </MDBCardText>  
     </MDBCardBody>
     </MDBCard>
   </MDBCol>
