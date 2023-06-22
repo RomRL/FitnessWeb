@@ -5,6 +5,7 @@ import {
   MDBValidation,
   MDBValidationItem,
   MDBBtnGroup,
+  MDBContainer,
 } from "mdb-react-ui-kit";
 
 export default function WeightInput(props) {
@@ -15,17 +16,15 @@ export default function WeightInput(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
       addTrainingProgram(newWeight);
-    // clear the input
-    setNewWeight("");
   };
 
 
   return (
-    <>
-      <div>
-        <MDBValidation className="row g-3" isValidated >
-          <MDBValidationItem feedback='Enter Weight  (Min 40 kg Max 250 kg )' invalid className="col-md-4">
-            <MDBInput
+       <MDBContainer onSubmit={handleSubmit} >
+        <MDBValidation className="row g-3"  >
+          <MDBValidationItem feedback='Enter Weight (Min 40 kg Max 250 kg )' invalid className="col-md-4">
+          <MDBInput
+            label="Enter new weight"
               type="number"
               className="form-control input-primary"
               required
@@ -39,14 +38,14 @@ export default function WeightInput(props) {
 
           <div className="d-flex mt-3">
             <MDBBtnGroup aria-label="Basic example">
-              <MDBBtn type="submit" color="success" onClick={handleSubmit}>
+              <MDBBtn type="submit" color="success" >
                 Submit
               </MDBBtn>
 
             </MDBBtnGroup>
           </div>
         </MDBValidation>
-      </div>
-    </>
+      </MDBContainer>
+    
   );
 }
