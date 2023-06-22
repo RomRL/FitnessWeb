@@ -127,7 +127,7 @@ function UserHomePage() {
       <MainLayout>
         <section style={{ backgroundColor: "transpert" }}>
           <MDBContainer className="py-4">
-             <MDBRow>
+             <MDBRow className="py-2 g-4">
               {/* Profile Picture Cube */}
               <ProfilePicture user={user} />
               <MDBCol md='9'>
@@ -138,7 +138,7 @@ function UserHomePage() {
               </MDBCol>
             </MDBRow>
 
-            <MDBRow className="py-4">
+            <MDBRow className="py-4 g-4">
               <BigCard
                 title="Weight"
                 // set text to be 'You need to work one more time to see the data' if weights is empty else set it to the data
@@ -193,7 +193,7 @@ function UserHomePage() {
             </MDBRow>
 
             
-            <MDBRow >
+            <MDBRow className="py-4 g-4">
               <MDBCol>
                 <MDBCard >
                   <MDBCardHeader className="fw-bolder text-center">
@@ -217,7 +217,7 @@ function UserHomePage() {
                     {weights.length === 0 ? (
                       <p>You need to work one more time to see the data</p>
                     ) : (
-                      <DayesPerProgramGraph />
+                      <DayesPerProgramGraph data={data.averageWeightLossPerProgram} />
                     )}
                   </MDBCardBody>
                 </MDBCard>

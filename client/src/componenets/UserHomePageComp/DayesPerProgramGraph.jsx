@@ -48,7 +48,9 @@ const data = {
   ],
 };
 
-const DayesPerProgramGraph = () => {
+const DayesPerProgramGraph = (props) => {
+    const { dataArr } = props;
+    console.log("dataArr",dataArr);
   return <Bar options={options} data={data} />;
 };
 
