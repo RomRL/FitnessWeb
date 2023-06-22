@@ -9,6 +9,7 @@ import {
   MDBModalBody,
 } from "mdb-react-ui-kit";
 import InstructionsFormatter from "../TrainingPageComp/InstructionsFormatter";
+import Modal from "react-bootstrap/Modal";
 
 export default function InformativeModal(props) {
   const { button_name, headline, body } = props;
@@ -22,7 +23,7 @@ export default function InformativeModal(props) {
       <MDBBtn  rounded type="submit" color="info" onClick={toggleShow}>
         {button_name}
       </MDBBtn>
-      <MDBModal show={optSmModal} tabIndex="-1" setShow={setOptSmModal}>
+      <Modal show={optSmModal} tabIndex="-1" setShow={setOptSmModal}>
         <MDBModalDialog size="lg">
           <MDBModalContent>
             <MDBModalHeader>
@@ -39,7 +40,7 @@ export default function InformativeModal(props) {
             </MDBModalBody>
           </MDBModalContent>
         </MDBModalDialog>
-      </MDBModal>
+      </Modal>
     </>
   );
 }

@@ -8,6 +8,7 @@ config();
 
 export const validateToken = (req, res, next) => {
   const token = req.headers.authorization;
+  console.log("===", req.headers.authorization);
 
   if (!token) {
     console.log("Access denied, no token provided");
@@ -30,7 +31,6 @@ export const validateToken = (req, res, next) => {
 };
 //Vaild has to be a user that is not logged in and has no token
 export const validateLoggedIn = (req, res, next) => {
-  console.log("===", req.headers.authorization);
   const token = req.headers.authorization;
 
   try {
