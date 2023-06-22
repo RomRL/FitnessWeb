@@ -31,6 +31,7 @@ import {
   calculateDaysInEachProgram,
 } from "../controller/utils/util_home_page.js";
 import ExpertCard from "../componenets/UserPageComp/ExpertCard.jsx";
+import ExpertTable from "../componenets/UserPageComp/ExpertTable.jsx";
 
 
 function UserHomePage() {
@@ -172,7 +173,7 @@ function UserHomePage() {
               />
             </MDBRow>
 
-            <MDBRow className="row-cols-1 row-cols-md-3 g-4 py-4">
+            <MDBRow className="row-cols-1 row-cols-md-2 g-4 py-4">
               <MDBCol>
                 <MDBCard >
                   <MDBCardHeader className="fw-bolder text-center">
@@ -187,7 +188,7 @@ function UserHomePage() {
                 </MDBCard>
               </MDBCol>
               <ExpertCard data={data.averageWeightLossPerProgram}/>
-
+              <ExpertTable data={data.averageWeightLossPerProgram}></ExpertTable>
             </MDBRow>
 
             <MDBRow >
