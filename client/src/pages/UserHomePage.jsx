@@ -30,6 +30,7 @@ import {
   calculateNormalWeight,
   calculateDaysInEachProgram,
 } from "../controller/utils/util_home_page.js";
+import ExpertCard from "../componenets/UserPageComp/ExpertCard.jsx";
 
 
 function UserHomePage() {
@@ -188,15 +189,8 @@ function UserHomePage() {
                   </MDBCard>
                 </MDBRow>
               </MDBCol>
-              <BigCard
-                title="General information"
-                text={
-                  weights.length === 0
-                    ? "You need to work one more time to see the data"
-                    : `#Varience $${data.variance}$ \n #Standard Deviation $${data.standardDeviation}$`
-                }
-                img_src={getURL("general-info")}
-              />
+              <ExpertCard data={data.averageWeightLossPerProgram}/>
+
             </MDBRow>
 
             <MDBRow className="py-2">
@@ -216,7 +210,9 @@ function UserHomePage() {
             <hr />
             <Footer />
           </MDBContainer>
+
         </section>
+
       </MainLayout>
     );
   }

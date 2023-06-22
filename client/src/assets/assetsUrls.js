@@ -12,7 +12,7 @@ const allURLS = {
   workout:
     "https://media.self.com/photos/6398b36c72eb56f726777d06/4:3/w_2560%2Cc_limit/weekly-workout-schedule.jpeg ",
   "general-info":
-    "https://media.baamboozle.com/uploads/images/40242/1603364713_188427",
+    "https://img-c.udemycdn.com/course/750x422/1878690_e771_5.jpg",
 };
 
 function getURL(key) {

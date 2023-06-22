@@ -21,7 +21,7 @@ import { updateHeight } from '../../controller/requests';
 // the modal is a parent of updateHeight function in requests.js
 
 export default function RightModal(props) {
-  const { height, setHeight } = props;
+  const { setHeight } = props;
   const [topRightModal, setTopRightModal] = useState(false);
   const [editHeight, setEditHeight] = useState(false);
   const changeHeight = () => {

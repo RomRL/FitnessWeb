@@ -8,8 +8,6 @@ config();
 
 export const validateToken = (req, res, next) => {
   const token = req.headers.authorization;
-  console.log("===", req.headers.authorization);
-
   if (!token) {
     console.log("Access denied, no token provided");
     return res

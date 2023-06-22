@@ -5,8 +5,9 @@ import bcrypt from "bcryptjs";
 import { config } from "dotenv";
 import { validateToken } from "./validate.js";
 const router = express.Router(); //Create Router
-
+//Get env variables
 config();
+
 //Register
 router.post("/register", async (req, res) => {
   try {
@@ -37,6 +38,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
+//Login
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -53,7 +55,7 @@ router.post("/login", async (req, res) => {
     }
     const enc = process.env.SECRET_KEY;
     // The token contains information about the user's identity.
-    const token = jwt.sign({ id: user._id }, enc, { expiresIn: "600s" });
+    const token = jwt.sign({ id: user._id }, enc, { expiresIn: "900s" });
     console.log("User logged in successfully");
     res
       .status(200)
