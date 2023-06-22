@@ -12,7 +12,6 @@ import BigCard from "../componenets/UserHomePageComp/BigCard.jsx";
 import getURL from "../assets/assetsUrls.js";
 import ExpertCard from "../componenets/UserHomePageComp/ExpertCard.jsx";
 
-
 import {
   MDBCol,
   MDBContainer,
@@ -100,8 +99,6 @@ function UserHomePage() {
       weightLoss: calculateWeightLoss(user.selectedTrainings),
       weightLossPerProgram: calculateWeightLossPerProgram(user.selectedTrainings, true),
       averageWeightLossPerProgram: calculateDaysInEachProgram(dates, user.selectedTrainings)
-
-
     };
 
     setData(updatedData);
@@ -128,7 +125,7 @@ function UserHomePage() {
       <MainLayout>
         <section style={{ backgroundColor: "transpert" }}>
           <MDBContainer className="py-4">
-             <MDBRow className="py-2 g-4">
+            <MDBRow className="py-2 g-4">
               {/* Profile Picture Cube */}
               <ProfilePicture user={user} />
               <MDBCol md='9'>
@@ -146,7 +143,7 @@ function UserHomePage() {
                 text={
                   weights.length === 0
                     ? "You need to work one more time to see the data"
-                    : `#Max $${data.max}$ \n #Min $${data.min}$ \n #Average $${data.average}$ \n #Weight Loss $${data.weightLoss}$ \n`
+                    : `#Max Weight $${data.max.toFixed(2)} kg$  \n #Min $${data.min.toFixed(2)} kg$ \n #Average Weight $${data.average} kg$ \n #Weight Loss $${data.weightLoss}$ \n`
                 }
                 img_src={getURL("weight")}
               />
@@ -188,12 +185,12 @@ function UserHomePage() {
                 </MDBCard>
               </MDBCol>
 
-              
-              <ExpertCard data={data.averageWeightLossPerProgram}/>
-              
+
+              <ExpertCard data={data.averageWeightLossPerProgram} />
+
             </MDBRow>
 
-            
+
             <MDBRow className="py-4 g-4">
               <MDBCol>
                 <MDBCard >
