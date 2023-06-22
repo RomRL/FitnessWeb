@@ -99,8 +99,6 @@ function UserHomePage() {
       weightLoss: calculateWeightLoss(user.selectedTrainings),
       weightLossPerProgram: calculateWeightLossPerProgram(user.selectedTrainings, true),
       averageWeightLossPerProgram: calculateDaysInEachProgram(dates, user.selectedTrainings)
-
-
     };
 
     setData(updatedData);
