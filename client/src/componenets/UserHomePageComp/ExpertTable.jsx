@@ -4,7 +4,6 @@ import { MDBTable, MDBIcon, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit'
 
 export default function ExpertTable(props) {
   const { data } = props;
-  console.log(data);
   //     data={
   // averageWeightLossPerDay
   // daysInEachProgram 
@@ -44,7 +43,7 @@ export default function ExpertTable(props) {
       const totalWeight = averageWeightLoss < 0 ? 'caret-down' : 'caret-up';
 
       tableRows.push(
-        <tr className='fw-bolder' key={i}>
+        <tr  key={i} className='fw-bolder'>
           <td>{i}</td>
           <td className='fw-bolder'>{key}</td>
           <td className={averageWeightLossClass}><MDBIcon className='me-1' fas icon={averageWeight} /> {averageWeightLoss}</td>
@@ -56,31 +55,30 @@ export default function ExpertTable(props) {
     }
     //Best Program
     tableRows.push(
-      <tr className='table-success'>
-      <th scope='row'></th>
-      <td className= 'fw-bolder'colSpan={2}>Best For You </td>
-      <td className='fw-bolder '>{data.max}</td>
-      <td></td>
-    </tr>
-      );
-      //Worst Program
-      tableRows.push(
-        <tr className='table-danger'>
+      <tr key={'best-program'} className='table-success'>
         <th scope='row'></th>
-        <td className= 'fw-bolder'colSpan={2}>Worst For You </td>
-        <td className='fw-bolder '>{data.min}</td>
+        <td className='fw-bolder' colSpan={2}>Best For You</td>
+        <td className='fw-bolder'>{data.max}</td>
         <td></td>
       </tr>
-
+    );
+      //Worst Program
+      tableRows.push(
+        <tr key={'worst-program'} className='table-danger'>
+          <th scope='row'></th>
+          <td className='fw-bolder' colSpan={2}>Worst For You</td>
+          <td className='fw-bolder'>{data.min}</td>
+          <td></td>
+        </tr>
       );
   
       tableRows.push(
-        <tr className='table-primary'>
-        <th scope='row'></th>
-        <td className= 'fw-bolder'colSpan={2}>Total Days In All Programs </td>
-        <td className='fw-bolder '>{alldays}</td>
-        <td></td>
-      </tr>
+        <tr key={'total-days'} className='table-primary'>
+          <th scope='row'></th>
+          <td className='fw-bolder' colSpan={2}>Total Days In All Programs</td>
+          <td className='fw-bolder'>{alldays}</td>
+          <td></td>
+        </tr>
       );
       
   

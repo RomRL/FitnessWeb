@@ -76,12 +76,9 @@ function UserHomePage() {
 
   const setAllData = async (user) => {
     //dates will be map with key of training.startdate and value of training.name
-    console.log("training: ", user.selectedTrainings);
     dates = user.selectedTrainings.map((training) => training.startDate + "," + training.name);
     weights = user.selectedTrainings.map((training) => training.weight);
     trainingNames = user.selectedTrainings.map((training) => training.name);
-    console.log("Dates: ", dates);
-    console.log("Weights: ", user.selectedTrainings);
     calculateStatistics(user);
 
   };
