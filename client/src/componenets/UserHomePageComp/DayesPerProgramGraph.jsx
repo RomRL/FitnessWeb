@@ -50,7 +50,8 @@ const data = {
 
 const DayesPerProgramGraph = (props) => {
     const { dataArr } = props;
-    console.log("dataArr",dataArr);
+    console.log("dataArr", dataArr);
+    console.log("dataaaaa");
   return <Bar options={options} data={data} />;
 };
 

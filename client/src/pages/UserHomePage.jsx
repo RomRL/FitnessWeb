@@ -197,7 +197,7 @@ function UserHomePage() {
               <MDBCol>
                 <MDBCard >
                   <MDBCardHeader className="fw-bolder text-center">
-                    Weights per date Graph
+                    Start weight per new program Graph
                   </MDBCardHeader>
                   <MDBCardBody>
                     {weights.length === 0 ? (
@@ -217,7 +217,7 @@ function UserHomePage() {
                     {weights.length === 0 ? (
                       <p>You need to work one more time to see the data</p>
                     ) : (
-                      <DayesPerProgramGraph data={data.averageWeightLossPerProgram} />
+                      <DayesPerProgramGraph data={data.daysInEachProgram} />
                     )}
                   </MDBCardBody>
                 </MDBCard>
