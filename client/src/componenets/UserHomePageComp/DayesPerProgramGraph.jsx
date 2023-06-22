@@ -12,45 +12,49 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const DaysPerProgramGraph = (props) => {
+  const { dataArr } = props;
+    const daysInEachProgram = Object.values(dataArr.daysInEachProgram);
+    const labels = Object.keys(dataArr.daysInEachProgram);
+    const data = Object.values(dataArr.daysInEachProgram);
+  
+    console.log(daysInEachProgram)
+    console.log(labels)
+  const chartData = {
+    labels,
+    datasets: [
+      {
+        label: 'Days Per Program',
+        data,
+        backgroundColor: 'rgb(255, 99, 132)',
+        stack: 'Stack 0',
+      },
+    ],
+  };
 
-const options = {
-  plugins: {
-    title: {
-      display: true,
-      text: 'Chart.js Bar Chart - Stacked',
+  const options = {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Chart.js Bar Chart - Stacked',
+      },
     },
-  },
-  responsive: true,
-  interaction: {
-    mode: 'index',
-    intersect: false,
-  },
-  scales: {
-    x: {
-      stacked: true,
+    responsive: true,
+    interaction: {
+      mode: 'index',
+      intersect: false,
     },
-    y: {
-      stacked: true,
+    scales: {
+      x: {
+        stacked: true,
+      },
+      y: {
+        stacked: true,
+      },
     },
-  },
+    };
+    
+  return <Bar options={options} data={chartData} />;
 };
 
-const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [10, 20, 30, 40, 50, 60, 70],
-      backgroundColor: 'rgb(255, 99, 132)',
-      stack: 'Stack 0',
-    },
-  ],
-};
-
-const DayesPerProgramGraph = (props) => {
-    const { dataArr } = props;
-  return <Bar options={options} data={data} />;
-};
-
-export default DayesPerProgramGraph;
+export default DaysPerProgramGraph;
