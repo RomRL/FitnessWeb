@@ -24,8 +24,6 @@ export default function DetailsCard(props) {
           <div className="d-flex justify-content-center">
           <RightModal  height={height} setHeight={setHeight} ></RightModal>
           </div>
-          <br/>
-
         </MDBCardBody>
       </MDBCard>
   );

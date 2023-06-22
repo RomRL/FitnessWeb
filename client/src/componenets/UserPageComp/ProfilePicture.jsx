@@ -15,7 +15,7 @@ export default function ProfilePicture(props) {
     const {user} = props;
   return (
     
-    <MDBCol sm="4">
+    <MDBCol sm="3">
     <MDBCard className="mb-4" >
     <MDBCardBody className="text-center">
       <MDBCardImage

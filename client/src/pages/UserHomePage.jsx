@@ -49,7 +49,7 @@ function UserHomePage() {
     weightLoss: 0,
     weightLossPerProgram: "",
     worstProgram: "",
-    averageWeightLossPerProgram:[]
+    averageWeightLossPerProgram: []
   });
 
   let weights = [];
@@ -81,7 +81,7 @@ function UserHomePage() {
     console.log("Dates: ", dates);
     console.log("Weights: ", user.selectedTrainings);
     calculateStatistics(user);
-    
+
   };
 
   const calculateStatistics = async (user) => {
@@ -91,21 +91,21 @@ function UserHomePage() {
       max: calculateMax(weights),
       min: calculateMin(weights),
       average: calculateAverage(weights),
-      normalWeight: calculateNormalWeight(user.height,weights[weights.length-1]),
+      normalWeight: calculateNormalWeight(user.height, weights[weights.length - 1]),
       popularName: calculatePopularName(trainingNames),
       currentTraining: currentTrainingName(trainingNames),
       weightLoss: calculateWeightLoss(user.selectedTrainings),
-      weightLossPerProgram: calculateWeightLossPerProgram(user.selectedTrainings,true),
-      averageWeightLossPerProgram: calculateDaysInEachProgram(dates , user.selectedTrainings )
-      
+      weightLossPerProgram: calculateWeightLossPerProgram(user.selectedTrainings, true),
+      averageWeightLossPerProgram: calculateDaysInEachProgram(dates, user.selectedTrainings)
+
 
     };
-    
+
     setData(updatedData);
   };
 
   useEffect(() => {
-    const  fetchAllData =async () => {
+    const fetchAllData = async () => {
       await fetchUser();
       setLoading(false);
     }
@@ -124,25 +124,24 @@ function UserHomePage() {
     return (
       <MainLayout>
         <section style={{ backgroundColor: "#eee" }}>
-          <MDBContainer className="py-5">
+          <MDBContainer className="py-4">
             <MDBRow>
               {/* Profile Picture Cube */}
               <ProfilePicture user={user} />
-              <MDBCol sm="8">
+              <MDBCol >
                 {/* User Details Card  */}
 
-                <DetailsCard user={user} height={height} training={data.currentTraining} setHeight={setHeight} color={ data.normalWeight.color} />
-                  {/* Include Max and Min Weight */}
+                <DetailsCard user={user} height={height} training={data.currentTraining} setHeight={setHeight} color={data.normalWeight.color} />
+                {/* Include Max and Min Weight */}
 
-             </MDBCol>
+              </MDBCol>
             </MDBRow>
 
             <MDBRow className="row-cols-1 row-cols-md-3 g-4">
-
               <BigCard
                 title="Weight"
                 // set text to be 'You need to work one more time to see the data' if weights is empty else set it to the data
-                text={            
+                text={
                   weights.length === 0
                     ? "You need to work one more time to see the data"
                     : `#Max $${data.max}$ \n #Min $${data.min}$ \n #Average $${data.average}$ \n #Weight Loss $${data.weightLoss}$ \n`
@@ -168,25 +167,23 @@ function UserHomePage() {
                     : `$${data.popularName}$  #Current Training $${data.currentTraining}$  #Weight Loss Per Program ${data.weightLossPerProgram} \n `
                 }
                 img_src={getURL("workout")}
-                
+
               />
             </MDBRow>
 
-            <MDBRow className="py-4">
-              <MDBCol sm="7" className="h-100">
-                <MDBRow >
-                  <MDBCard className="h-100">
-                    <MDBCardHeader className="fw-bolder text-center">
-                      Weight Linear Graph
-                    </MDBCardHeader>
-                    <MDBCardBody>
-                      {weights.length === 0 ? (
-                        <p>You need to work one more time to see the data</p>
-                      ) : (
-                        <ChartTrainigGraph selectedTrainings={user.selectedTrainings} />)}
-                    </MDBCardBody>
-                  </MDBCard>
-                </MDBRow>
+            <MDBRow className="row-cols-1 row-cols-md-3 g-4 py-4">
+              <MDBCol>
+                <MDBCard >
+                  <MDBCardHeader className="fw-bolder text-center">
+                    Weight histogram Graph
+                  </MDBCardHeader>
+                  <MDBCardBody>
+                    {weights.length === 0 ? (
+                      <p>You need to work one more time to see the data</p>
+                    ) : (
+                      <ChartTrainigGraph selectedTrainings={user.selectedTrainings} />)}
+                  </MDBCardBody>
+                </MDBCard>
               </MDBCol>
               <BigCard
                 title="General information"
@@ -197,22 +194,39 @@ function UserHomePage() {
                 }
                 img_src={getURL("general-info")}
               />
+
+              <MDBCol>
+                <MDBCard className="h-100">
+                  <MDBCardHeader className="fw-bolder text-center">
+                    Dayes per program
+                  </MDBCardHeader>
+                  <MDBCardBody>
+                    {weights.length === 0 ? (
+                      <p>You need to work one more time to see the data</p>
+                    ) : (
+                      <ChartTrainigGraph selectedTrainings={user.selectedTrainings} />)}
+                  </MDBCardBody>
+                </MDBCard>
+              </MDBCol>
             </MDBRow>
 
-            <MDBRow className="py-2">
-              <MDBCard className="h-100">
-                <MDBCardHeader className="fw-bolder text-center">
-                  Weight Linear Graph
-                </MDBCardHeader>
-                <MDBCardBody>
-                  {weights.length === 0 ? (
-                    <p>You need to work one more time to see the data</p>
-                  ) : (
-                    <GraphComponent selectedTrainings={user.selectedTrainings} />
-                  )}
-                </MDBCardBody>
-              </MDBCard>
+            <MDBRow >
+              <MDBCol>
+                <MDBCard >
+                  <MDBCardHeader className="fw-bolder text-center">
+                    Weight Linear Graph
+                  </MDBCardHeader>
+                  <MDBCardBody>
+                    {weights.length === 0 ? (
+                      <p>You need to work one more time to see the data</p>
+                    ) : (
+                      <GraphComponent selectedTrainings={user.selectedTrainings} />
+                    )}
+                  </MDBCardBody>
+                </MDBCard>
+              </MDBCol>
             </MDBRow>
+
             <hr />
             <Footer />
           </MDBContainer>
