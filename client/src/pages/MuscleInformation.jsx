@@ -74,7 +74,6 @@ const MuscleInformation = () => {
         ),
         generalInformation: data.musclesInformation.generalInformation,
       };
-
       setDataVals(updatedData);
     }
   };
