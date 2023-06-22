@@ -65,6 +65,7 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 });
+
 //get user by id
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
@@ -75,7 +76,6 @@ router.get("/:id", async (req, res) => {
       return res.status(400).json({ message: "User does not exist" });
     }
     user.password = "";
-    console.log("User ", id, " sent successfully");
     res.status(200).json({ user });
   } catch (error) {
     console.error("Error getting user : ", error);
