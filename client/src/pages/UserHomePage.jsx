@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import MainLayout from "../layout/MainLayout.jsx";
 import ErrorPage from "./ErrorPage.jsx";
 import Footer from "../componenets/General/Footer.jsx";
-import ProfilePicture from "../componenets/UserPageComp/ProfilePicture.jsx";
+import ProfilePicture from "../componenets/UserHomePageComp/ProfilePicture.jsx";
 import { getUser } from "../controller/requests.js";
-import GraphComponent from "../componenets/UserPageComp/GraphComponent.jsx";
-import ChartTrainigGraph from "../componenets/UserPageComp/ChartTrainingGraph.jsx";
-import DetailsCard from "../componenets/UserPageComp/DetailsCard.jsx";
-import BigCard from "../componenets/UserPageComp/BigCard.jsx";
+import GraphComponent from "../componenets/UserHomePageComp/GraphComponent.jsx";
+import ChartTrainigGraph from "../componenets/UserHomePageComp/ChartTrainingGraph.jsx";
+import DetailsCard from "../componenets/UserHomePageComp/DetailsCard.jsx";
+import BigCard from "../componenets/UserHomePageComp/BigCard.jsx";
 import getURL from "../assets/assetsUrls.js";
 
 import {
@@ -30,7 +30,7 @@ import {
   calculateNormalWeight,
   calculateDaysInEachProgram,
 } from "../controller/utils/util_home_page.js";
-import ExpertCard from "../componenets/UserPageComp/ExpertCard.jsx";
+import ExpertCard from "../componenets/UserHomePageComp/ExpertCard.jsx";
 
 
 function UserHomePage() {
@@ -174,9 +174,9 @@ function UserHomePage() {
 
             <MDBRow className="row-cols-1 row-cols-md-3 g-4 py-4">
               <MDBCol>
-                <MDBCard >
+                <MDBCard className="h-100" >
                   <MDBCardHeader className="fw-bolder text-center">
-                    Weight histogram Graph
+                  Usage percentage of programs
                   </MDBCardHeader>
                   <MDBCardBody>
                     {weights.length === 0 ? (
@@ -186,7 +186,24 @@ function UserHomePage() {
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>
-              <ExpertCard data={data.averageWeightLossPerProgram}/>
+
+              <ExpertCard data={data.averageWeightLossPerProgram} />
+
+                <MDBCol>
+                <MDBCard className="h-100">
+                  <MDBCardHeader className="fw-bolder text-center">
+                    Dayes per program
+                  </MDBCardHeader>
+                  <MDBCardBody>
+                    {weights.length === 0 ? (
+                      <p>You need to work one more time to see the data</p>
+                    ) : (
+                      <ChartTrainigGraph selectedTrainings={user.selectedTrainings} />)}
+                  </MDBCardBody>
+                </MDBCard>
+              </MDBCol>
+
+            
 
             </MDBRow>
 
@@ -194,7 +211,7 @@ function UserHomePage() {
               <MDBCol>
                 <MDBCard >
                   <MDBCardHeader className="fw-bolder text-center">
-                    Weight Linear Graph
+                    Weights per date Graph
                   </MDBCardHeader>
                   <MDBCardBody>
                     {weights.length === 0 ? (
