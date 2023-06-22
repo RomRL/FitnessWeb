@@ -4,8 +4,9 @@ import ErrorPage from "./ErrorPage.jsx";
 import Footer from "../componenets/General/Footer.jsx";
 import ProfilePicture from "../componenets/UserHomePageComp/ProfilePicture.jsx";
 import { getUser } from "../controller/requests.js";
-import GraphComponent from "../componenets/UserHomePageComp/GraphComponent.jsx";
-import ChartTrainigGraph from "../componenets/UserHomePageComp/ChartTrainingGraph.jsx";
+import GraphComponent from "../componenets/UserHomePageComp/WeightsPerDateGraph.jsx";
+import DayesPerProgramGraph from "../componenets/UserHomePageComp/DayesPerProgramGraph.jsx";
+import ChartTrainigGraph from "../componenets/UserHomePageComp/UsagePercentageOfProgramsGraph.jsx";
 import DetailsCard from "../componenets/UserHomePageComp/DetailsCard.jsx";
 import BigCard from "../componenets/UserHomePageComp/BigCard.jsx";
 import getURL from "../assets/assetsUrls.js";
@@ -124,21 +125,20 @@ function UserHomePage() {
     weights = user.selectedTrainings.map((training) => training.weight);
     return (
       <MainLayout>
-        <section style={{ backgroundColor: "#eee" }}>
+        <section style={{ backgroundColor: "transpert" }}>
           <MDBContainer className="py-4">
-            <MDBRow>
+             <MDBRow>
               {/* Profile Picture Cube */}
               <ProfilePicture user={user} />
-              <MDBCol >
+              <MDBCol md='9'>
                 {/* User Details Card  */}
 
                 <DetailsCard user={user} height={height} training={data.currentTraining} setHeight={setHeight} color={data.normalWeight.color} />
                 {/* Include Max and Min Weight */}
-
               </MDBCol>
             </MDBRow>
 
-            <MDBRow className="row-cols-1 row-cols-md-3 g-4">
+            <MDBRow className="py-4">
               <BigCard
                 title="Weight"
                 // set text to be 'You need to work one more time to see the data' if weights is empty else set it to the data
@@ -172,11 +172,11 @@ function UserHomePage() {
               />
             </MDBRow>
 
-            <MDBRow className="row-cols-1 row-cols-md-3 g-4 py-4">
-              <MDBCol>
+            <MDBRow className=" row-cols-md-2 g-4 py-4">
+              <MDBCol md='7'>
                 <MDBCard className="h-100" >
                   <MDBCardHeader className="fw-bolder text-center">
-                  Usage percentage of programs
+                    Usage percentage of programs
                   </MDBCardHeader>
                   <MDBCardBody>
                     {weights.length === 0 ? (
@@ -189,24 +189,10 @@ function UserHomePage() {
 
               <ExpertCard data={data.averageWeightLossPerProgram} />
 
-                <MDBCol>
-                <MDBCard className="h-100">
-                  <MDBCardHeader className="fw-bolder text-center">
-                    Dayes per program
-                  </MDBCardHeader>
-                  <MDBCardBody>
-                    {weights.length === 0 ? (
-                      <p>You need to work one more time to see the data</p>
-                    ) : (
-                      <ChartTrainigGraph selectedTrainings={user.selectedTrainings} />)}
-                  </MDBCardBody>
-                </MDBCard>
-              </MDBCol>
-
             
-
             </MDBRow>
 
+            
             <MDBRow >
               <MDBCol>
                 <MDBCard >
@@ -218,6 +204,20 @@ function UserHomePage() {
                       <p>You need to work one more time to see the data</p>
                     ) : (
                       <GraphComponent selectedTrainings={user.selectedTrainings} />
+                    )}
+                  </MDBCardBody>
+                </MDBCard>
+              </MDBCol>
+              <MDBCol>
+                <MDBCard >
+                  <MDBCardHeader className="fw-bolder text-center">
+                    Weights per date Graph
+                  </MDBCardHeader>
+                  <MDBCardBody>
+                    {weights.length === 0 ? (
+                      <p>You need to work one more time to see the data</p>
+                    ) : (
+                      <DayesPerProgramGraph />
                     )}
                   </MDBCardBody>
                 </MDBCard>
