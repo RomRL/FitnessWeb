@@ -10,6 +10,8 @@ import ChartTrainigGraph from "../componenets/UserHomePageComp/UsagePercentageOf
 import DetailsCard from "../componenets/UserHomePageComp/DetailsCard.jsx";
 import BigCard from "../componenets/UserHomePageComp/BigCard.jsx";
 import getURL from "../assets/assetsUrls.js";
+import ExpertCard from "../componenets/UserHomePageComp/ExpertCard.jsx";
+
 
 import {
   MDBCol,
@@ -31,8 +33,6 @@ import {
   calculateNormalWeight,
   calculateDaysInEachProgram,
 } from "../controller/utils/util_home_page.js";
-import ExpertCard from "../componenets/UserHomePageComp/ExpertCard.jsx";
-import ExpertTable from "../componenets/UserHomePageComp/ExpertTable.jsx";
 
 
 function UserHomePage() {
@@ -155,7 +155,7 @@ function UserHomePage() {
                 text={
                   weights.length === 0
                     ? "You need to work one more time to see the data"
-                    : data.normalWeight.message + data.normalWeight.status
+                    : data.normalWeight.message 
                 }
                 img_src={getURL("statistics")}
                 picture="https://nutrition.health.gov.lk/wp-content/uploads/2020/12/BMI-1024x569.png"
