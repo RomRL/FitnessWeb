@@ -116,8 +116,8 @@ router.put("/update/:id", async (req, res) => {
 });
 
 //update user height
-router.put("/updateHeight",validateToken ,async (req, res) => {
-  const userID = req.user.id
+router.put("/updateHeight", validateToken, async (req, res) => {
+  const userID = req.user.id;
   console.log("------height----", req.body);
   const { height } = req.body;
   try {
@@ -132,7 +132,6 @@ router.put("/updateHeight",validateToken ,async (req, res) => {
         bmi: BMICalculation(response.weight, height),
       },
       { new: true }
-
     );
 
     console.log("user", user);
