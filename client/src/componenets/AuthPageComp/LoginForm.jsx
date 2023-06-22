@@ -39,7 +39,6 @@ function LoginForm({ email, password, handleEmailChange, handlePasswordChange, h
               type='password'
               size="lg"
               labelClass='text-white'
-              inputClass='text-white'
               style={{ color: 'white' }}
             />
           </MDBValidationItem>
@@ -51,7 +50,6 @@ function LoginForm({ email, password, handleEmailChange, handlePasswordChange, h
             color='white'
             size='lg'
             type='submit'
-            inputClass='text-white'
             data-mdb-toggle="modal"
             data-mdb-target="#exampleModal"
             style={{ margin: '2vh' }}

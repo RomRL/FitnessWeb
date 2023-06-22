@@ -135,12 +135,12 @@ function UserHomePage() {
 
             <MDBRow className="py-4 g-4">
               <BigCard
-                title="Weight"
+                title="Weight Statistics"
                 // set text to be 'You need to work one more time to see the data' if weights is empty else set it to the data
                 text={
                   weights.length === 0
                     ? "You need to work one more time to see the data"
-                    : `#Max Weight $${data.max.toFixed(2)} kg$  \n #Min $${data.min.toFixed(2)} kg$ \n #Average Weight $${data.average} kg$ \n #Weight Loss $${data.weightLoss}$ \n`
+                    : `#Max Weight $${data.max.toFixed(2)} kg$  \n #Min Weight $${data.min.toFixed(2)} kg$ \n #Average Weight $${data.average} kg$ \n #Weight Loss $${data.weightLoss}$ \n`
                 }
                 img_src={getURL("weight")}
               />
@@ -192,7 +192,7 @@ function UserHomePage() {
               <MDBCol>
                 <MDBCard >
                   <MDBCardHeader className="fw-bolder text-center">
-                    Start weight per new program Graph
+                    Weights Per Training
                   </MDBCardHeader>
                   <MDBCardBody>
                     {weights.length === 0 ? (
@@ -206,7 +206,7 @@ function UserHomePage() {
               <MDBCol>
                 <MDBCard >
                   <MDBCardHeader className="fw-bolder text-center">
-                    Weights per date Graph
+                    Total Days Per Program
                   </MDBCardHeader>
                   <MDBCardBody>
                     {weights.length === 0 ? (

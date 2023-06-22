@@ -60,6 +60,13 @@ background-attachment: fixed;
 background-size: cover;
 
 }
+.semi_transperent{
+  background-image: linear-gradient(to top, #898e9d, #9a9ead, #abaebd, #bcbfcd, #ced0de, #d8d9e6, #e2e3ee, #ececf6, #f0f0f7, #f4f3f8, #f7f7fa, #fbfbfb);
+  /* set the gradient on all the page */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  }
 
 @media (max-width: 900px) {
   .cascading-right {

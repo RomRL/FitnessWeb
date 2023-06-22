@@ -25,8 +25,8 @@ function LoginComponent() {
   const [modalOption, setModalOption] = useState("");
   const [modalMessage, setModalMessage] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
       const response = await login(email, password);
       // Show modal based on login result

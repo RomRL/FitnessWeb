@@ -66,7 +66,7 @@ router.post("/", validateToken, async (req, res) => {
 
     return res.status(200).json({ message: "Training added to user" });
   } catch (error) {
-    console.log("Cannot add training to user :" ,  useer.id);
+    console.log("Cannot add training to user :" ,  user.id);
     res.status(500).json({ message: "Cannot add training to user" });
   }
 });

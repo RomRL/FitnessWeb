@@ -204,8 +204,7 @@ function RegistrationForm({ handleRegistration }) {
                 src="https://nowosci.beactivetv.pl/wp-content/themes/beactive/img/fitlovers/fitlovers-photo.png"
                 
                 alt=""
-                fluid
-
+                className="img-fluid"
               />
 
           </MDBCol>

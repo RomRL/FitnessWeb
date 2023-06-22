@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   MDBBtn,
-  MDBModal,
   MDBModalDialog,
   MDBModalContent,
   MDBModalHeader,
@@ -23,7 +22,7 @@ export default function InformativeModal(props) {
       <MDBBtn  rounded type="submit" color="info" onClick={toggleShow}>
         {button_name}
       </MDBBtn>
-      <Modal show={optSmModal} tabIndex="-1" setShow={setOptSmModal}>
+      <Modal show={optSmModal} tabIndex="-1" onHide={toggleShow}>
         <MDBModalDialog size="lg">
           <MDBModalContent>
             <MDBModalHeader>

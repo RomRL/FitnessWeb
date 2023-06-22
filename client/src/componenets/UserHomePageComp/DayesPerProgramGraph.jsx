@@ -44,9 +44,17 @@ const DaysPerProgramGraph = (props) => {
     scales: {
       x: {
         stacked: true,
+        title: {
+          display: true,
+          text: 'Programs',
+        },
       },
       y: {
         stacked: true,
+        title: {
+          display: true,
+          text: 'Days',
+        },
       },
     },
     };

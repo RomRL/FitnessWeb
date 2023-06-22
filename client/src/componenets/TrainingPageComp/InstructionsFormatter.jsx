@@ -4,15 +4,15 @@ function InstructionsFormatter({ text }) {
   const instructions = text.split('#').filter(instruction => instruction.trim() !== '');
 
   return (
-    <div>
+    <>
       {instructions.map((instruction, index) => {
         const parts = instruction.split('$').filter(part => part.trim() !== '');
 
         if (parts.length === 1) {
           return (
-            <p  key={index}>
-               <strong> {parts[0].trim()}</strong> 
-            </p>
+            <div key={index}>
+              <strong>{parts[0].trim()}</strong>
+            </div>
           );
         } else {
           const mainTask = parts[0].trim();
@@ -21,18 +21,18 @@ function InstructionsFormatter({ text }) {
           return (
             <div key={index}>
               <strong>{mainTask}</strong>
-              <ul  >
+              <ul>
                 {subTasks.map((subTask, subIndex) => (
-                  <li style={{color:'#616161'}} key={subIndex}>
+                  <li style={{ color: '#616161' }} key={subIndex}>
                     {subTask}
                   </li>
                 ))}
-              </ul >
+              </ul>
             </div>
           );
         }
       })}
-    </div>
+    </>
   );
 }
 
