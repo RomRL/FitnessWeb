@@ -7,7 +7,7 @@ export default function ExpertCard(props) {
 
   return (
 
-    <MDBCol >
+    <MDBCol md='8'>
       <MDBCard >
         <MDBCardBody>
           <div className="table-responsive">
@@ -16,7 +16,6 @@ export default function ExpertCard(props) {
         </MDBCardBody>
       </MDBCard>
     </MDBCol>
-
 
   );
 }
