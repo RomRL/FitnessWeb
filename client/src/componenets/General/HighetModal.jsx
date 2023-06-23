@@ -40,7 +40,9 @@ export default function HeightModal({ setHeight }) {
       <MDBBtn color="danger" onClick={toggleModal}>
         Edit Height
       </MDBBtn>
+
       <Modal show={showModal} tabIndex="-1">
+
         <MDBModalHeader className="bg-dark text-white">
           <MDBModalTitle>Set Height</MDBModalTitle>
           <MDBBtn
@@ -49,14 +51,18 @@ export default function HeightModal({ setHeight }) {
             onClick={toggleModal}
           ></MDBBtn>
         </MDBModalHeader>
+
         <MDBModalBody
           className="d-flex justify-content-center"
           onSubmit={changeHeight}
         >
+
           <MDBValidation className="row g-3">
+
             <MDBRow className="d-flex justify-content-center g-2 py-2 fw-bold">
               Insert your new height
             </MDBRow>
+
             <MDBValidationItem feedback="Min 50 cm Max 250 cm " invalid>
               <MDBRow className="justify-content-center g-2 py-2">
                 <MDBCol md="5">
@@ -77,6 +83,7 @@ export default function HeightModal({ setHeight }) {
                 </MDBCol>
               </MDBRow>
             </MDBValidationItem>
+
             <hr />
             <MDBRow className="justify-content-center ">
               <MDBCol md="4">
@@ -85,8 +92,11 @@ export default function HeightModal({ setHeight }) {
                 </MDBBtn>
               </MDBCol>
             </MDBRow>
+            
           </MDBValidation>
+
         </MDBModalBody>
+
       </Modal>
     </>
   );
