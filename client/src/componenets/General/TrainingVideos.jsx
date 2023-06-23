@@ -1,6 +1,7 @@
-import React from 'react';
-import ReactPlayer from 'react-player';
+import React from "react";
+import ReactPlayer from "react-player";
 
+//This component is used to create a video player from ReactPlayer
 const TrainingVideos = ({ selectedTraining }) => {
   return (
     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
