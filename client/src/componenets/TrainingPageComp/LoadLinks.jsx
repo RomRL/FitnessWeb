@@ -1,10 +1,11 @@
 import React from "react";
 import VideoLink from "./VideoLink";
+//This component is used to create a video player from ReactPlayer 
 export default function LoadLinks(props) {
   const { video_urls } = props;
   return (
-    //Show all video links in table two in a row
     <div className="row shadow-lg">
+      {/* For each video */}
       {video_urls.map((url, index) => (
         <div key={index} className="col">
           <div className="card h-150">
