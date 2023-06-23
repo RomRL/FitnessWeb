@@ -1,5 +1,10 @@
+/**
+ * login form component
+ * It is used in LoginComponent.jsx
+ * It shows the login form 
+ * 
+ */
 import React from "react";
-
 
 // bootstrap imports
 import {
@@ -14,10 +19,14 @@ import {
   MDBCardBody,
 } from "mdb-react-ui-kit";
 
+// login form component function
+// it shows the login form and handles the login process
 function LoginForm({ email, password, handleEmailChange, handlePasswordChange, handleSubmit }) {
   return (
     <MDBContainer onSubmit={handleSubmit} >
+
       <MDBRow className="g-0 align-items-center ">
+
         <MDBCol>
           <MDBCard
             className="bg-dark text-white mx-auto mb-10 "
@@ -32,8 +41,10 @@ function LoginForm({ email, password, handleEmailChange, handlePasswordChange, h
               <p className="text-white-50 mb-5">
                 Please enter your login and password!
               </p>
+
               <MDBValidation className='row g-3 align-items-center' >
                 <MDBRow>
+
                   <MDBValidationItem
                     feedback='Please choose an Email.'
                     invalid >
@@ -53,7 +64,9 @@ function LoginForm({ email, password, handleEmailChange, handlePasswordChange, h
                     />
                   </MDBValidationItem>
                 </MDBRow >
+
                 <MDBRow>
+
                   <MDBCol >
                     <MDBValidationItem feedback='Please choose a Password.' invalid >
                       <MDBInput
@@ -72,7 +85,9 @@ function LoginForm({ email, password, handleEmailChange, handlePasswordChange, h
                       />
                     </MDBValidationItem>
                   </MDBCol>
+
                 </MDBRow >
+
                 <div className="d-flex justify-content-center">
                   <MDBBtn
                     outline
@@ -87,7 +102,9 @@ function LoginForm({ email, password, handleEmailChange, handlePasswordChange, h
                     Login
                   </MDBBtn>
                 </div>
+
               </MDBValidation>
+
               <div>
                 <p className="mb-0">
                   Don't have an account?{" "}
@@ -96,9 +113,11 @@ function LoginForm({ email, password, handleEmailChange, handlePasswordChange, h
                   </a>
                 </p>
               </div>
+
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
+
       </MDBRow>
     </MDBContainer>
   );

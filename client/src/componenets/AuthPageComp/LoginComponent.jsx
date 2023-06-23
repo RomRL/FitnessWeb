@@ -1,3 +1,10 @@
+/**
+ * @fileoverview Login Component
+ * @description This component is used to login to the app
+ * this component is the main component that handles the login process
+ * it uses LoginForm.jsx and LoginModal.jsx
+ */
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "./LoginForm";
@@ -17,6 +24,7 @@ function LoginComponent() {
   const [modalOption, setModalOption] = useState("");
   const [modalMessage, setModalMessage] = useState("");
 
+  // Handle the login process
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -25,8 +33,8 @@ function LoginComponent() {
       setShowModal(true);
       setModalOption("success"); // or 'error'
       setModalMessage("Invalid credentials"); // Set the appropriate message
-      window.localStorage.setItem("access_token", response.data.token);
-      window.localStorage.setItem("userId", response.data.userID);
+      window.localStorage.setItem("access_token", response.data.token); // Save the token in local storage
+      window.localStorage.setItem("userId", response.data.userID); // Save the user id in local storage
     } catch (err) {
       setModalOption("error");
       setShowModal(true);
@@ -34,13 +42,15 @@ function LoginComponent() {
     }
   };
 
+  // Handle the email change
   const handleEmailChange = async (e) => {
     setEmail(e.target.value);
   };
-
+  // Handle the password change
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+  // Close the modal and navigate to user page if login is successful
   const handleModalClose = () => {
     setShowModal(false);
     if (modalOption === "success") {
