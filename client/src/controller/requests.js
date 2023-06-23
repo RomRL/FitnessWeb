@@ -84,6 +84,17 @@ export const register = async (
     return false;
   }
 };
+//Logout
+export const logout_db = async () => {
+  try {
+    const response = await createRequest("post", "/auth/logout", "");
+    return response.data;
+  } catch (error) {
+    console.error("Error logging out:", error);
+    return false;
+  }
+};
+
 //Get user
 export const getUser = async () => {
   try {

@@ -66,6 +66,21 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// //Logout and remove token of user
+// router.post("/logout",validateToken, async (req, res) => {
+//   try {
+//     //get the token from the request 
+//     const token = req.token;
+//     console.log("token",token);
+//     const s = jwt.destroy(token);
+//     console.log("s",s);
+//     res.status(200).json({ message: "User logged out successfully" });
+//   } catch (error) {
+//     console.error("Error logging out user:", error);
+//     res.status(500).json({ message: "Server Error" });
+//   }
+// });
+
 //get user by id
 router.get("/", validateToken, async (req, res) => {
   const userID = req.user.id;

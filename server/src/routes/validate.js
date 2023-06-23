@@ -28,6 +28,8 @@ export const validateToken = (req, res, next) => {
     //verify that the token is valid
     const verified = jwt.verify(tokenWithoutBearer, enc);
     req.user = verified;
+    //add token to request
+    req.token = tokenWithoutBearer;
     next();
   } catch (error) {
     console.log("Invalid token provided by user id : ", req.user.id);
