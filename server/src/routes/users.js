@@ -115,10 +115,8 @@ router.put("/update/:id", async (req, res) => {
 //update user height
 router.put("/updateHeight", validateToken, async (req, res) => {
   const userID = req.user.id;
-  console.log("------height----", req.body);
   const { height } = req.body;
   try {
-    console.log("height", height);
     //Serch user by userID in mongoDB get his weight and update height and bmi
     const response = await UserModel.findById(userID, "weight");
     //Update user height and bmi in mongoDB according to his weight and new height
@@ -130,7 +128,6 @@ router.put("/updateHeight", validateToken, async (req, res) => {
       },
       { new: true }
     );
-    console.log("user", user);
     if (!user) {
       console.log("User ", userID, " does not exist");
       return res.status(400).json({ message: "User does not exist" });
