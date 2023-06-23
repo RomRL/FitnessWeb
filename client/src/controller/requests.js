@@ -2,16 +2,15 @@
 
 import axios from "axios";
 const format = {
-  // baseUrl: "http://localhost:5000",
-  baseUrl: "https://fitness-api-974s.onrender.com",
+  baseUrl: "http://localhost:5000",
+  // baseUrl: "https://fitness-api-974s.onrender.com",
 
 };
 
 //Create request with parameters
 const createRequest = (method, url, data) => {
-  if (!localStorage.getItem("access_token")) {
-    return false;
-  } 
+  console.log("localStorage.getItem(access_token)",localStorage.getItem("access_token"));
+  console.log ("method",method ,"url",url,"data",data);
   return axios({
     method: method,
     url: `${format.baseUrl}${url}`,
@@ -19,6 +18,7 @@ const createRequest = (method, url, data) => {
       Authorization: `Bearer ${ localStorage.getItem("access_token")}`,
     },    data: data,
   });
+
 };
 
 //----------------------Training----------------------//
@@ -89,14 +89,17 @@ export const register = async (
 //Get user
 export const getUser = async () => {
   try {
+    console.log("access_token",localStorage.getItem("access_token"));
+    
     const response = await createRequest(
       "get",
-      `/auth/${localStorage.getItem("access_token")}`,
+      `/auth`,
       ""
     );
-
+  console.log("response",response);
     return response.data.user;
   } catch (error) {
+
     console.error("Error fetching user:", error);
     return false;
   }

@@ -67,10 +67,10 @@ router.post("/login", async (req, res) => {
 });
 
 //get user by id
-router.get("/:id", async (req, res) => {
-  const id = req.params.id;
+router.get("/",validateToken, async (req, res) => {
+  const userID = req.user.id;
   try {
-    const user = await UserModel.findById(id);
+    const user = await UserModel.findById(userID);
     if (!user) {
       console.log("User ", id, " does not exist");
       return res.status(400).json({ message: "User does not exist" });

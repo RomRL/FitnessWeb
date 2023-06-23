@@ -59,15 +59,13 @@ function UserHomePage() {
   let trainingNames = [];
 
   const fetchUser = async () => {
-    console.log("fetchUser");
     const response = await getUser();
     console.log(response);
     if (response === false) {
-      console.log("error");
       setLoading(false);
       return;
     } else {
-      
+
       const val = response;
       setUser(val);
       setHeight(val.height);
@@ -112,6 +110,7 @@ function UserHomePage() {
       setLoading(false);
     }
     fetchAllData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Empty dependency array to run the effect only once when the component mounts
 
   if (error && !loading) {
@@ -154,7 +153,7 @@ function UserHomePage() {
                 text={
                   weights.length === 0
                     ? "You need to work one more time to see the data"
-                    : data.normalWeight.message 
+                    : data.normalWeight.message
                 }
                 img_src={getURL("statistics")}
                 picture="https://nutrition.health.gov.lk/wp-content/uploads/2020/12/BMI-1024x569.png"

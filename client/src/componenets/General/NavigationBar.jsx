@@ -16,7 +16,7 @@ import {
 import getURL from "../../assets/assetsUrls";
 export function NavigationBar(props) {
   const [showBasic, setShowBasic] = useState(false);
-  const [access_token, setAccessToken] = useState(
+  const [access_token] = useState(
     window.localStorage.getItem("access_token")
   );
 
@@ -44,9 +44,12 @@ export function NavigationBar(props) {
         <MDBCollapse navbar show={showBasic}>
           <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
             {!access_token ? (
-              <MDBNavbarItem>
+              <><MDBNavbarItem>
                 <MDBNavbarLink href="/auth/login">Login</MDBNavbarLink>
-              </MDBNavbarItem>
+              </MDBNavbarItem><MDBNavbarItem>
+                  <MDBNavbarLink href="/auth/register">Sign Up</MDBNavbarLink>
+                </MDBNavbarItem></>
+            
             ) : (
               <>
                 <MDBNavbarItem>
