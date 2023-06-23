@@ -1,3 +1,5 @@
+//GET URLS FOR ALL ASSETS
+//IMPORT THIS FILE IN THE COMPONENT WHERE YOU WANT TO USE THE ASSET
 const allURLS = {
   logo:
     "https://queenstreetmedical.co.nz/wp-content/uploads/2023/02/qstfsvglogo.png",
@@ -14,7 +16,7 @@ const allURLS = {
   "general-info":
     "https://img-c.udemycdn.com/course/750x422/1878690_e771_5.jpg",
 };
-
+//GET URLS FOR ALL ASSETS
 function getURL(key) {
   return allURLS[key];
 }

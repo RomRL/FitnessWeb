@@ -11,7 +11,6 @@ import HelpAndTitle from "../componenets/General/HelpAndTtile.jsx";
 import RadioButton from "../componenets/General/RadioButton.jsx";
 import { MDBContainer } from "mdb-react-ui-kit";
 
-
 export function TrainingForm() {
   const [selectedTraining, setSelectedTraining] = useState();
   const [trainings, setTrainings] = useState([]);
@@ -43,8 +42,12 @@ export function TrainingForm() {
   };
 
   const addTrainingProgram = async (newWeight) => {
-   
-    if (newWeight === "" || newWeight === undefined || newWeight > 250 || newWeight < 40) {
+    if (
+      newWeight === "" ||
+      newWeight === undefined ||
+      newWeight > 250 ||
+      newWeight < 40
+    ) {
       setModalOption("emptyInput");
       setShowModal(true);
       return;
@@ -57,63 +60,66 @@ export function TrainingForm() {
       setModalOption("error");
       setShowModal(true);
     }
-  
-};
+  };
 
-// if error return error page
-if (error && !loading) {
-  return <ErrorPage toRemove={true} />;
-}
-// if loading the data return loading page
-if (loading && !error) {
-  return <ErrorPage toRemove={false} />;
-}
-if (!loading && !error) {
-  return (
-    <MainLayout>
-      <div className="container ">
-        <MDBContainer>
-          <HelpAndTitle
-            title="Choose Training Program"
-            button_name="Need Help ?"
-            headline="Add New Training "
-            body="#Please make sure you choose the training program that is right for you $click on radio button option$
+  // if error return error page
+  if (error && !loading) {
+    return <ErrorPage toRemove={true} />;
+  }
+  // if loading the data return loading page
+  if (loading && !error) {
+    return <ErrorPage toRemove={false} />;
+  }
+  if (!loading && !error) {
+    return (
+      <MainLayout>
+        <div className="container ">
+          <MDBContainer>
+            <HelpAndTitle
+              title="Choose Training Program"
+              button_name="Need Help ?"
+              headline="Add New Training "
+              body="#Please make sure you choose the training program that is right for you $click on radio button option$
                  #Make sure you enter a weight within a normal range $enter a vaild number , will become green when ok $
                 #Click Submit"
+            />
+            <br />
+
+            <RadioButton
+              options={trainings.map((training) => training.name)}
+              selectedOption={selectedTraining ? selectedTraining.name : ""}
+              onOptionChange={handleTrainingChange}
+            />
+
+            <br />
+            <br />
+          </MDBContainer>
+          {selectedTraining && (
+            <>
+              <WeightInput
+                addTrainingProgram={addTrainingProgram}
+              ></WeightInput>
+              <br />
+              <h5 className="fw-bolder  mt-4"> Instructions:</h5>
+              <InstructionsFormatter text={selectedTraining.instructions} />
+              <LoadLinks video_urls={selectedTraining.videoUrls} />
+              <h5 className=" d-flex justify-content-center fw-bolder  mt-4">
+                Selected Training: {selectedTraining.name}
+              </h5>
+            </>
+          )}
+
+          <TrainingModal
+            showModal={showModal}
+            setShowModal={setShowModal}
+            modalOption={modalOption}
           />
-          <br />
-
-          <RadioButton
-            options={trainings.map((training) => training.name)}
-            selectedOption={selectedTraining ? selectedTraining.name : ""}
-            onOptionChange={handleTrainingChange}
-          />
-
-          <br />
-          <br />
-        </MDBContainer>
-        {selectedTraining && (
-
-
-          <><WeightInput
-            addTrainingProgram={addTrainingProgram}></WeightInput><br /><h5 className="fw-bolder  mt-4"> Instructions:</h5><InstructionsFormatter text={selectedTraining.instructions} /><LoadLinks video_urls={selectedTraining.videoUrls} /><h5 className=" d-flex justify-content-center fw-bolder  mt-4">
-              Selected Training: {selectedTraining.name}
-            </h5></>
-
-
-        )}
-
-        <TrainingModal
-          showModal={showModal}
-          setShowModal={setShowModal}
-          modalOption={modalOption}
-        />
-        <hr />
-      </div>
-      <Footer />
-    </MainLayout>
-  );
-}
+          <hr />
+        </div>
+        <Footer />
+      </MainLayout>
+    );
+  }
 }
 
 export default TrainingForm;

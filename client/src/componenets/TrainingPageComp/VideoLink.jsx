@@ -1,12 +1,11 @@
-import React from 'react';
+import React from "react";
 
-
+//This component is used to create a video player from ReactPlayer uses fade-in-down animation
+//Used in TrainingPageComp
+//SRC is the video url to be played
 export default function VideoLink(props) {
-    const {src} = props;
-
+  const { src } = props;
   return (
-    // Fade in down animation
-
     <div className="ratio ratio-16x9 shadow-lg">
       <iframe
         src={src}
@@ -15,6 +14,5 @@ export default function VideoLink(props) {
         allowFullScreen
       ></iframe>
     </div>
-
   );
 }

@@ -1,5 +1,4 @@
 //This page will include all the requests to the backend
-
 import axios from "axios";
 const format = {
   // baseUrl: "http://localhost:5000",
@@ -9,6 +8,7 @@ const format = {
 
 //Create request with parameters
 const createRequest = (method, url, data) => {
+
   return axios({
     method: method,
     url: `${format.baseUrl}${url}`,
@@ -16,6 +16,7 @@ const createRequest = (method, url, data) => {
       Authorization: `Bearer ${ localStorage.getItem("access_token")}`,
     },    data: data,
   });
+
 };
 
 //----------------------Training----------------------//
@@ -23,7 +24,6 @@ const createRequest = (method, url, data) => {
 export const getTrainings = async () => {
   try {
     const response = await createRequest("get", "/trainings", "");
-
     return response.data.trainings;
   } catch (error) {
     console.error("Error fetching trainings:", error);
@@ -84,16 +84,31 @@ export const register = async (
     return false;
   }
 };
+//Logout
+export const logout_db = async () => {
+  try {
+    const response = await createRequest("post", "/auth/logout", "");
+    return response.data;
+  } catch (error) {
+    console.error("Error logging out:", error);
+    return false;
+  }
+};
+
 //Get user
 export const getUser = async () => {
   try {
+    console.log("access_token",localStorage.getItem("access_token"));
+    
     const response = await createRequest(
       "get",
-      `/auth/${localStorage.getItem("userId")}`,
+      `/auth`,
       ""
     );
+  console.log("response",response);
     return response.data.user;
   } catch (error) {
+
     console.error("Error fetching user:", error);
     return false;
   }
@@ -117,6 +132,7 @@ export const updateHeight = async (height) => {
 };
 
 //----------------------Training Programas----------------------//
+//
 export const getTrainingProgramas = async (muscle) => {
   try {
     const response = await createRequest("get", `/muscle/${muscle}`, "");

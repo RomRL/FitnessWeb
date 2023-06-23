@@ -66,11 +66,26 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// //Logout and remove token of user
+// router.post("/logout",validateToken, async (req, res) => {
+//   try {
+//     //get the token from the request 
+//     const token = req.token;
+//     console.log("token",token);
+//     const s = jwt.destroy(token);
+//     console.log("s",s);
+//     res.status(200).json({ message: "User logged out successfully" });
+//   } catch (error) {
+//     console.error("Error logging out user:", error);
+//     res.status(500).json({ message: "Server Error" });
+//   }
+// });
+
 //get user by id
-router.get("/:id", async (req, res) => {
-  const id = req.params.id;
+router.get("/", validateToken, async (req, res) => {
+  const userID = req.user.id;
   try {
-    const user = await UserModel.findById(id);
+    const user = await UserModel.findById(userID);
     if (!user) {
       console.log("User ", id, " does not exist");
       return res.status(400).json({ message: "User does not exist" });
@@ -94,9 +109,7 @@ router.put("/update/:id", async (req, res) => {
     }
     const saltRounds = 10; // Number of salt rounds
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-
     const bmi = BMICalculation(weight, height);
-
     const newUser = new UserModel({
       email,
       password: hashedPassword,
@@ -114,14 +127,11 @@ router.put("/update/:id", async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 });
-
 //update user height
 router.put("/updateHeight", validateToken, async (req, res) => {
   const userID = req.user.id;
-  console.log("------height----", req.body);
   const { height } = req.body;
   try {
-    console.log("height", height);
     //Serch user by userID in mongoDB get his weight and update height and bmi
     const response = await UserModel.findById(userID, "weight");
     //Update user height and bmi in mongoDB according to his weight and new height
@@ -133,8 +143,6 @@ router.put("/updateHeight", validateToken, async (req, res) => {
       },
       { new: true }
     );
-
-    console.log("user", user);
     if (!user) {
       console.log("User ", userID, " does not exist");
       return res.status(400).json({ message: "User does not exist" });
