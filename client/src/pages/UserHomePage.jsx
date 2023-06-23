@@ -33,7 +33,6 @@ import {
   calculateDaysInEachProgram,
 } from "../controller/utils/util_home_page.js";
 
-
 function UserHomePage() {
   const [user, setUser] = useState({});
   const [height, setHeight] = useState(0);
@@ -51,7 +50,7 @@ function UserHomePage() {
     weightLoss: 0,
     weightLossPerProgram: "",
     worstProgram: "",
-    averageWeightLossPerProgram: []
+    averageWeightLossPerProgram: [],
   });
 
   let weights = [];
@@ -65,7 +64,6 @@ function UserHomePage() {
       setLoading(false);
       return;
     } else {
-
       const val = response;
       setUser(val);
       setHeight(val.height);
@@ -78,11 +76,12 @@ function UserHomePage() {
 
   const setAllData = async (user) => {
     //dates will be map with key of training.startdate and value of training.name
-    dates = user.selectedTrainings.map((training) => training.startDate + "," + training.name);
+    dates = user.selectedTrainings.map(
+      (training) => training.startDate + "," + training.name
+    );
     weights = user.selectedTrainings.map((training) => training.weight);
     trainingNames = user.selectedTrainings.map((training) => training.name);
     calculateStatistics(user);
-
   };
 
   const calculateStatistics = async (user) => {
@@ -92,12 +91,21 @@ function UserHomePage() {
       max: calculateMax(weights),
       min: calculateMin(weights),
       average: calculateAverage(weights),
-      normalWeight: calculateNormalWeight(user.height, weights[weights.length - 1]),
+      normalWeight: calculateNormalWeight(
+        user.height,
+        weights[weights.length - 1]
+      ),
       popularName: calculatePopularName(trainingNames),
       currentTraining: currentTrainingName(trainingNames),
       weightLoss: calculateWeightLoss(user.selectedTrainings),
-      weightLossPerProgram: calculateWeightLossPerProgram(user.selectedTrainings, true),
-      averageWeightLossPerProgram: calculateDaysInEachProgram(dates, user.selectedTrainings)
+      weightLossPerProgram: calculateWeightLossPerProgram(
+        user.selectedTrainings,
+        true
+      ),
+      averageWeightLossPerProgram: calculateDaysInEachProgram(
+        dates,
+        user.selectedTrainings
+      ),
     };
 
     setData(updatedData);
@@ -108,7 +116,7 @@ function UserHomePage() {
     const fetchAllData = async () => {
       await fetchUser();
       setLoading(false);
-    }
+    };
     fetchAllData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Empty dependency array to run the effect only once when the component mounts
@@ -117,7 +125,7 @@ function UserHomePage() {
     return <ErrorPage toRemove={true} />;
   }
   if (loading && !error) {
-    return <ErrorPage toRemove={false} />
+    return <ErrorPage toRemove={false} />;
   }
 
   if (!loading && !error) {
@@ -129,10 +137,16 @@ function UserHomePage() {
             <MDBRow className="py-2 g-4">
               {/* Profile Picture Cube */}
               <ProfilePicture user={user} />
-              <MDBCol md='9'>
+              <MDBCol md="9">
                 {/* User Details Card  */}
 
-                <DetailsCard user={user} height={height} training={data.currentTraining} setHeight={setHeight} color={data.normalWeight.color} />
+                <DetailsCard
+                  user={user}
+                  height={height}
+                  training={data.currentTraining}
+                  setHeight={setHeight}
+                  color={data.normalWeight.color}
+                />
                 {/* Include Max and Min Weight */}
               </MDBCol>
             </MDBRow>
@@ -144,7 +158,13 @@ function UserHomePage() {
                 text={
                   weights.length === 0
                     ? "You need to work one more time to see the data"
-                    : `#Max Weight $${data.max.toFixed(2)} kg$  \n #Min Weight $${data.min.toFixed(2)} kg$ \n #Average Weight $${data.average} kg$ \n #Weight Loss $${data.weightLoss}$ \n`
+                    : `#Max Weight $${data.max.toFixed(
+                        2
+                      )} kg$  \n #Min Weight $${data.min.toFixed(
+                        2
+                      )} kg$ \n #Average Weight $${
+                        data.average
+                      } kg$ \n #Weight Loss $${data.weightLoss}$ \n`
                 }
                 img_src={getURL("weight")}
               />
@@ -167,13 +187,12 @@ function UserHomePage() {
                     : `$${data.popularName}$  #Current Training $${data.currentTraining}$  #Weight Loss Per Program ${data.weightLossPerProgram} \n `
                 }
                 img_src={getURL("workout")}
-
               />
             </MDBRow>
 
             <MDBRow className=" row-cols-md-2 g-4 py-4">
-              <MDBCol md='4'>
-                <MDBCard className="h-100" >
+              <MDBCol md="4">
+                <MDBCard className="h-100">
                   <MDBCardHeader className="fw-bolder text-center">
                     Usage percentage of programs
                   </MDBCardHeader>
@@ -181,20 +200,20 @@ function UserHomePage() {
                     {weights.length === 0 ? (
                       <p>You need to work one more time to see the data</p>
                     ) : (
-                      <ChartTrainigGraph selectedTrainings={user.selectedTrainings} />)}
+                      <ChartTrainigGraph
+                        selectedTrainings={user.selectedTrainings}
+                      />
+                    )}
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>
 
-
               <ExpertCard data={data.averageWeightLossPerProgram} />
-
             </MDBRow>
-
 
             <MDBRow className="py-4 g-4">
               <MDBCol>
-                <MDBCard >
+                <MDBCard>
                   <MDBCardHeader className="fw-bolder text-center">
                     Weights Per Training
                   </MDBCardHeader>
@@ -202,13 +221,15 @@ function UserHomePage() {
                     {weights.length === 0 ? (
                       <p>You need to work one more time to see the data</p>
                     ) : (
-                      <GraphComponent selectedTrainings={user.selectedTrainings} />
+                      <GraphComponent
+                        selectedTrainings={user.selectedTrainings}
+                      />
                     )}
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>
               <MDBCol>
-                <MDBCard >
+                <MDBCard>
                   <MDBCardHeader className="fw-bolder text-center">
                     Total Days Per Program
                   </MDBCardHeader>
@@ -216,7 +237,9 @@ function UserHomePage() {
                     {weights.length === 0 ? (
                       <p>You need to work one more time to see the data</p>
                     ) : (
-                      <DayesPerProgramGraph dataArr={data.averageWeightLossPerProgram} />
+                      <DayesPerProgramGraph
+                        dataArr={data.averageWeightLossPerProgram}
+                      />
                     )}
                   </MDBCardBody>
                 </MDBCard>
@@ -226,13 +249,9 @@ function UserHomePage() {
             <hr />
             <Footer />
           </MDBContainer>
-
         </section>
-
       </MainLayout>
     );
   }
-
 }
 export default UserHomePage;
-

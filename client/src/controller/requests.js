@@ -122,6 +122,7 @@ export const updateHeight = async (height) => {
 };
 
 //----------------------Training Programas----------------------//
+//Get all Training Programas
 export const getTrainingProgramas = async (muscle) => {
   try {
     const response = await createRequest("get", `/muscle/${muscle}`, "");

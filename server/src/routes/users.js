@@ -67,7 +67,7 @@ router.post("/login", async (req, res) => {
 });
 
 //get user by id
-router.get("/",validateToken, async (req, res) => {
+router.get("/", validateToken, async (req, res) => {
   const userID = req.user.id;
   try {
     const user = await UserModel.findById(userID);
@@ -94,9 +94,7 @@ router.put("/update/:id", async (req, res) => {
     }
     const saltRounds = 10; // Number of salt rounds
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-
     const bmi = BMICalculation(weight, height);
-
     const newUser = new UserModel({
       email,
       password: hashedPassword,
@@ -114,7 +112,6 @@ router.put("/update/:id", async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 });
-
 //update user height
 router.put("/updateHeight", validateToken, async (req, res) => {
   const userID = req.user.id;
@@ -133,7 +130,6 @@ router.put("/updateHeight", validateToken, async (req, res) => {
       },
       { new: true }
     );
-
     console.log("user", user);
     if (!user) {
       console.log("User ", userID, " does not exist");

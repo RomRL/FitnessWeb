@@ -8,9 +8,9 @@ import { config } from 'dotenv';
 import {usersRouter} from './routes/users.js';
 import {trainingsRouter} from './routes/trainings.js';
 import {muscleRouter} from './routes/muscleInformation.js';
-
 config();
 const app = express();
+const port = process.env.PORT || 5000; // Use environment variable or fallback to port 5000
 
 app.use(express.json());
 app.use(cors());
@@ -18,14 +18,15 @@ app.use('/auth', usersRouter);
 app.use('/trainings', trainingsRouter);
 app.use('/muscle', muscleRouter);
 
-const uri = process.env.URL_DB;
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+const url = process.env.URL_DB;
+mongoose
+  .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log('Connected to MongoDB');
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+      console.log('Connected to MongoDB');
+    });
   })
   .catch((error) => {
     console.error('Error connecting to MongoDB:', error);
   });
-
-app.listen(5000, () => console.log('Server Running on Port 5000')); //Start Server
-

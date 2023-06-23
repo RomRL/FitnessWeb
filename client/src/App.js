@@ -7,9 +7,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import UserHomePage from './pages/UserHomePage.jsx';
 import MuscleInformation from './pages/MuscleInformation.jsx';
-
-
-//Functional component
+//Routes for the app to navigate to different pages 
+//Depending on the path in the url loading components 
 function App() {
   return (
     <BrowserRouter>

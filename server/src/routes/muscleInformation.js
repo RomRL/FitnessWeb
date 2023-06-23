@@ -1,7 +1,7 @@
 import express from "express";
 import { MusclesInformation } from "../models/MuscleInformation.js";
 import { validateToken } from "./validate.js";
-
+// router for muscleInformation
 const router = express.Router();
 
 // Get muscleInformation by muscle name
