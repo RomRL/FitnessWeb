@@ -9,8 +9,7 @@ const format = {
 
 //Create request with parameters
 const createRequest = (method, url, data) => {
-  console.log("localStorage.getItem(access_token)",localStorage.getItem("access_token"));
-  console.log ("method",method ,"url",url,"data",data);
+
   return axios({
     method: method,
     url: `${format.baseUrl}${url}`,
