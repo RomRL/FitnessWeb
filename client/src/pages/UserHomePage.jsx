@@ -59,11 +59,15 @@ function UserHomePage() {
   let trainingNames = [];
 
   const fetchUser = async () => {
+    console.log("fetchUser");
     const response = await getUser();
+    console.log(response);
     if (response === false) {
+      console.log("error");
       setLoading(false);
       return;
     } else {
+      
       const val = response;
       setUser(val);
       setHeight(val.height);
@@ -102,6 +106,7 @@ function UserHomePage() {
   };
 
   useEffect(() => {
+    console.log("useEffect");
     const fetchAllData = async () => {
       await fetchUser();
       setLoading(false);

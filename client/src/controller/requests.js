@@ -9,6 +9,9 @@ const format = {
 
 //Create request with parameters
 const createRequest = (method, url, data) => {
+  if (!localStorage.getItem("access_token")) {
+    return false;
+  } 
   return axios({
     method: method,
     url: `${format.baseUrl}${url}`,
@@ -23,7 +26,6 @@ const createRequest = (method, url, data) => {
 export const getTrainings = async () => {
   try {
     const response = await createRequest("get", "/trainings", "");
-
     return response.data.trainings;
   } catch (error) {
     console.error("Error fetching trainings:", error);
@@ -89,9 +91,10 @@ export const getUser = async () => {
   try {
     const response = await createRequest(
       "get",
-      `/auth/${localStorage.getItem("userId")}`,
+      `/auth/${localStorage.getItem("access_token")}`,
       ""
     );
+
     return response.data.user;
   } catch (error) {
     console.error("Error fetching user:", error);
