@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 function HomePageJumbotron() {
     return (
-      <div className="jumbotron">
+      <div className="jumbotron ">
         <div className="container">
-          <div className="row">
+          <div className="row ">
             <div className="col-md-8">
-              <h1 className="display-3 fw-bolder">Hello Trainer!</h1>
+              <h1 className="display-3 fw-bolder ">Hello Trainer!</h1>
               <p>
                 Achieve your fitness goals with our cutting-edge programs. Join
                 our community of fitness enthusiasts and embark on a

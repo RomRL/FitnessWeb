@@ -12,14 +12,14 @@ function HomePage() {
         //Load animation and then load the page
         <MainLayout>
             <div className="semi_transperent vsc-initialized ">
-                <main role="main" className='pageLoadAnimation'>
+                <main role="main" >
                     <HomePageJumbotron />
-                    
+
                 </main>
-                
+
             </div>
             <HomeMainSection />
-            <Footer  />
+            <Footer />
         </MainLayout>
     )
 };
