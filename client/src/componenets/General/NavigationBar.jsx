@@ -58,7 +58,7 @@ export function NavigationBar(props) {
                 {/* <LinkNav navigate_to="/auth/login" navigate_name="Logout" onClick={()=> Logout}  /> */}
 
                 <MDBNavbarItem>
-                  <MDBNavbarLink href="/auth/login" onClick={Logout}>
+                  <MDBNavbarLink onClick={Logout}>
                     Log Out
                   </MDBNavbarLink>
                 </MDBNavbarItem>
