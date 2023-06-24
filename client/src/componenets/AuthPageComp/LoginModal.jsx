@@ -10,6 +10,13 @@ function LoginModal({ showModal, modalOption, modalMessage, handleModalClose, se
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {
+            modalOption === "logged in" && (
+              <p>
+                You are already logged in, please log out first.
+              </p>
+            )
+          }
           {modalOption === "error" && (
             <p>
               Error occurred while trying to login, User Name or Password Incorrect {modalMessage}.

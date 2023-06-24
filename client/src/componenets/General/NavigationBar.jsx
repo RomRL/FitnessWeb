@@ -24,6 +24,7 @@ export function NavigationBar(props) {
   const navigate = useNavigate();
   //Logout function that removes the user id and the access token from the local storage and navigates to the login page
   const Logout = () => {
+    logout_db(window.localStorage.getItem("userId"));
     window.localStorage.removeItem("userId");
     window.localStorage.removeItem("access_token");
     window.localStorage.removeItem("selectedTrainingInfo");

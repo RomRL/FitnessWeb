@@ -21,6 +21,19 @@ function LoginComponent() {
     event.preventDefault();
     try {
       const response = await login(email, password);
+      if (response=="Incorrect Password") {
+        setModalOption("error");
+        setShowModal(true);
+        setModalMessage("Incorrect Username or Password");
+        return;
+      }
+      if (response=="User already logged in") {
+        setModalOption("logged in");
+        setShowModal(true);
+        setModalMessage("User already logged in");
+        return;
+      }
+      // if (response=="User Not Found") {
       // Show modal based on login result
       setShowModal(true);
       setModalOption("success"); // or 'error'
