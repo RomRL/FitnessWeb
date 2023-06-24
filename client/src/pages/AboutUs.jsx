@@ -13,7 +13,8 @@ function AboutUs() {
         {/* Main Navigation */}
           {/* Intro Section */}
           <div
-            className="jarallax"
+            id="home"
+            className="view jarallax bg"
             data-jarallax='{"speed": 0.2}'
             style={{
               backgroundImage:
@@ -38,6 +39,7 @@ function AboutUs() {
                 img={getURL("rom")}
               / >
               <AboutUsCard
+              className='fade'
                 git={getURL("danielGit")}
                 name={"Daniel Maman"}
                 number={"972503809280"}

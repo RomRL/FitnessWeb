@@ -52,6 +52,9 @@ export function NavigationBar(props) {
           <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
             {!access_token ? (
               <>
+              <MDBNavbarItem>
+                  <MDBNavbarLink href="/">Home Page</MDBNavbarLink>
+                </MDBNavbarItem>
                 <MDBNavbarItem>
                   <MDBNavbarLink href="/auth/login">Login</MDBNavbarLink>
                 </MDBNavbarItem>
