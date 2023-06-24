@@ -177,4 +177,19 @@ background-size: cover;
   /* box shadow linear gradien */
 
   }
+
+  h5 {
+    letter-spacing: 3px;
+}
+.white-text {
+  color: #ececec;
+}
+
+.min-column {
+  flex-basis: 400px;
+  flex-grow: 1;
+}
+
+
+
   
