@@ -18,6 +18,7 @@ function LoginModal({ showModal, modalOption, modalMessage, handleModalClose, se
             modalOption === "logged in" && (
               <p>
                 You are already logged in, please log out first.
+                Automatic log out to the last logged in user happens after 20 miniutes.
               </p>
             )
           }
