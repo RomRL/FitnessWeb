@@ -12,8 +12,8 @@ export default function ExpertCard(props) {
 
   return (
 
-    <MDBCol md='8'>
-      <MDBCard >
+    <MDBCol md='8' >
+      <MDBCard className=" h-100">
         <MDBCardBody>
           <div className="table-responsive">
             <ExpertTable data={data} />
