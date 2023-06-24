@@ -10,8 +10,7 @@ import {
   MDBNavbarNav,
   MDBNavbarItem,
   MDBNavbarLink,
-  MDBDropdown,
-  MDBCollapse,
+    MDBCollapse,
 } from "mdb-react-ui-kit";
 import { logout_db } from "../../controller/requests";
 //Navigation bar for the website with the links to the different pages , the links are different if the user is logged in or not
@@ -84,6 +83,9 @@ export function NavigationBar(props) {
                 </MDBNavbarItem>
               </>
             )}
+            <MDBNavbarItem>
+              <MDBNavbarLink href="/aboutus">About Us</MDBNavbarLink>
+            </MDBNavbarItem> 
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>

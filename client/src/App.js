@@ -7,12 +7,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import UserHomePage from './pages/UserHomePage.jsx';
 import MuscleInformation from './pages/MuscleInformation.jsx';
+import AboutUs from './pages/AboutUs.jsx';
 //Routes for the app to navigate to different pages 
 //Depending on the path in the url loading components 
 function App() {
   return (
     <BrowserRouter>
         <Routes>
+          
           //if the user is logged in the user page will be loaded
           //if not the home page will be loaded
           {localStorage.getItem("access_token") ? (
@@ -20,6 +22,7 @@ function App() {
           ) : (
             <Route path="/" element={<HomePage />} />   
           )}
+          <Route path="aboutus" element={<AboutUs />} />
           <Route path="userpage" element={<UserHomePage />} />
           <Route path="training" element={<TrainingForm />} />
           <Route path="auth/login" element={<Login />} />
