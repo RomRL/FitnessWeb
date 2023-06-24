@@ -1,8 +1,12 @@
+/**
+ * @file LoginModal.jsx is a modal component that is used to display the login status
+ * of the user. It is used in LoginComponent.jsx
+ */
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 
 
-
+// Show the modal based on the login result
 function LoginModal({ showModal, modalOption, modalMessage, handleModalClose, setShowModal }) {
     return (
       <Modal show={showModal} onHide={() => setShowModal(false)}>

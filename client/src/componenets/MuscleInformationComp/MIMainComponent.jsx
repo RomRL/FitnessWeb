@@ -1,3 +1,10 @@
+/**
+ * @module MIMainComponent
+ * it is the main component of the Muscle Information page
+ * It uses MuscleSelect.jsx and MuscleInfo.jsx
+ * It shows the list of muscles and handles the selection of a muscle 
+ * and shows the information about the muscle that the user has selected.
+ */
 import React from "react";
 import MuscleSelect from "./MuscleSelect"
 import MuscleInfo from "./MuscleInfo";
