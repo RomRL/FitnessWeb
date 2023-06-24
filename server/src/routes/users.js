@@ -64,9 +64,8 @@ router.post("/login", async (req, res) => {
 
     //add users to the list of logged in users with their token and time  of login
     usersLogedIn[user._id] = { token, loginTime: Date.now() };
-    //call removeUserFromList after `0 seconds 
+    //call removeUserFromList after `1200 seconds 
     setTimeout(removeSpecificUserFromList, 1200000, user._id);
-    console.log("usersLogedIn", usersLogedIn);
     res
       .status(200)
       .json({ token, userID: user._id, message: "logged in successfully" });
@@ -91,9 +90,9 @@ router.post("/logout", validateToken, async (req, res) => {
 
 
 function removeSpecificUserFromList(userID) {
+  console.log("Token " , usersLogedIn[userID].token , "-> Logged out")
   //remove user from the list of logged in users if the user is logged in for more than 10 seconds
   delete usersLogedIn[userID];
-  console.log("logged out", usersLogedIn)
 
 }
 
