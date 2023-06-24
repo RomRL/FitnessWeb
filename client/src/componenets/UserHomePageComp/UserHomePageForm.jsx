@@ -34,7 +34,6 @@ import {
 // UserHomePageForm function 
 function UserHomePageForm({ data, user, height, setHeight, fetchUser }) {
     return (
-        <section style={{ backgroundColor: "transpert" }}>
             <MDBContainer className="py-4">
                 <MDBRow className="py-2 g-4">
                     {/* Profile Picture Cube */}
@@ -162,7 +161,6 @@ function UserHomePageForm({ data, user, height, setHeight, fetchUser }) {
                 <hr />
                 <Footer />
             </MDBContainer>
-        </section>
     );
 }
 export default UserHomePageForm;
