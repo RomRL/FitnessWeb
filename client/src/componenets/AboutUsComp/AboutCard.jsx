@@ -1,10 +1,10 @@
 import React from "react";
-import { MDBBtn, MDBIcon, MDBCard, MDBCardImage, MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
+import { MDBBtn, MDBIcon, MDBCol, MDBRow } from "mdb-react-ui-kit";
 //Footer component that is used in many pages and components includes links to whatsapp and github and our company name
 function AboutUsCard(props) {
     //                 <AboutUsCard name={"Rom Harel"} number={"97254757561"} img={""} sometext={"Some text that describes me lorem ipsum ipsum lorem" } email={"romharel98@gmail.com"} git={"url"} />     
 
-    const { name, number, img, sometext, linkdin, git } = props;
+    const { name, number, img, linkdin, git } = props;
     console.log(props);
     console.log(img);
     return (
