@@ -2,6 +2,8 @@ import React from "react";
 import Spinner from "../componenets/General/Spinner";
 import MainLayout from "../layout/MainLayout.jsx";
 
+
+
 //Error page component that is used to display a loading screen or an error message
 //Erase the local storage from the user if the toRemove prop is true
 //Has two options: toRemove = true or false
@@ -9,6 +11,7 @@ import MainLayout from "../layout/MainLayout.jsx";
 //When toRemove is false the loading screen is displayed
 export function ErrorPage(props) {
   const { toRemove } = props;
+
   //toRemove is a prop that is passed to the component
   if (toRemove) {
     window.localStorage.removeItem("userId");
@@ -35,6 +38,15 @@ export function ErrorPage(props) {
             <Spinner />
           </div>
           <p>You have to log in first</p>
+          <div>
+          <button
+              type="button"
+              class="btn btn-outline-danger"
+              data-mdb-ripple-color="dark"
+              onClick={() => {
+                window.location.href = "auth/login";
+              }} >LogIn again </button>           
+          </div>
         </div>
       </MainLayout>
     );

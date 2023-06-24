@@ -55,7 +55,8 @@ const MuscleInformation = () => {
   // get all muscles information from DB and set it to data
   const fetchmuscleInformation = async () => {
     const response = await getTrainingProgramas(muscle);
-    if (response === []) {
+    if (response === false) {
+      setError(true);    
       return;
     } else {
       setAllData(response);

@@ -134,7 +134,7 @@ export const getTrainingProgramas = async (muscle) => {
     return response.data;
   } catch (error) {
     console.error("Error fetching muscleInformation:", error);
-    return [];
+    return false;
   }
 };
 // Get only name from all Training Programas that in the scema
