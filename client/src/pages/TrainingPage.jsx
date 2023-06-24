@@ -102,6 +102,7 @@ export function TrainingForm() {
               <br />
               <h5 className="fw-bolder  mt-4"> Instructions:</h5>
               <InstructionsFormatter text={selectedTraining.instructions} />
+              <br />
               <LoadLinks video_urls={selectedTraining.videoUrls} />
               <h5 className=" d-flex justify-content-center fw-bolder  mt-4">
                 Selected Training: {selectedTraining.name}

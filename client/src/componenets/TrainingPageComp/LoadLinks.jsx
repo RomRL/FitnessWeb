@@ -4,11 +4,11 @@ import VideoLink from "./VideoLink";
 export default function LoadLinks(props) {
   const { video_urls } = props;
   return (
-    <div className="row shadow-lg">
+    <div className="row">
       {/* For each video */}
       {video_urls.map((url, index) => (
-        <div key={index} className="col">
-          <div className="card h-150">
+        <div key={index} className="col-md-4 g-4">
+          <div className="card h-60">
             <VideoLink src={url} />
             <div className="card-body">
               <h5 className="card-title">Video {index + 1}</h5>

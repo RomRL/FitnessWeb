@@ -6,7 +6,7 @@ import React from "react";
 export default function VideoLink(props) {
   const { src } = props;
   return (
-    <div className="ratio ratio-16x9 shadow-lg">
+    <div >
       <iframe
         src={src}
         title="YouTube video"
