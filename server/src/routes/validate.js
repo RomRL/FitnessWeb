@@ -1,12 +1,9 @@
 import jwt from "jsonwebtoken";
 import { config } from "dotenv";
 
-
-//validate thata the user is logged in and has a valid token
 //Config env variables
 config();
-//Validate token -> validate that the user is logged in and has a valid token
-//Only logged in users can access the routes that use this middleware
+//Validatetoken -> validate that the user is logged in and has a valid token
 export const validateToken = (req, res, next) => {
   const token = req.headers.authorization;
 
