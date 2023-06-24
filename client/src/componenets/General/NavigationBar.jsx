@@ -83,6 +83,9 @@ export function NavigationBar(props) {
                 </MDBNavbarItem>
               </>
             )}
+            <MDBNavbarItem>
+              <MDBNavbarLink href="/aboutus">About Us</MDBNavbarLink>
+            </MDBNavbarItem> 
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>
