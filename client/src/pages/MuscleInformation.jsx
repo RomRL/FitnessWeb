@@ -1,3 +1,10 @@
+/**
+ * MuscleInformation page, this page is responsible for showing the user information about the muscle he chose
+ * the page is responsible for the following:
+ * 1. get the muscles names from the database
+ * 2. get the information about the muscle the user chose
+ * 3. display the information to the user
+ */
 import React, { useState, useEffect } from "react";
 import MainLayout from "../layout/MainLayout.jsx";
 import {
@@ -10,6 +17,7 @@ import Footer from "../componenets/General/Footer.jsx";
 import HelpAndTitle from "../componenets/General/HelpAndTtile.jsx";
 import { MDBContainer } from "mdb-react-ui-kit";
 
+// MuscleInformation page component that is used to display the MuscleInformation page of the website
 const MuscleInformation = () => {
   const [muscle, setMuscle] = useState("");
   const [error, setError] = useState(true);
@@ -21,7 +29,7 @@ const MuscleInformation = () => {
     information: [],
     generalInformation: "",
   });
-
+  // fetch the muscles names from the database
   useEffect(() => {
     const getDataMusclesNamesFromDB = async () => {
       await getMusclesNames();
@@ -29,13 +37,14 @@ const MuscleInformation = () => {
     };
     getDataMusclesNamesFromDB();
   }, []);
-
+  // fetch the information about the muscle the user chose
   useEffect(() => {
     const fetchMuscleInformation = async () => {
       const response = await getTrainingProgramas(muscle);
       if (response === false) {
         setError(true);
       } else {
+        // update the dataVals state with the information about the muscle
         const updatedData = {
           link: response.musclesInformation.topics.map((info) => info.link),
           topic: response.musclesInformation.topics.map((info) => info.topic),
@@ -53,7 +62,7 @@ const MuscleInformation = () => {
       fetchMuscleInformation();
     }
   }, [muscle]);
-
+  // get the muscles names from the database
   const getMusclesNames = async () => {
     const response = await getTrainingProgramasName();
     if (response === false) {
@@ -63,7 +72,7 @@ const MuscleInformation = () => {
       setMusclesNames(response);
     }
   };
-
+  // handle the muscle change
   const handleMuscleChange = (option) => {
     const selectedMuscle = musclesNames.find((muscle) => muscle === option);
     setMuscle(selectedMuscle);
@@ -87,8 +96,7 @@ const MuscleInformation = () => {
             headline="Muscle Information "
             body="#Please make sure you choose the muscle that you want to learn about $click on radio button option$
             #After you choose the muscle you will see the information about the muscle 
-            #You can click on the link to see the video about the muscle
-          
+            #You can click on the link to see the video about the muscle     
             "
           />
           <MIMainComponent
