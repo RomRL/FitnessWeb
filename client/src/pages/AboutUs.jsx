@@ -9,10 +9,7 @@ import getURL from "../assets/assetsUrls.js";
 function AboutUs() {
   return (
     <MainLayout>
-      <MDBContainer fluid>
-        {/* Main Navigation */}
-          {/* Intro Section */}
-          <div
+       <div
             className="jarallax"
             data-jarallax='{"speed": 0.2}'
             style={{
@@ -21,9 +18,13 @@ function AboutUs() {
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               backgroundPosition: "center center",
-              width: "100%",
+              height: "60vh",
             }}
           ></div>
+      <MDBContainer fluid>
+        {/* Main Navigation */}
+          {/* Intro Section */}
+         
 
         {/* Team Section */}
         <section className="text-center py-5">

@@ -7,7 +7,7 @@ function MainLayout(props) {
   const { children } = props;
   return (
       <><NavigationBar> </NavigationBar>
-      <div className="container pageLoadAnimation">
+      <div className="pageLoadAnimation">
         <div>{children}</div>
     </div></>
 
