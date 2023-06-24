@@ -1,3 +1,15 @@
+/**
+ * @fileoverview user home page component
+ * this component will show the user his data
+ * the data showen is:
+ * weight statistics
+ * bmi statistics
+ * popular training
+ * Usage percentage of programs graph
+ * Weights Per Training graph
+ * Total Days Per Program graph
+ * table of average weight loss per program
+ */
 import React, { useState, useEffect } from "react";
 import MainLayout from "../layout/MainLayout.jsx";
 import ErrorPage from "./ErrorPage.jsx";
@@ -38,11 +50,12 @@ function UserHomePage() {
     averageWeightLossPerProgram: [],
     weights: [],
   });
-
+// data that will not change in the form
   let weights = [];
   let dates = [];
   let trainingNames = [];
 
+  // fetch user data from server and set first values 
   const fetchUser = async () => {
     console.log("fetching user");
     const response = await getUser();
@@ -58,6 +71,7 @@ function UserHomePage() {
     }
   };
 
+  // set all data 
   const setAllData = async (user) => {
     //dates will be map with key of training.startdate and value of training.name
     dates = user.selectedTrainings.map(
@@ -67,7 +81,7 @@ function UserHomePage() {
     trainingNames = user.selectedTrainings.map((training) => training.name);
     calculateStatistics(user);
   };
-
+  // calculate all statistics from functions in utils
   const calculateStatistics = async (user) => {
     // Update property1
     const updatedData = {
@@ -94,7 +108,7 @@ function UserHomePage() {
     };
     setData(updatedData);
   };
-
+// run fetch user when component mounts
   useEffect(() => {
     const fetchAllData = async () => {
       await fetchUser();
@@ -104,12 +118,15 @@ function UserHomePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [height,]); // Empty dependency array to run the effect only once when the component mounts
 
+  // eror in getting data or log in
   if (error && !loading) {
     return <ErrorPage toRemove={true} />;
   }
+  // waiting for data
   if (loading && !error) {
     return <ErrorPage toRemove={false} />;
   }
+  // data is ready
   if (!loading && !error) {
     return (
       <MainLayout>

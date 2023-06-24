@@ -1,3 +1,16 @@
+/**
+ *  This file exports the UserHomePage functional component which displays the user's home page.
+ *  The component is used in UserHomePage.jsx.
+ *  The component uses the following components:
+ * - Footer.jsx
+ * - ProfilePicture.jsx
+ * - WeightsPerDateGraph.jsx
+ * - DayesPerProgramGraph.jsx
+ * - UsagePercentageOfProgramsGraph.jsx
+ * - DetailsCard.jsx
+ * - BigCard.jsx
+ * - ExpertCard.jsx
+ */
 import React from "react";
 import Footer from "../General/Footer.jsx";
 import ProfilePicture from "../UserHomePageComp/ProfilePicture.jsx";
@@ -18,8 +31,8 @@ import {
     MDBCardHeader,
 } from "mdb-react-ui-kit";
 
-
-function UserHomePageForm({ data, user,  height, setHeight, fetchUser }) {
+// UserHomePageForm function 
+function UserHomePageForm({ data, user, height, setHeight, fetchUser }) {
     return (
         <section style={{ backgroundColor: "transpert" }}>
             <MDBContainer className="py-4">
@@ -28,7 +41,6 @@ function UserHomePageForm({ data, user,  height, setHeight, fetchUser }) {
                     <ProfilePicture user={user} />
                     <MDBCol md="9">
                         {/* User Details Card  */}
-
                         <DetailsCard
                             user={user}
                             height={height}
@@ -41,7 +53,9 @@ function UserHomePageForm({ data, user,  height, setHeight, fetchUser }) {
                     </MDBCol>
                 </MDBRow>
 
+                {/* first row with 3 cards */}
                 <MDBRow className="py-4 g-4">
+                    {/*Weight Statistics card */}
                     <BigCard
                         title="Weight Statistics"
                         // set text to be 'You need to work one more time to see the data' if weights is empty else set it to the data
@@ -57,6 +71,7 @@ function UserHomePageForm({ data, user,  height, setHeight, fetchUser }) {
                         }
                         img_src={getURL("weight")}
                     />
+                    {/* Bmi Statistics card */}
                     <BigCard
                         title="Bmi Statistics"
                         text={
@@ -68,6 +83,7 @@ function UserHomePageForm({ data, user,  height, setHeight, fetchUser }) {
                         picture="https://nutrition.health.gov.lk/wp-content/uploads/2020/12/BMI-1024x569.png"
                         fillPicture={true}
                     />
+                    {/* Popular Training card */}
                     <BigCard
                         title="Popular Training"
                         text={
@@ -79,8 +95,11 @@ function UserHomePageForm({ data, user,  height, setHeight, fetchUser }) {
                     />
                 </MDBRow>
 
+                {/* second row with 2 cards */}
                 <MDBRow className=" row-cols-md-2 g-4 py-4">
                     <MDBCol md="4">
+
+                        {/*Usage percentage of programs graph */}
                         <MDBCard className="h-100">
                             <MDBCardHeader className="fw-bolder text-center">
                                 Usage percentage of programs
@@ -97,10 +116,13 @@ function UserHomePageForm({ data, user,  height, setHeight, fetchUser }) {
                         </MDBCard>
                     </MDBCol>
 
+                    {/* Expert card that sgow the table*/}
                     <ExpertCard data={data.averageWeightLossPerProgram} />
                 </MDBRow>
-
+                {/* third row with 2 cards */}
                 <MDBRow className="py-4 g-4">
+
+                    {/* Weights Per Training graph */}
                     <MDBCol>
                         <MDBCard>
                             <MDBCardHeader className="fw-bolder text-center">
@@ -117,6 +139,8 @@ function UserHomePageForm({ data, user,  height, setHeight, fetchUser }) {
                             </MDBCardBody>
                         </MDBCard>
                     </MDBCol>
+
+                    {/* Total Days Per Program graph */}
                     <MDBCol>
                         <MDBCard>
                             <MDBCardHeader className="fw-bolder text-center">
