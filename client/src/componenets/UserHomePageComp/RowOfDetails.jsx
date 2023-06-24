@@ -1,3 +1,6 @@
+/**
+ * this component is a row of details in the user home page in statistics section
+ */
 import React from "react";
 import { MDBCardText, MDBRow, MDBCol } from "mdb-react-ui-kit";
 

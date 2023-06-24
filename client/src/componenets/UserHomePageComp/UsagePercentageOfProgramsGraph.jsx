@@ -1,10 +1,14 @@
+/**
+ * This component is a pie chart that shows the percentage of each training program
+ * It is used in the UserHomePageComp component.
+ */
 import React from 'react';
 import { Chart } from 'chart.js';
 import 'chartjs-plugin-datalabels';
-// never remov this import!!!!!! :
+// never remove this import!!!!!! :
 import Chartt from 'chart.js/auto'
 
-
+// ChartTrainigGraph function
 const ChartTrainigGraph = ({ selectedTrainings }) => {
   const chartRef = React.useRef(null);
   const trainingNames = [...new Set(selectedTrainings.map((training) => training.name))];
@@ -14,11 +18,12 @@ const ChartTrainigGraph = ({ selectedTrainings }) => {
     const ctxP = chartRef.current.getContext('2d');
     let myPieChart = null;
 
+    // Calculate the occurrences of each training program
     const createChart = () => {
       const colors = generateColors(trainingNames.length);
-
       myPieChart = new Chart(ctxP, {
         type: 'pie',
+        // The data for our dataset + the percentage of each training program
         data: {
           labels: trainingNames.map((name) => `${name} (${getPercentage(name)}%)`),
           datasets: [
@@ -58,6 +63,7 @@ const ChartTrainigGraph = ({ selectedTrainings }) => {
       });
     };
 
+    // Destroy the chart instance if it exists
     const destroyChart = () => {
       if (myPieChart) {
         myPieChart.destroy();
@@ -80,6 +86,7 @@ const ChartTrainigGraph = ({ selectedTrainings }) => {
     return occurrences;
   };
 
+  // Generate colors for the chart (each training program has a different color) 
   const generateColors = (count) => {
     const colors = [];
     for (let i = 0; i < count; i++) {
@@ -89,7 +96,8 @@ const ChartTrainigGraph = ({ selectedTrainings }) => {
     }
     return colors;
   };
-
+  // Calculate the percentage of each training program 
+  // the percentage of each training program is the number of occurrences of the training program divided by the total number of training programs
   const getPercentage = (name) => {
     const count = selectedTrainings.filter((training) => training.name === name).length;
     const percentage = ((count / totalCount) * 100).toFixed(2);

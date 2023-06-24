@@ -1,3 +1,10 @@
+/**
+ * this component is a card that shows the user details
+ * the component is used in the UserHomePageComp component
+ * the component uses the following components:
+ * - RowOfDetails.jsx
+ * - HighetModal.jsx
+ */
 import React from "react";
 import {
   MDBCard,

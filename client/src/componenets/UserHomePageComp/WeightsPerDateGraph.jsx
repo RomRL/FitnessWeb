@@ -1,6 +1,11 @@
+/**
+ * This component displays a graph of the user's weights per date.
+ * The component is used in UserHomePageForm.jsx.
+ */
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 
+// GraphComponent function
 function GraphComponent({ selectedTrainings }) {
  // Extracting the last 10 dates, weights, and training names from selectedTrainings
  const last8SelectedTrainings = selectedTrainings.slice(-8);

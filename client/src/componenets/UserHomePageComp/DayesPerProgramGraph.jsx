@@ -1,3 +1,7 @@
+/**
+ * This component is a graph that shows the number of days in each program.
+ * It is used in the UserHomePageComp component.
+ */
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
@@ -11,12 +15,12 @@ import {
 } from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
-
+// DaysPerProgramGraph function
 const DaysPerProgramGraph = (props) => {
   const { dataArr } = props;
-    const daysInEachProgram = Object.values(dataArr.daysInEachProgram);
     const labels = Object.keys(dataArr.daysInEachProgram);
     const data = Object.values(dataArr.daysInEachProgram);
+  // the labels and data for the graph
   const chartData = {
     labels,
     datasets: [
@@ -28,7 +32,7 @@ const DaysPerProgramGraph = (props) => {
       },
     ],
   };
-
+  // the view of the graph
   const options = {
     plugins: {
       title: {

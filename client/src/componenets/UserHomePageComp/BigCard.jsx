@@ -1,3 +1,9 @@
+/**
+* this component is a card that is used in the user home page to display the user's details.
+* the component is used in UserHomePageForm.jsx.
+* the component uses the following components:
+* - InstructionsFormatter.jsx
+*/
 import React from "react";
 import { MDBCard, MDBCol, MDBCardImage, MDBCardBody, MDBCardTitle } from "mdb-react-ui-kit";
 import InstructionsFormatter from "../TrainingPageComp/InstructionsFormatter";

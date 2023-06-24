@@ -10,7 +10,6 @@ import {
   MDBNavbarNav,
   MDBNavbarItem,
   MDBNavbarLink,
-  MDBDropdown,
   MDBCollapse,
 } from "mdb-react-ui-kit";
 import { logout_db } from "../../controller/requests";

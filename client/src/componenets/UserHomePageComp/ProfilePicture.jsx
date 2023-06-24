@@ -1,3 +1,8 @@
+/**
+ * ProfilePicture.jsx is a card component that displays the user's profile picture, name, and a button to change the training program.
+ * The card is used in the UserHomePageComp component
+ * The card uses the ProfilePicture component
+ */
 import React from 'react';
 import {
 

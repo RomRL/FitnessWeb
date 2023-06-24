@@ -1,3 +1,6 @@
+/**
+ * this component is a card that shows the statistics of the user
+ */
 import React from "react";
 import { MDBCardText, MDBCard, MDBCol,MDBCardImage, MDBCardBody,MDBCardTitle } from "mdb-react-ui-kit";
 

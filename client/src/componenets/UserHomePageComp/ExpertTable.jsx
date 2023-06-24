@@ -4,16 +4,13 @@ import { MDBTable, MDBIcon, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit'
 
 export default function ExpertTable(props) {
   const { data } = props;
-  //     data={
-  // averageWeightLossPerDay
-  // daysInEachProgram 
-  // }
-  //table it will be look like this
+
+  // table it will be look like this
   //  #	Program Name | averageWeightLossPerDay | daysInEachProgram | weightLossPerProgram
-  // 1	Option B	-5	2	-10
-    //Total Days In All Programs
-    const allDays = Object.values(data.daysInEachProgram);
-    const alldays = allDays.reduce((a, b) => a + b, 0);
+  // 1	Option B  -5	2	-10
+
+  const allDays = Object.values(data.daysInEachProgram);
+  const alldays = allDays.reduce((a, b) => a + b, 0);
 
   const tableHead = () => {
     return (
@@ -43,7 +40,7 @@ export default function ExpertTable(props) {
       const totalWeight = averageWeightLoss < 0 ? 'caret-down' : 'caret-up';
 
       tableRows.push(
-        <tr  key={i} className='fw-bolder'>
+        <tr key={i} className='fw-bolder'>
           <td>{i}</td>
           <td className='fw-bolder'>{key}</td>
           <td className={averageWeightLossClass}><MDBIcon className='me-1' fas icon={averageWeight} /> {averageWeightLoss}</td>
@@ -51,7 +48,7 @@ export default function ExpertTable(props) {
           <td className={weightLossClass}><MDBIcon className='me-1' fas icon={totalWeight} />{weightLoss}</td>
         </tr>
       );
-     
+
     }
     //Best Program
     tableRows.push(
@@ -62,26 +59,26 @@ export default function ExpertTable(props) {
         <td></td>
       </tr>
     );
-      //Worst Program
-      tableRows.push(
-        <tr key={'worst-program'} className='table-danger'>
-          <th scope='row'></th>
-          <td className='fw-bolder' colSpan={2}>Worst For You</td>
-          <td className='fw-bolder'>{data.min}</td>
-          <td></td>
-        </tr>
-      );
-  
-      tableRows.push(
-        <tr key={'total-days'} className='table-primary'>
-          <th scope='row'></th>
-          <td className='fw-bolder' colSpan={2}>Total Days In All Programs</td>
-          <td className='fw-bolder'>{alldays}</td>
-          <td></td>
-        </tr>
-      );
-      
-  
+    //Worst Program
+    tableRows.push(
+      <tr key={'worst-program'} className='table-danger'>
+        <th scope='row'></th>
+        <td className='fw-bolder' colSpan={2}>Worst For You</td>
+        <td className='fw-bolder'>{data.min}</td>
+        <td></td>
+      </tr>
+    );
+
+    tableRows.push(
+      <tr key={'total-days'} className='table-primary'>
+        <th scope='row'></th>
+        <td className='fw-bolder' colSpan={2}>Total Days In All Programs</td>
+        <td className='fw-bolder'>{alldays}</td>
+        <td></td>
+      </tr>
+    );
+
+
     return tableRows;
   };
 

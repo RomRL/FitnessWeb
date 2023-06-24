@@ -1,3 +1,8 @@
+/**
+ *  ExpertCard.jsx is the card that displays the table information
+ * the card is used in the UserHomePageComp component
+ * the card uses the ExpertTable component
+ */
 import React from "react";
 import ExpertTable from "./ExpertTable";
 import { MDBCard, MDBCol, MDBCardBody } from "mdb-react-ui-kit";

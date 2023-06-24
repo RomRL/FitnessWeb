@@ -13,8 +13,6 @@ function App() {
   return (
     <BrowserRouter>
         <Routes>
-          //if the user is logged in the user page will be loaded
-          //if not the home page will be loaded
           {localStorage.getItem("access_token") ? (
             <Route path="/" element={<UserHomePage />} />
           ) : (
