@@ -14,7 +14,7 @@ function RadioButton(props) {
   };
 
   return (
-    <MDBContainer>
+    <>
       {options.map((option) => (
         <MDBRadio
           key={option}
@@ -29,7 +29,7 @@ function RadioButton(props) {
           style={{ width: "100%" }}
         />
       ))}
-    </MDBContainer>
+    </>
   );
 }
 

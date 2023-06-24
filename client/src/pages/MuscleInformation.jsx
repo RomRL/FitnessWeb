@@ -8,6 +8,7 @@ import ErrorPage from "./ErrorPage.jsx";
 import MIMainComponent from "../componenets/MuscleInformationComp/MIMainComponent.jsx";
 import Footer from "../componenets/General/Footer.jsx";
 import HelpAndTitle from "../componenets/General/HelpAndTtile.jsx";
+import { MDBContainer } from "mdb-react-ui-kit";
 
 const MuscleInformation = () => {
   const [muscle, setMuscle] = useState("");
@@ -56,7 +57,7 @@ const MuscleInformation = () => {
   const fetchmuscleInformation = async () => {
     const response = await getTrainingProgramas(muscle);
     if (response === false) {
-      setError(true);    
+      setError(true);
       return;
     } else {
       setAllData(response);
@@ -96,23 +97,25 @@ const MuscleInformation = () => {
   if (!loading && !error) {
     return (
       <MainLayout>
-        <HelpAndTitle
-          title="Muscle Information"
-          button_name="Need Help ?"
-          headline="Muscle Information "
-          body="#Please make sure you choose the muscle that you want to learn about $click on radio button option$
+        <MDBContainer>
+          <HelpAndTitle
+            title="Muscle Information"
+            button_name="Need Help ?"
+            headline="Muscle Information "
+            body="#Please make sure you choose the muscle that you want to learn about $click on radio button option$
             #After you choose the muscle you will see the information about the muscle 
             #You can click on the link to see the video about the muscle
           
             "
-        />
-        <MIMainComponent
-          musclesNames={musclesNames}
-          muscle={muscle}
-          handleMuscleChange={handleMuscleChange}
-          dataVals={dataVals}
-        />
-        <Footer />
+          />
+          <MIMainComponent
+            musclesNames={musclesNames}
+            muscle={muscle}
+            handleMuscleChange={handleMuscleChange}
+            dataVals={dataVals}
+          />
+          <Footer />
+        </MDBContainer>
       </MainLayout>
     );
   }
