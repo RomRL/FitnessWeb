@@ -15,18 +15,21 @@ import Modal from "react-bootstrap/Modal";
 
 //This component is used to create a modal with a button that opens it and a headline and body that are passed as props
 // Used in the UserPage.jsx , it is used to edit the height of the user
-export default function HeightModal({ setHeight }) {
+export default function HeightModal({ setHeight, fetchUser}) {
   const [showModal, setShowModal] = useState(false);
   const [editHeight, setEditHeight] = useState("");
 
   //Change height function is used to update the height in the database
-  const changeHeight = () => {
+  const changeHeight = async () => {
     if (editHeight >= 50 && editHeight <= 210) {
       const response = updateHeight(editHeight);
+      console.log("updateeeee");
       if (response === false) {
       } else {
+        await fetchUser();
         setHeight(editHeight);
         setShowModal(false);
+        
       }
     }
   };

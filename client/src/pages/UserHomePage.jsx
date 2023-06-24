@@ -1,26 +1,10 @@
 import React, { useState, useEffect } from "react";
 import MainLayout from "../layout/MainLayout.jsx";
 import ErrorPage from "./ErrorPage.jsx";
-import Footer from "../componenets/General/Footer.jsx";
-import ProfilePicture from "../componenets/UserHomePageComp/ProfilePicture.jsx";
 import { getUser } from "../controller/requests.js";
-import GraphComponent from "../componenets/UserHomePageComp/WeightsPerDateGraph.jsx";
-import DayesPerProgramGraph from "../componenets/UserHomePageComp/DayesPerProgramGraph.jsx";
-import ChartTrainigGraph from "../componenets/UserHomePageComp/UsagePercentageOfProgramsGraph.jsx";
-import DetailsCard from "../componenets/UserHomePageComp/DetailsCard.jsx";
-import BigCard from "../componenets/UserHomePageComp/BigCard.jsx";
-import getURL from "../assets/assetsUrls.js";
-import ExpertCard from "../componenets/UserHomePageComp/ExpertCard.jsx";
+import UserHomePageForm from "../componenets/UserHomePageComp/UserHomePageForm.jsx";
 
-import {
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-  MDBCard,
-  MDBCardBody,
-  MDBCardHeader,
-} from "mdb-react-ui-kit";
-
+// UserHomePage function
 import {
   calculateAverage,
   calculateMax,
@@ -38,6 +22,7 @@ function UserHomePage() {
   const [height, setHeight] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(true);
+  // data from functions in utils
   const [data, setData] = useState({
     max: 0,
     min: 0,
@@ -51,6 +36,7 @@ function UserHomePage() {
     weightLossPerProgram: "",
     worstProgram: "",
     averageWeightLossPerProgram: [],
+    weights: [],
   });
 
   let weights = [];
@@ -58,8 +44,8 @@ function UserHomePage() {
   let trainingNames = [];
 
   const fetchUser = async () => {
+    console.log("fetching user");
     const response = await getUser();
-    console.log(response);
     if (response === false) {
       setLoading(false);
       return;
@@ -70,8 +56,6 @@ function UserHomePage() {
       setAllData(val);
       setError(false);
     }
-
-    // Set loading to false once data is fetched
   };
 
   const setAllData = async (user) => {
@@ -106,20 +90,19 @@ function UserHomePage() {
         dates,
         user.selectedTrainings
       ),
+      weights: weights,
     };
-
     setData(updatedData);
   };
 
   useEffect(() => {
-    console.log("useEffect");
     const fetchAllData = async () => {
       await fetchUser();
       setLoading(false);
     };
     fetchAllData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Empty dependency array to run the effect only once when the component mounts
+  }, [height,]); // Empty dependency array to run the effect only once when the component mounts
 
   if (error && !loading) {
     return <ErrorPage toRemove={true} />;
@@ -127,129 +110,10 @@ function UserHomePage() {
   if (loading && !error) {
     return <ErrorPage toRemove={false} />;
   }
-
   if (!loading && !error) {
-    weights = user.selectedTrainings.map((training) => training.weight);
     return (
       <MainLayout>
-        <section style={{ backgroundColor: "transpert" }}>
-          <MDBContainer className="py-4">
-            <MDBRow className="py-2 g-4">
-              {/* Profile Picture Cube */}
-              <ProfilePicture user={user} />
-              <MDBCol md="9">
-                {/* User Details Card  */}
-
-                <DetailsCard
-                  user={user}
-                  height={height}
-                  training={data.currentTraining}
-                  setHeight={setHeight}
-                  color={data.normalWeight.color}
-                />
-                {/* Include Max and Min Weight */}
-              </MDBCol>
-            </MDBRow>
-
-            <MDBRow className="py-4 g-4">
-              <BigCard
-                title="Weight Statistics"
-                // set text to be 'You need to work one more time to see the data' if weights is empty else set it to the data
-                text={
-                  weights.length === 0
-                    ? "You need to work one more time to see the data"
-                    : `#Max Weight $${data.max.toFixed(
-                        2
-                      )} kg$  \n #Min Weight $${data.min.toFixed(
-                        2
-                      )} kg$ \n #Average Weight $${
-                        data.average
-                      } kg$ \n #Weight Loss $${data.weightLoss}$ \n`
-                }
-                img_src={getURL("weight")}
-              />
-              <BigCard
-                title="Bmi Statistics"
-                text={
-                  weights.length === 0
-                    ? "You need to work one more time to see the data"
-                    : data.normalWeight.message
-                }
-                img_src={getURL("statistics")}
-                picture="https://nutrition.health.gov.lk/wp-content/uploads/2020/12/BMI-1024x569.png"
-                fillPicture={true}
-              />
-              <BigCard
-                title="Popular Training"
-                text={
-                  weights.length === 0
-                    ? "You need to work one more time to see the data"
-                    : `$${data.popularName}$  #Current Training $${data.currentTraining}$  #Weight Loss Per Program ${data.weightLossPerProgram} \n `
-                }
-                img_src={getURL("workout")}
-              />
-            </MDBRow>
-
-            <MDBRow className=" row-cols-md-2 g-4 py-4">
-              <MDBCol md="4">
-                <MDBCard className="h-100">
-                  <MDBCardHeader className="fw-bolder text-center">
-                    Usage percentage of programs
-                  </MDBCardHeader>
-                  <MDBCardBody>
-                    {weights.length === 0 ? (
-                      <p>You need to work one more time to see the data</p>
-                    ) : (
-                      <ChartTrainigGraph
-                        selectedTrainings={user.selectedTrainings}
-                      />
-                    )}
-                  </MDBCardBody>
-                </MDBCard>
-              </MDBCol>
-
-              <ExpertCard data={data.averageWeightLossPerProgram} />
-            </MDBRow>
-
-            <MDBRow className="py-4 g-4">
-              <MDBCol>
-                <MDBCard>
-                  <MDBCardHeader className="fw-bolder text-center">
-                    Weights Per Training
-                  </MDBCardHeader>
-                  <MDBCardBody>
-                    {weights.length === 0 ? (
-                      <p>You need to work one more time to see the data</p>
-                    ) : (
-                      <GraphComponent
-                        selectedTrainings={user.selectedTrainings}
-                      />
-                    )}
-                  </MDBCardBody>
-                </MDBCard>
-              </MDBCol>
-              <MDBCol>
-                <MDBCard>
-                  <MDBCardHeader className="fw-bolder text-center">
-                    Total Days Per Program
-                  </MDBCardHeader>
-                  <MDBCardBody>
-                    {weights.length === 0 ? (
-                      <p>You need to work one more time to see the data</p>
-                    ) : (
-                      <DayesPerProgramGraph
-                        dataArr={data.averageWeightLossPerProgram}
-                      />
-                    )}
-                  </MDBCardBody>
-                </MDBCard>
-              </MDBCol>
-            </MDBRow>
-
-            <hr />
-            <Footer />
-          </MDBContainer>
-        </section>
+        <UserHomePageForm data={data} user={user} height={height} setHeight={setHeight}  fetchUser={fetchUser} />
       </MainLayout>
     );
   }
