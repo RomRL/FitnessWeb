@@ -56,6 +56,7 @@ router.post("/login", async (req, res) => {
     const enc = process.env.SECRET_KEY;
 
     if (usersLogedIn[user._id]) {
+      console.log("Email " ,email ,  " already logged in");
       return res.status(400).json({ message: "User already logged in" });
     }
     // The token contains information about the user's identity.
@@ -66,6 +67,7 @@ router.post("/login", async (req, res) => {
     usersLogedIn[user._id] = { token, loginTime: Date.now() };
     //call removeUserFromList after `1200 seconds 
     setTimeout(removeSpecificUserFromList, 1200000, user._id);
+    console.log("Email " ,email ,  " logged in successfully");
     res
       .status(200)
       .json({ token, userID: user._id, message: "logged in successfully" });
