@@ -59,13 +59,13 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ message: "User already logged in" });
     }
     // The token contains information about the user's identity.
-    const token = jwt.sign({ id: user._id }, enc, { expiresIn: "10s" });
+    const token = jwt.sign({ id: user._id }, enc, { expiresIn: "1200s" });
 
 
     //add users to the list of logged in users with their token and time  of login
     usersLogedIn[user._id] = { token, loginTime: Date.now() };
     //call removeUserFromList after `0 seconds 
-    setTimeout(removeSpecificUserFromList, 10000, user._id);
+    setTimeout(removeSpecificUserFromList, 1200000, user._id);
     console.log("usersLogedIn", usersLogedIn);
     res
       .status(200)

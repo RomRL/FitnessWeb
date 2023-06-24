@@ -87,7 +87,7 @@ export const register = async (
 //Logout
 export const logout_db = async () => {
   try {
-    const response = await createRequest("post", "/auth/logout", "");
+    await createRequest("post", "/auth/logout", "");
     return true;
   } catch (error) {
     console.error("Error logging out:", error);
@@ -119,7 +119,6 @@ export const updateHeight = async (height) => {
         height: height,
       }
     );
-
     return response.data;
   } catch (error) {
     console.error("Error updating height:", error);
