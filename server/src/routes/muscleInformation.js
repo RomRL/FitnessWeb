@@ -16,7 +16,7 @@ router.get("/:muscleName", validateToken, async (req, res) => {
         .status(400)
         .json({ message: "MusclesInformation does not exist" });
     }
-    console.log("MusclesInformation Sent");
+    console.log("MusclesInformation by name Sent");
     return res
       .status(200)
       .json({ musclesInformation, message: "All musclesInformation sent" });
