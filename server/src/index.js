@@ -3,7 +3,10 @@ import express from 'express';
 //Set Up Roles Between Client Server
 import cors from 'cors';
 //Manage DB
+//  general database operations and interacting with MongoDB
 import mongoose  from 'mongoose';
+// specifically used for managing session data in a MongoDB database. 
+import session from 'express-session';
 import { config } from 'dotenv';
 import {usersRouter} from './routes/users.js';
 import {trainingsRouter} from './routes/trainings.js';
@@ -11,7 +14,7 @@ import {muscleRouter} from './routes/muscleInformation.js';
 config();
 const app = express();
 const port = process.env.PORT || 5000; // Use environment variable or fallback to port 5000
-
+// Set up session middleware
 app.use(express.json());
 app.use(cors());
 app.use('/auth', usersRouter);
