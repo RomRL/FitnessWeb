@@ -66,7 +66,7 @@ function RegistrationForm({ handleRegistration }) {
 
                   <MDBCol >
                     <MDBValidationItem
-                      feedback="Please choose First name."
+                      feedback="First name"
                       invalid>
                       <MDBInput
                         value={firstName}
@@ -86,7 +86,7 @@ function RegistrationForm({ handleRegistration }) {
 
                   <MDBCol >
                     <MDBValidationItem
-                      feedback="Please choose a Last name."
+                      feedback="Last name"
                       invalid>
                       <MDBInput
                         value={lastName}
@@ -148,7 +148,7 @@ function RegistrationForm({ handleRegistration }) {
 
                   <MDBCol col="5">
                     <MDBValidationItem
-                      feedback="Choose height between 0-210"
+                      feedback="50 cm - 210 cm"
                       invalid>
                       <MDBInput
                         value={height}
@@ -170,7 +170,7 @@ function RegistrationForm({ handleRegistration }) {
 
                   <MDBCol >
                     <MDBValidationItem
-                      feedback="Choose Weight between 0-250"
+                      feedback=" 40 kg - 250 kg"
                       invalid>
                       <MDBInput
                         value={weight}

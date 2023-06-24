@@ -49,7 +49,7 @@ router.post("/muscleInformation", validateToken, async (req, res) => {
   }
 });
 
-// Get only name from all Training Programas that in the scema
+// Get only name from all Training Programas that in the scema -----------------------------------------
 router.get("/", validateToken, async (req, res) => {
   try {
     const musclesInformation = await MusclesInformation.find({}, { muscle: 1 });

@@ -1,5 +1,5 @@
 import React from "react";
-import { MDBRadio, MDBContainer } from "mdb-react-ui-kit";
+import { MDBRadio } from "mdb-react-ui-kit";
 //Radio button component
 //Used in the paged of the training and muscle pages
 //The component gets an array of options and a selected option and a function to handle the change
@@ -14,7 +14,7 @@ function RadioButton(props) {
   };
 
   return (
-    <MDBContainer>
+    <>
       {options.map((option) => (
         <MDBRadio
           key={option}
@@ -29,7 +29,7 @@ function RadioButton(props) {
           style={{ width: "100%" }}
         />
       ))}
-    </MDBContainer>
+    </>
   );
 }
 

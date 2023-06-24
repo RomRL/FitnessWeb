@@ -21,7 +21,6 @@ export default function HelpAndTitle(props) {
           ></InformativeModal>
         </MDBCol>
       </MDBRow>
-      <div className="d-flex justify-content-xl-evenly"></div>
     </>
   );
 }
