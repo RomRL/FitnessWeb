@@ -13,6 +13,7 @@ import {
   MDBDropdown,
   MDBCollapse,
 } from "mdb-react-ui-kit";
+import { logout_db } from "../../controller/requests";
 //Navigation bar for the website with the links to the different pages , the links are different if the user is logged in or not
 //The navigation bar is a component that is used in all the pages of the website
 //MainLayout.jsx is the main layout of the website and it contains the navigation bar
@@ -23,6 +24,7 @@ export function NavigationBar(props) {
   const navigate = useNavigate();
   //Logout function that removes the user id and the access token from the local storage and navigates to the login page
   const Logout = () => {
+    logout_db(window.localStorage.getItem("userId"));
     window.localStorage.removeItem("userId");
     window.localStorage.removeItem("access_token");
     window.localStorage.removeItem("selectedTrainingInfo");

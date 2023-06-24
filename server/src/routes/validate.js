@@ -1,11 +1,9 @@
 import jwt from "jsonwebtoken";
 import { config } from "dotenv";
 
-//validate thata the user is logged in and has a valid token
 //Config env variables
 config();
-//Validate token -> validate that the user is logged in and has a valid token
-//Only logged in users can access the routes that use this middleware
+//Validatetoken -> validate that the user is logged in and has a valid token
 export const validateToken = (req, res, next) => {
   const token = req.headers.authorization;
 
@@ -26,13 +24,13 @@ export const validateToken = (req, res, next) => {
         .json({ message: "Access denied, no token provided" });
     }
     //verify that the token is valid
-    const verified = jwt.verify(tokenWithoutBearer, enc);
+    const verified = jwt.verify(tokenWithoutBearer, enc); 
     req.user = verified;
     //add token to request
     req.token = tokenWithoutBearer;
     next();
   } catch (error) {
-    console.log("Invalid token provided by user id : ", req.user.id);
+    console.log("Invalid token provided ");
     res.status(400).json({ message: "Invalid token" });
   }
 };

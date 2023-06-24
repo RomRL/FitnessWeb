@@ -14,6 +14,14 @@ function LoginModal({ showModal, modalOption, modalMessage, handleModalClose, se
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {
+            modalOption === "logged in" && (
+              <p>
+                You are already logged in, please log out first.
+                Automatic log out to the last logged in user happens after 20 miniutes.
+              </p>
+            )
+          }
           {modalOption === "error" && (
             <p>
               Error occurred while trying to login, User Name or Password Incorrect {modalMessage}.

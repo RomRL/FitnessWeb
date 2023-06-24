@@ -11,7 +11,6 @@ import {muscleRouter} from './routes/muscleInformation.js';
 config();
 const app = express();
 const port = process.env.PORT || 5000; // Use environment variable or fallback to port 5000
-
 app.use(express.json());
 app.use(cors());
 app.use('/auth', usersRouter);

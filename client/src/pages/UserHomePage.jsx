@@ -116,7 +116,7 @@ function UserHomePage() {
     };
     fetchAllData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [height,]); // Empty dependency array to run the effect only once when the component mounts
+  }, [height]); // Empty dependency array to run the effect only once when the component mounts
 
   // eror in getting data or log in
   if (error && !loading) {
@@ -130,7 +130,13 @@ function UserHomePage() {
   if (!loading && !error) {
     return (
       <MainLayout>
-        <UserHomePageForm data={data} user={user} height={height} setHeight={setHeight}  fetchUser={fetchUser} />
+        <UserHomePageForm
+          data={data}
+          user={user}
+          height={height}
+          setHeight={setHeight}
+          fetchUser={fetchUser}
+        />
       </MainLayout>
     );
   }

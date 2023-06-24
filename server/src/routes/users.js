@@ -7,6 +7,7 @@ import { validateToken } from "./validate.js";
 const router = express.Router(); //Create Router
 //Get env variables
 config();
+const usersLogedIn = {};
 
 //Register
 router.post("/register", async (req, res) => {
@@ -49,14 +50,24 @@ router.post("/login", async (req, res) => {
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
-
     if (!isMatch) {
       return res.status(400).json({ message: "Incorrect password" });
     }
     const enc = process.env.SECRET_KEY;
+
+    if (usersLogedIn[user._id]) {
+      console.log("Email " ,email ,  " already logged in");
+      return res.status(400).json({ message: "User already logged in" });
+    }
     // The token contains information about the user's identity.
     const token = jwt.sign({ id: user._id }, enc, { expiresIn: "1200s" });
-    console.log("User logged in successfully");
+
+
+    //add users to the list of logged in users with their token and time  of login
+    usersLogedIn[user._id] = { token, loginTime: Date.now() };
+    //call removeUserFromList after `1200 seconds 
+    setTimeout(removeSpecificUserFromList, 1200000, user._id);
+    console.log("Email " ,email ,  " logged in successfully");
     res
       .status(200)
       .json({ token, userID: user._id, message: "logged in successfully" });
@@ -65,6 +76,34 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 });
+//logout and remove user from the list of logged in users
+router.post("/logout", validateToken, async (req, res) => {
+  try {
+    //get the token from the request
+    const token = req.token;
+    const userID = req.user.id;
+    removeSpecificUserFromList(userID);
+    res.status(200).json({ message: "User logged out successfully" });
+  } catch (error) {
+    console.error("Error logging out user:", error);
+    res.status(500).json({ message: "Server Error" });
+  }
+});
+
+
+function removeSpecificUserFromList(userID) {
+  console.log("Token " , usersLogedIn[userID].token , "-> Logged out")
+  //remove user from the list of logged in users if the user is logged in for more than 10 seconds
+  delete usersLogedIn[userID];
+
+}
+
+
+
+
+
+
+
 
 // //Logout and remove token of user
 // router.post("/logout",validateToken, async (req, res) => {

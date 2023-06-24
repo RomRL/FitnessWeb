@@ -7,8 +7,7 @@ const format = {
 };
 
 //Create request with parameters
-const createRequest = (method, url, data) => {
-
+const createRequest = (method, url, data) => {  
   return axios({
     method: method,
     url: `${format.baseUrl}${url}`,
@@ -56,8 +55,9 @@ export const login = async (email, password) => {
 
     return response;
   } catch (error) {
-    console.error("Cant Log In",error);
-    return false;
+    const response = error.response.data.message;
+    return response;
+    
   }
 };
 //Register
@@ -87,8 +87,8 @@ export const register = async (
 //Logout
 export const logout_db = async () => {
   try {
-    const response = await createRequest("post", "/auth/logout", "");
-    return response.data;
+    await createRequest("post", "/auth/logout", "");
+    return true;
   } catch (error) {
     console.error("Error logging out:", error);
     return false;
@@ -97,18 +97,14 @@ export const logout_db = async () => {
 
 //Get user
 export const getUser = async () => {
-  try {
-    console.log("access_token",localStorage.getItem("access_token"));
-    
+  try {    
     const response = await createRequest(
       "get",
       `/auth`,
       ""
     );
-  console.log("response",response);
     return response.data.user;
   } catch (error) {
-
     console.error("Error fetching user:", error);
     return false;
   }
@@ -123,7 +119,6 @@ export const updateHeight = async (height) => {
         height: height,
       }
     );
-
     return response.data;
   } catch (error) {
     console.error("Error updating height:", error);

@@ -23,12 +23,12 @@ import getURL from "..//..//assets/assetsUrls.js";
 import ExpertCard from "../UserHomePageComp/ExpertCard.jsx";
 
 import {
-    MDBCol,
-    MDBContainer,
-    MDBRow,
-    MDBCard,
-    MDBCardBody,
-    MDBCardHeader,
+  MDBCol,
+  MDBContainer,
+  MDBRow,
+  MDBCard,
+  MDBCardBody,
+  MDBCardHeader,
 } from "mdb-react-ui-kit";
 
 // UserHomePageForm function 

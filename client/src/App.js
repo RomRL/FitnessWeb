@@ -13,7 +13,13 @@ function App() {
   return (
     <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          //if the user is logged in the user page will be loaded
+          //if not the home page will be loaded
+          {localStorage.getItem("access_token") ? (
+            <Route path="/" element={<UserHomePage />} />
+          ) : (
+            <Route path="/" element={<HomePage />} />   
+          )}
           <Route path="userpage" element={<UserHomePage />} />
           <Route path="training" element={<TrainingForm />} />
           <Route path="auth/login" element={<Login />} />
