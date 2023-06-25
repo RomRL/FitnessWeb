@@ -23,102 +23,116 @@ import getURL from "..//..//assets/assetsUrls.js";
 import ExpertCard from "../UserHomePageComp/ExpertCard.jsx";
 
 import {
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-  MDBCard,
-  MDBCardBody,
-  MDBCardHeader,
+    MDBCol,
+    MDBContainer,
+    MDBRow,
+    MDBCard,
+    MDBCardBody,
+    MDBCardHeader,
 } from "mdb-react-ui-kit";
 
 // UserHomePageForm function 
 function UserHomePageForm({ data, user, height, setHeight, fetchUser }) {
-  console.log("data", data);
+    console.log("data", data);
     return (
-            <MDBContainer className="py-4">
-                <MDBRow className="py-2 g-4">
-                    {/* Profile Picture Cube */}
-                    <ProfilePicture user={user} />
-                    <MDBCol md="9">
-                        {/* User Details Card  */}
-                        <DetailsCard
-                            user={user}
-                            height={height}
-                            setHeight={setHeight}
-                            training={data.currentTraining}
-                            color={data.normalWeight.color}
-                            fetchUser={fetchUser}
-                        />
-                        {/* Include Max and Min Weight */}
-                    </MDBCol>
-                </MDBRow>
-
-                {/* first row with 3 cards */}
-                <MDBRow className="py-4 g-4">
-                    {/*Weight Statistics card */}
-                    <BigCard
-                        title="Weight Statistics"
-                        // set text to be 'You need to work one more time to see the data' if weights is empty else set it to the data
-                        text={
-                            data.weights.length === 0
-                                ? "You need to work one more time to see the data"
-                                : `#Max Weight $${data.max.toFixed(
-                                    2
-                                )} kg$  \n #Min Weight $${data.min.toFixed(
-                                    2
-                                )} kg$ \n #Average Weight $${data.average
-                                } kg$ \n #Weight Loss $${data.weightLoss}$ \n`
-                        }
-                        img_src={getURL("weight")}
+        <MDBContainer className="py-4">
+            <MDBRow className="py-2 g-4">
+                {/* Profile Picture Cube */}
+                <ProfilePicture user={user} />
+                <MDBCol md="9">
+                    {/* User Details Card  */}
+                    <DetailsCard
+                        user={user}
+                        height={height}
+                        setHeight={setHeight}
+                        training={data.currentTraining}
+                        color={data.normalWeight.color}
+                        fetchUser={fetchUser}
                     />
-                    {/* Bmi Statistics card */}
-                    <BigCard
-                        title="Bmi Statistics"
-                        text={
-                            data.weights.length === 0
-                                ? "You need to work one more time to see the data"
-                                : data.normalWeight.message
-                        }
-                        img_src={getURL("statistics")}
-                        picture="https://nutrition.health.gov.lk/wp-content/uploads/2020/12/BMI-1024x569.png"
-                        fillPicture={true}
-                    />
-                    {/* Popular Training card */}
-                    <BigCard
-                        title="Popular Training"
-                        text={
-                            data.weights.length === 0
-                                ? "You need to work one more time to see the data"
-                                : `$${data.popularName}$  #Current Training $${data.currentTraining}$  #Weight Loss Per Program ${data.weightLossPerProgram} \n `
-                        }
-                        img_src={getURL("workout")}
-                    />
-                </MDBRow>
+                    {/* Include Max and Min Weight */}
+                </MDBCol>
+            </MDBRow>
 
-                {/* second row with 2 cards */}
-                <MDBRow className=" row-cols-md-2 g-4 py-4">
-                    <MDBCol md="4">
+            {/* first row with 3 cards */}
+            <MDBRow className="py-4 g-4">
+                {/*Weight Statistics card */}
+                <BigCard
+                    title="Weight Statistics"
+                    // set text to be 'You need to work one more time to see the data' if weights is empty else set it to the data
+                    text={
+                        data.weights.length === 0
+                            ? "You need to work one more time to see the data"
+                            : `#Max Weight $${data.max.toFixed(
+                                2
+                            )} kg$  \n #Min Weight $${data.min.toFixed(
+                                2
+                            )} kg$ \n #Average Weight $${data.average
+                            } kg$ \n #Weight Loss $${data.weightLoss}$ \n`
+                    }
+                    img_src={getURL("weight")}
+                />
+                {/* Bmi Statistics card */}
+                <BigCard
+                    title="Bmi Statistics"
+                    text={
+                        data.weights.length === 0
+                            ? "You need to work one more time to see the data"
+                            : data.normalWeight.message
+                    }
+                    img_src={getURL("statistics")}
+                    picture="https://nutrition.health.gov.lk/wp-content/uploads/2020/12/BMI-1024x569.png"
+                    fillPicture={true}
+                />
+                {/* Popular Training card */}
+                <BigCard
+                    title="Popular Training"
+                    text={
+                        data.weights.length === 0
+                            ? "You need to work one more time to see the data"
+                            : `$${data.popularName}$  #Current Training $${data.currentTraining}$  #Weight Loss Per Program ${data.weightLossPerProgram} \n `
+                    }
+                    img_src={getURL("workout")}
+                />
+            </MDBRow>
 
-                        {/*Usage percentage of programs graph */}
+            {/* second row with 2 cards */}
+            <MDBRow className=" row-cols-md-2 g-4 py-4">
+                <MDBCol md="4">
+
+                    {/*Usage percentage of programs graph */}
+                    <MDBCard className="h-100">
+                        <MDBCardHeader className="fw-bolder text-center">
+                            Usage percentage of programs
+                        </MDBCardHeader>
+                        <MDBCardBody>
+                            {data.weights.length === 0 ? (
+                                <p>You need to work one more time to see the data</p>
+                            ) : (
+                                <ChartTrainigGraph
+                                    selectedTrainings={user.selectedTrainings}
+                                />
+                            )}
+                        </MDBCardBody>
+                    </MDBCard>
+                </MDBCol>
+
+                {/* Expert card that sgow the table*/}
+                {data.weights.length < 3 ? (
+                    <MDBCol md="8">
                         <MDBCard className="h-100">
                             <MDBCardHeader className="fw-bolder text-center">
-                                Usage percentage of programs
+                                Expert
                             </MDBCardHeader>
                             <MDBCardBody>
-                                {data.weights.length === 0 ? (
-                                    <p>You need to work one more time to see the data</p>
-                                ) : (
-                                    <ChartTrainigGraph
-                                        selectedTrainings={user.selectedTrainings}
-                                    />
-                                )}
+                                <p>You need to work at least 3 trainings</p>
                             </MDBCardBody>
                         </MDBCard>
                     </MDBCol>
-
-                    {/* Expert card that sgow the table*/}
+                    
+                ) : (
                     <ExpertCard data={data.averageWeightLossPerProgram} />
-                </MDBRow>
+                )}
+                    </MDBRow>
                 {/* third row with 2 cards */}
                 <MDBRow className="py-4 g-4">
 
@@ -161,7 +175,7 @@ function UserHomePageForm({ data, user, height, setHeight, fetchUser }) {
 
                 <hr />
                 <Footer />
-            </MDBContainer>
+        </MDBContainer>
     );
 }
 export default UserHomePageForm;
