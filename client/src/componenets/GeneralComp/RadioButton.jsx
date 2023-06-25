@@ -26,7 +26,7 @@ function RadioButton(props) {
           checked={option === selectedOption}
           wrapperTag="span"
           onChange={() => handleOptionChange(option)}
-          style={{ width: "100%" }}
+          
         />
       ))}
     </>

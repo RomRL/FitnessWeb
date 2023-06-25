@@ -89,7 +89,7 @@ const MuscleInformation = () => {
   if (!loading && !error) {
     return (
       <MainLayout>
-        <MDBContainer>
+        <MDBContainer className="py-4">
           <HelpAndTitle
             title="Muscle Information"
             button_name="Need Help ?"
