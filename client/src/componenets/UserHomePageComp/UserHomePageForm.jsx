@@ -104,9 +104,9 @@ function UserHomePageForm({ data, user, height, setHeight, fetchUser }) {
                         <MDBCardHeader className="fw-bolder text-center">
                             Usage percentage of programs
                         </MDBCardHeader>
-                        <MDBCardBody>
+                        <MDBCardBody >
                             {data.weights.length === 0 ? (
-                                <p>You need to work one more time to see the data</p>
+                                <p className="text-center fw-bolder">You need to work one more time to see the data</p>
                             ) : (
                                 <ChartTrainigGraph
                                     selectedTrainings={user.selectedTrainings}
@@ -124,7 +124,7 @@ function UserHomePageForm({ data, user, height, setHeight, fetchUser }) {
                                 Expert
                             </MDBCardHeader>
                             <MDBCardBody>
-                                <p>You need to work at least 3 trainings</p>
+                                <p className="text-center fw-bolder">You need to work at least 3 trainings</p>
                             </MDBCardBody>
                         </MDBCard>
                     </MDBCol>
@@ -143,8 +143,8 @@ function UserHomePageForm({ data, user, height, setHeight, fetchUser }) {
                                 Weights Per Training
                             </MDBCardHeader>
                             <MDBCardBody>
-                                {data.weights.length === 0 ? (
-                                    <p>You need to work one more time to see the data</p>
+                                {data.weights.length < 2 ? (
+                                    <p className="text-center fw-bolder">You need to work one more time to see the data</p>
                                 ) : (
                                     <GraphComponent
                                         selectedTrainings={user.selectedTrainings}
@@ -156,13 +156,13 @@ function UserHomePageForm({ data, user, height, setHeight, fetchUser }) {
 
                     {/* Total Days Per Program graph */}
                     <MDBCol>
-                        <MDBCard>
+                        <MDBCard >
                             <MDBCardHeader className="fw-bolder text-center">
                                 Total Days Per Program
                             </MDBCardHeader>
-                            <MDBCardBody>
-                                {data.weights.length === 0 ? (
-                                    <p>You need to work one more time to see the data</p>
+                            <MDBCardBody >
+                                {data.weights.length < 2 ? (
+                                    <p className="text-center fw-bolder">You need to work one more time to see the data</p>
                                 ) : (
                                     <DayesPerProgramGraph
                                         dataArr={data.averageWeightLossPerProgram}
