@@ -156,20 +156,9 @@ function findMaxWeightLoss(weightLossPerProgram) {
   }
   return maxProgram;
 }
-
-//Calculate the days between two dates
-
-// export function calculateDays(lastDate, firstDate) {
-//     const oneDay = 24 * 60 * 60 * 1000;
-//     const firstDateObj = new Date(firstDate);
-//     const lastDateObj = new Date(lastDate);
-//     return Math.round(Math.abs((firstDateObj - lastDateObj) / oneDay));
-// }
-
 // Calculate the days In Each Program
 export function calculateDaysInEachProgram(dates, selectedTrainings) {
-  // this is the data foramt
-  //step 1: modify the data format to be like this yyyy-mm-dd
+  //modify the data format to be like this yyyy-mm-dd
   const modifiedData = [];
   for (let i = 0; i < dates.length; i++) {
     const training = dates[i].split(","); // Split by comma
@@ -178,11 +167,7 @@ export function calculateDaysInEachProgram(dates, selectedTrainings) {
     const modifiedTraining = `${date},${name}`;
     modifiedData.push(modifiedTraining);
   }
-  // Step 2: Calculate total days in each program , HOW ?
-  // Cardio Workout: 4 days : started at 2023-06-19, ended at 2023-06-22 => 3 days + started at 2023-06-22 ended at 2023-06-22 => 4 days
-  // HIIT Circuit: 1 day : started at 2023-06-22, ended at 2023-06-22 => 1 day
-  // Strength Training: 1 day : started at 2023-06-22, ended at 2023-06-22 => 1 day
-  // Calculate the days in each program using the modified data array
+  // Calculate total days in each program 
   const daysInEachProgram = {};
   for (let i = 0; i < modifiedData.length - 1; i++) {
     const currentTraining = modifiedData[i];
@@ -197,8 +182,7 @@ export function calculateDaysInEachProgram(dates, selectedTrainings) {
       daysInEachProgram[currentTraining.split(",")[1]] = days;
     }
   }
-  //Step 3 : For each program, calculate the average weight loss per day using
-  //Calculate the weight loss per program
+  //For each program, calculate the average weight loss per day using the function calculateWeightLossPerProgram
   const weightLossPerProgram = calculateWeightLossPerProgram(selectedTrainings);
   // Step 4: Calculate the average weight loss per day
   const averageWeightLossPerDay = {};
@@ -213,19 +197,14 @@ export function calculateDaysInEachProgram(dates, selectedTrainings) {
     .forEach((key) => {
       sortedAverageWeightLossPerDay[key] = averageWeightLossPerDay[key];
     });
-
-  // Average weight loss per day: {Cardio Workout: 21.333333333333332, " HIIT Circuit": 1}
-  // Step 5: Find the program with the most average weight loss per day
   //min is the last element key in the sorted array
   const min = Object.keys(sortedAverageWeightLossPerDay)[
     Object.keys(sortedAverageWeightLossPerDay).length - 1
   ];
   
-
   //max is the first element key in the sorted array
   const max = Object.keys(sortedAverageWeightLossPerDay)[0];
-  // Max average weight loss per day: HIIT Circuit
-  // Step 6: Return all the data
+  // return the result 
   return {
     daysInEachProgram: daysInEachProgram,
     weightLossPerProgram: weightLossPerProgram,
