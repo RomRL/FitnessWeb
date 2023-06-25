@@ -5,9 +5,9 @@ import axios from "axios";
 import config from '../config.json';
 
 const format = {
-  //baseurl from the config file
+  //Running the server on the deploy server on render.com
   baseUrl: config.deploy_server_url,
-  //If you want to run the server locally, use this url
+  //***If you want to run the server locally, use this url**
   // baseUrl:config.local_server_url,
 };
 
