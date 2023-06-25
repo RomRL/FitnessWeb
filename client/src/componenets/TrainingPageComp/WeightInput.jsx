@@ -16,6 +16,7 @@ export default function WeightInput(props) {
   const { addTrainingProgram } = props;
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("---",newWeight);
     addTrainingProgram(newWeight);
   };
 
@@ -30,13 +31,15 @@ export default function WeightInput(props) {
           <MDBInput
             label="Enter new weight"
             type="number"
-            className="form-control input-primary"
+            name="weight"
+            step={0.01}
             required
             id="newWeight"
-            min="40"
-            max="250"
+            min={40}
+            max={250}
             value={newWeight}
             onChange={(event) => setNewWeight(event.target.value)}
+    
           />
         </MDBValidationItem>
         <div className="d-flex mt-3">

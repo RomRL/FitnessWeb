@@ -9,7 +9,7 @@ import { MDBCard, MDBCol, MDBCardBody } from "mdb-react-ui-kit";
 export default function ExpertCard(props) {
   const { data } = props;
   //  Format the string to be displayed in the card
-
+  console.log("expert card data", data)
   return (
 
     <MDBCol md='8' >

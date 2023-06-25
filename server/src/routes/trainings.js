@@ -46,13 +46,13 @@ router.post("/", validateToken, async (req, res) => {
     const selectedTraining = {
       trainingId: training._id,
       name: training.name,
-      weight: parseInt(new_weight, 10),
-      bmi: BMICalculation(parseInt(new_weight, 10), user.height),
+      weight: new_weight,
+      bmi: BMICalculation(new_weight, user.height),
       startDate: new Date(),
     };
     console.log("selectedTraining", selectedTraining);
     user.selectedTrainings.push(selectedTraining);
-    user.weight = parseInt(new_weight, 10);
+    user.weight = new_weight;
     user.bmi = BMICalculation(user.weight, user.height);
     await user.save();
     console.log("Add training to User ID : ", req.user.id);
