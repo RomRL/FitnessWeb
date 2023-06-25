@@ -12,7 +12,7 @@
  * - ExpertCard.jsx
  */
 import React from "react";
-import Footer from "../General/Footer.jsx";
+import Footer from "../GeneralComp/Footer.jsx";
 import ProfilePicture from "../UserHomePageComp/ProfilePicture.jsx";
 import GraphComponent from "../UserHomePageComp/WeightsPerDateGraph.jsx";
 import DayesPerProgramGraph from "../UserHomePageComp/DayesPerProgramGraph.jsx";
@@ -34,7 +34,6 @@ import {
 // UserHomePageForm function 
 function UserHomePageForm({ data, user, height, setHeight, fetchUser }) {
     return (
-        <section style={{ backgroundColor: "transpert" }}>
             <MDBContainer className="py-4">
                 <MDBRow className="py-2 g-4">
                     {/* Profile Picture Cube */}
@@ -162,7 +161,6 @@ function UserHomePageForm({ data, user, height, setHeight, fetchUser }) {
                 <hr />
                 <Footer />
             </MDBContainer>
-        </section>
     );
 }
 export default UserHomePageForm;

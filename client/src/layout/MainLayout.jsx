@@ -1,5 +1,5 @@
 import React from "react";
-import NavigationBar from "../componenets/General/NavigationBar.jsx";
+import NavigationBar from "../componenets/GeneralComp/NavigationBar.jsx";
 //This component is used to create a layout for the main pages of the website
 //Used in every page except for the login and register pages and the home page 
 //Children is the page that is being loaded in the layout 

@@ -1,62 +1,20 @@
 import React from "react";
 import MainLayout from "../layout/MainLayout.jsx";
-import AboutUsCard from "../componenets/AboutUsComp/AboutCard.jsx";
-import { MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import AboutGeneral from "../componenets/AboutUsComp/AboutGeneral.jsx";
-import getURL from "../assets/assetsUrls.js";
+import AboutUsOurTeam from "../componenets/AboutUsComp/AboutUsOurTeam.jsx";
+import AboutUsHeader from "../componenets/AboutUsComp/AboutUsHeader.jsx";
+import AboutUsOurWork from "../componenets/AboutUsComp/AboutUsOurWork.jsx";
+import Footer from "../componenets/GeneralComp/Footer.jsx";
 //Home page component that is used to display the home page of the website
 //Includes the jumbotron and the main section of the home page
 function AboutUs() {
   return (
     <MainLayout>
-      <MDBContainer fluid>
-        {/* Main Navigation */}
-        {/* Intro Section */}
-        <div
-          id="home"
-          className="view jarallax bg"
-          data-jarallax='{"speed": 0.2}'
-          style={{
-            backgroundImage:
-              "url(https://mdbootstrap.com/img/Photos/Others/img%20%2853%29.jpg)",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "center center",
-            height: "60vh",
-          }}
-        ></div>
-        <MDBContainer fluid>
-          {/* Main Navigation */}
-          {/* Intro Section */}
-
-
-          {/* Team Section */}
-          <section className="text-center py-5">
-            <MDBContainer>
-              <AboutGeneral></AboutGeneral>
-              <MDBRow>
-                <AboutUsCard
-                  git={getURL("romGit")}
-                  name={"Rom Harel"}
-                  number={"972547575612"}
-                  linkdin={getURL("romLinkDin")}
-                  img={getURL("rom")}
-                />
-                <AboutUsCard
-                  className='fade'
-                  git={getURL("danielGit")}
-                  name={"Daniel Maman"}
-                  number={"972503809280"}
-                  linkdin={getURL("danielLinkDin")}
-                  img={getURL("daniel")}
-                />
-
-
-              </MDBRow>
-            </MDBContainer>
-          </section>
-        </MDBContainer>
-      </MDBContainer>
+      <AboutUsHeader />
+      <AboutGeneral />
+      <AboutUsOurTeam />
+      <AboutUsOurWork />
+      <Footer/>
     </MainLayout>
   );
 }
