@@ -1,5 +1,5 @@
 /**
- * @file This file exports the InformativeModal component which is used to create a modal with
+ * This file exports the InformativeModal component which is used to create a modal with
  *  a button that opens it and a headline and body that are passed as props
  */
 import React, { useState } from "react";

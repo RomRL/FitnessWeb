@@ -1,3 +1,8 @@
+/**
+ * AboutUsOurWork.jsx is used to render the our work section in about us page
+ * This is the last section in the about us page
+ * its shows the user what we did in this project
+ */
 import React from "react";
 import { MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import getURL from "../../assets/assetsUrls";

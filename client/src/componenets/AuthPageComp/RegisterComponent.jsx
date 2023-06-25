@@ -1,5 +1,5 @@
 /**
- * @file RegisterComponent.jsx is the register page for the application
+ * RegisterComponent.jsx is the register page for the application
  * It is used in App.js
  * It shows the registration form and handles the registration process.
  * It uses RegistrationForm.jsx and RegistrationModal.jsx

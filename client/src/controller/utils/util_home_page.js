@@ -1,3 +1,7 @@
+/**
+ * util_home_page.js
+ * this file contains all the functions that are used in the user home page
+ */
 // Calculate the average weight in the training
 export function calculateAverage(weights) {
   let sum = 0;

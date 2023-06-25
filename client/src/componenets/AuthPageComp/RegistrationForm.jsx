@@ -1,5 +1,5 @@
 /**
- * @file RegistrationForm.jsx is the registration form component for the AuthPageComp.
+ * RegistrationForm.jsx is the registration form component for the AuthPageComp.
  * It is used in RegisterComponent.jsx
  * Ir showes the registration form and handles the registration process.
  */

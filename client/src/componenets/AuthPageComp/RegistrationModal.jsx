@@ -1,6 +1,6 @@
 
 /**
- * @file RegistrationModal.jsx is a modal component that is used to display the registration status
+ * RegistrationModal.jsx is a modal component that is used to display the registration status
  * of the user. It is used in RegisterComponent.jsx
  * 
  */

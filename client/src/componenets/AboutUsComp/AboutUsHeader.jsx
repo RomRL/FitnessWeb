@@ -1,3 +1,7 @@
+/**
+ * @file AboutUsHeader.jsx is the header component for the AboutUsComp component.
+ * This is the first section in the about us page
+ */
 import React from "react";
 
 function AboutUsHeader() {

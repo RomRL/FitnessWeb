@@ -1,6 +1,6 @@
 /**
- * @fileoverview Login Component
- * @description This component is used to login to the app
+ * Login Component
+ * This component is used to login to the app
  * this component is the main component that handles the login process
  * it uses LoginForm.jsx and LoginModal.jsx
  */

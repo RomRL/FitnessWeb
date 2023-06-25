@@ -1,3 +1,8 @@
+/**
+ *  training page
+ *  this page is used to show the user the training videos and the training form
+ * it uses the TrainingVideos.jsx and TrainingForm.jsx components
+ */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MainLayout from '../layout/MainLayout';
@@ -5,11 +10,13 @@ import RadioButton from '../components/RadioButton';
 import TrainingVideos from '../components/TrainingVideos';
 import TrainingForm from '../components/TrainingForm';
 
+// AllTrainings Component - this component is used to show the user the training videos and the training form
 export function AllTrainings() {
   const [selectedTraining, setSelectedTraining] = useState();
   const [trainings, setTrainings] = useState([]);
   const [newWeight, setNewWeight] = useState();
-
+  
+  // Fetch all trainings from the server
   useEffect(() => {
     const fetchTrainings = async () => {
       try {
@@ -24,11 +31,12 @@ export function AllTrainings() {
     fetchTrainings();
   }, []);
 
+  // Handle training selection 
   const handleTrainingChange = (option) => {
     const selectedTraining = trainings.find((training) => training.name === option);
     setSelectedTraining(selectedTraining);
   };
-
+  // Add training program to the server 
   const addTrainingProgram = async () => {
     try {
       await axios.post('https://fitness-api-974s.onrender.com/trainings', {
@@ -43,7 +51,6 @@ export function AllTrainings() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle form submission logic here
   };
 
   return (
