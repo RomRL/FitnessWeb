@@ -134,11 +134,11 @@ export function calculateWeightLossPerProgram(selectedTrainings, sentance) {
   for (const program in weightLossPerProgram) {
     if (weightLossPerProgram[program] < 0) {
       Result += `$You  lost ${-1 *
-        weightLossPerProgram[program]} kg in ${program}.$`;
+        weightLossPerProgram[program].toFixed(2)} kg in ${program}.$`;
     } else {
       Result += `$You gained ${Math.abs(
         weightLossPerProgram[program]
-      )} kg in ${program}.$`;
+      ).toFixed(2)} kg in ${program}.$`;
     }
   }
   let Best = findMaxWeightLoss(weightLossPerProgram);
