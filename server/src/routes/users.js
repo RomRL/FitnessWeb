@@ -90,8 +90,11 @@ router.post("/logout", validateToken, async (req, res) => {
   }
 });
 
-
+//remove user from the list of logged in users
 function removeSpecificUserFromList(userID) {
+  if ( !usersLogedIn[userID] ) {
+    return;
+  }
   console.log("Token " , usersLogedIn[userID].token , "-> Logged out")
   //remove user from the list of logged in users if the user is logged in for more than 10 seconds
   delete usersLogedIn[userID];
