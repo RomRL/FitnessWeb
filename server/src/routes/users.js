@@ -104,6 +104,7 @@ function removeSpecificUserFromList(userID) {
 
 //get user by id
 router.get("/", validateToken, async (req, res) => {
+  //print to the console the user id for app / 
   const userID = req.user.id;
   try {
     const user = await UserModel.findById(userID);

@@ -29,3 +29,21 @@ mongoose
   .catch((error) => {
     console.error('Error connecting to MongoDB:', error);
   });
+
+  //show the console log of the server as html format
+
+  //show the console log of the server as json format
+  app.get('/', (req, res) => {
+    res.send({ message: 'Server is ready' });
+  }
+  );
+  //for every other request that is not defined, we will get this message
+  app.use((req, res, next) => {
+    res.status(404).send({ message: `Not Found ${req.originalUrl}` });
+  }
+  );
+  app.use((err, req, res, next) => {
+    res.status(500).send({ message: err.message });
+  }
+  );
+  
