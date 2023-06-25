@@ -18,7 +18,7 @@ const createRequest = (method, url, data) => {
 
 };
 
-//----------------------Training----------------------//
+//-----------------------Training-----------------------//
 //Get all trainings
 export const getTrainings = async () => {
   try {

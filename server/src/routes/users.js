@@ -59,7 +59,7 @@ router.post("/login", async (req, res) => {
       console.log("Email " ,email ,  " already logged in");
       return res.status(400).json({ message: "User already logged in" });
     }
-    // The token contains information about the user's identity.
+    // The token contains information about the user's identity. expors in 20 minutes
     const token = jwt.sign({ id: user._id }, enc, { expiresIn: "1200s" });
 
 
@@ -90,13 +90,13 @@ router.post("/logout", validateToken, async (req, res) => {
   }
 });
 
-//remove user from the list of logged in users
+//remove user from the list of logged in users if the user is logged in for more  than 20 minutes
 function removeSpecificUserFromList(userID) {
   if ( !usersLogedIn[userID] ) {
     return;
   }
   console.log("Token " , usersLogedIn[userID].token , "-> Logged out")
-  //remove user from the list of logged in users if the user is logged in for more than 10 seconds
+  //remove user from the list of logged in users if the user is logged in for more than 20 minutes
   delete usersLogedIn[userID];
 
 }
