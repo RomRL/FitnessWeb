@@ -4,7 +4,6 @@ import { MDBBtn, MDBIcon, MDBCol, MDBRow } from "mdb-react-ui-kit";
 function AboutUsCard(props) {
   const { name, number, img, linkdin, git } = props;
   return (
-   
       <MDBCol>
         <div className="avatar mx-auto">
           <img

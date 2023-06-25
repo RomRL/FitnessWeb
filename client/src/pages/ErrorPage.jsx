@@ -1,5 +1,5 @@
 import React from "react";
-import Spinner from "../componenets/General/Spinner";
+import Spinner from "../componenets/GeneralComp/Spinner";
 import MainLayout from "../layout/MainLayout.jsx";
 
 

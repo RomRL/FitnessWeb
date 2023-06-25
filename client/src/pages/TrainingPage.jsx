@@ -13,9 +13,9 @@ import InstructionsFormatter from "../componenets/TrainingPageComp/InstructionsF
 import TrainingModal from "../componenets/TrainingPageComp/TrainingPageModal.jsx";
 import { getTrainings, addTrainingToUser } from "../controller/requests.js";
 import WeightInput from "../componenets/TrainingPageComp/WeightInput.jsx";
-import Footer from "../componenets/General/Footer.jsx";
-import HelpAndTitle from "../componenets/General/HelpAndTtile.jsx";
-import RadioButton from "../componenets/General/RadioButton.jsx";
+import Footer from "../componenets/GeneralComp/Footer.jsx";
+import HelpAndTitle from "../componenets/GeneralComp/HelpAndTtile.jsx";
+import RadioButton from "../componenets/GeneralComp/RadioButton.jsx";
 import { MDBContainer } from "mdb-react-ui-kit";
 
 //Training page component that is used to display the training page of the website

@@ -13,8 +13,8 @@ import {
 } from "../controller/requests.js";
 import ErrorPage from "./ErrorPage.jsx";
 import MIMainComponent from "../componenets/MuscleInformationComp/MIMainComponent.jsx";
-import Footer from "../componenets/General/Footer.jsx";
-import HelpAndTitle from "../componenets/General/HelpAndTtile.jsx";
+import Footer from "../componenets/GeneralComp/Footer.jsx";
+import HelpAndTitle from "../componenets/GeneralComp/HelpAndTtile.jsx";
 import { MDBContainer } from "mdb-react-ui-kit";
 
 // MuscleInformation page component that is used to display the MuscleInformation page of the website

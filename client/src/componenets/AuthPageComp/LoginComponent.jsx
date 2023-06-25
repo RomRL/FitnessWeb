@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import LoginModal from "./LoginModal";
 import MainLayout from "../../layout/MainLayout";
-import Footer from "..//General/Footer.jsx";
+import Footer from "..//GeneralComp/Footer.jsx";
 import "..//..//assets/App.css";
 import { login } from "../../controller/requests";
 

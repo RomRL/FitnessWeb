@@ -11,7 +11,7 @@ import {
   MDBCardBody,
 } from "mdb-react-ui-kit";
 import RowOfDetails from "./RowOfDetails";
-import HighetModal from "../General/HighetModal";
+import HighetModal from "../GeneralComp/HighetModal";
 
 export default function DetailsCard(props) {
   const { user, training, height, setHeight, color,fetchUser } = props;

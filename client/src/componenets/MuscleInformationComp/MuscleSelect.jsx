@@ -5,7 +5,7 @@
  *  It uses RadioButton.jsx component for showing the list of muscles
  */
 import React from 'react';
-import RadioButton from '../General/RadioButton';
+import RadioButton from '../GeneralComp/RadioButton';
 
 // MuscleSelect Component
 function MuscleSelect({ musclesNames, muscle, handleMuscleChange }) {

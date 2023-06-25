@@ -12,7 +12,7 @@
  * - ExpertCard.jsx
  */
 import React from "react";
-import Footer from "../General/Footer.jsx";
+import Footer from "../GeneralComp/Footer.jsx";
 import ProfilePicture from "../UserHomePageComp/ProfilePicture.jsx";
 import GraphComponent from "../UserHomePageComp/WeightsPerDateGraph.jsx";
 import DayesPerProgramGraph from "../UserHomePageComp/DayesPerProgramGraph.jsx";
