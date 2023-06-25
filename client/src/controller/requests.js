@@ -1,9 +1,14 @@
 //This page will include all the requests to the backend
 
 import axios from "axios";
-const format = {
-   baseUrl: "https://fitness-api-974s.onrender.com",
+//config file include the baseurl is in the root folder
+import config from '../config.json';
 
+const format = {
+  //baseurl from the config file
+  baseUrl: config.deploy_server_url,
+  //If you want to run the server locally, use this url
+  // baseUrl:config.local_server_url,
 };
 
 //Create request with parameters
