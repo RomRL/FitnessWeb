@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+
 //SCHEMA FOR USER IN THE DATABASE
 //SELECTED TRAININGS IS AN ARRAY OF OBJECTS THAT CONTAINS THE TRAINING ID, NAME, WEIGHT, BMI AND START DATE
 const UserSchema = new mongoose.Schema({   

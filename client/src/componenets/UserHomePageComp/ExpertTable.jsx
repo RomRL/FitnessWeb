@@ -4,6 +4,7 @@ import { MDBTable, MDBIcon, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit'
 
 export default function ExpertTable(props) {
   const { data } = props;
+  console.log("--data" , data);
 
   // table it will be look like this
   //  #	Program Name | averageWeightLossPerDay | daysInEachProgram | weightLossPerProgram
@@ -32,7 +33,7 @@ export default function ExpertTable(props) {
       i++;
       const averageWeightLoss = data.averageWeightLossPerDay[key].toFixed(1);
       const daysInProgram = data.daysInEachProgram[key];
-      const weightLoss = data.weightLossPerProgram[key];
+      const weightLoss = data.weightLossPerProgram[key].toFixed(1);
 
       const averageWeightLossClass = averageWeightLoss < 0 ? 'fw-bolder text-success' : 'fw-bolder text-danger';
       const averageWeight = averageWeightLoss < 0 ? 'caret-down' : 'caret-up';

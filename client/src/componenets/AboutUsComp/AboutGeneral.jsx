@@ -7,7 +7,8 @@ import { MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import getURL from "../../assets/assetsUrls";
 
 
-
+//About us general component that is used to display the general information about the website
+//Includes the info and how to use sections , 
 const AboutGeneral = () => {
     console.log(getURL("infoIcon"))
     return (

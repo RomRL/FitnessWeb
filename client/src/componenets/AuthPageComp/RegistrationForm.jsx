@@ -158,6 +158,7 @@ function RegistrationForm({ handleRegistration }) {
                         required
                         label="Height"
                         type="number"
+                        step={0.01}
                         min={50}
                         max={210}
                         size="lg"
@@ -180,6 +181,7 @@ function RegistrationForm({ handleRegistration }) {
                         required
                         min={40}
                         max={250}
+                        step={0.01}
                         label="Weight"
                         type="number"
                         size="lg"

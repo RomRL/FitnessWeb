@@ -2,8 +2,8 @@
 
 import axios from "axios";
 const format = {
-  // baseUrl: "http://localhost:5000",
-  baseUrl: "https://fitness-api-974s.onrender.com",
+  baseUrl: "http://localhost:5000",
+  // baseUrl: "https://fitness-api-974s.onrender.com",
 
 };
 
@@ -44,6 +44,7 @@ export const addTrainingToUser = async (trainingName, new_weight) => {
     return false;
   }
 };
+
 
 //----------------------User----------------------//
 //Login

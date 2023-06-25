@@ -75,6 +75,7 @@ export default function HeightModal({ setHeight, fetchUser}) {
                     onChange={(event) => setEditHeight(event.target.value)}
                     id="Height"
                     required
+                    step={0.01}
                     label="Height"
                     type="number"
                     min={50}

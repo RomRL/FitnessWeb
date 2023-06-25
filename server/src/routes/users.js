@@ -99,27 +99,6 @@ function removeSpecificUserFromList(userID) {
 }
 
 
-
-
-
-
-
-
-// //Logout and remove token of user
-// router.post("/logout",validateToken, async (req, res) => {
-//   try {
-//     //get the token from the request 
-//     const token = req.token;
-//     console.log("token",token);
-//     const s = jwt.destroy(token);
-//     console.log("s",s);
-//     res.status(200).json({ message: "User logged out successfully" });
-//   } catch (error) {
-//     console.error("Error logging out user:", error);
-//     res.status(500).json({ message: "Server Error" });
-//   }
-// });
-
 //get user by id
 router.get("/", validateToken, async (req, res) => {
   const userID = req.user.id;
@@ -170,6 +149,7 @@ router.put("/update/:id", async (req, res) => {
 router.put("/updateHeight", validateToken, async (req, res) => {
   const userID = req.user.id;
   const { height } = req.body;
+  console.log("height", height);
   try {
     //Serch user by userID in mongoDB get his weight and update height and bmi
     const response = await UserModel.findById(userID, "weight");

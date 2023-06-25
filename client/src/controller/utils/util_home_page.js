@@ -13,13 +13,18 @@ export function calculateAverage(weights) {
 
 // Calculate the max weight in the training
 export function calculateMax(weights) {
+
   let max = weights[0];
+  console.log("-max[0]",max);
   for (let i = 1; i < weights.length; i++) {
     if (weights[i] > max) {
       max = weights[i];
     }
   }
-  if (max != null) return max;
+  if (max != null) {
+    console.log("-max",max);
+    return max;
+  }
 }
 
 // calculate how much wehigt you need to loss to be in normal bmi (18.5-24.9)
@@ -52,11 +57,15 @@ export function calculateNormalWeight(height, weight) {
 
 export function calculateMin(weights) {
   let min = weights[0];
+  console.log("-min[0]",min);
+
   for (let i = 1; i < weights.length; i++) {
     if (weights[i] < min) {
       min = weights[i];
     }
   }
+  console.log("-min",min);
+
   return min;
 }
 
@@ -97,10 +106,10 @@ export function calculateWeightLoss(selectedTrainings) {
   }
   if (lastTraining.weight - firstTraining.weight > 0) {
     return ` You gained ${lastTraining.weight -
-      firstTraining.weight} kg from the first training to the last training.`;
+      firstTraining.weight.toFixed(2)} kg from the first training to the last training.`;
   }
-  return ` Well done! You lost ${firstTraining.weight -
-    lastTraining.weight} kg from the first training to the last training.`;
+  return ` Well done! You lost ${firstTraining.weight.toFixed(2) -
+    lastTraining.weight.toFixed(2)} kg from the first training to the last training.`;
 }
 
 //---------------------------------------------------------------------------------
@@ -167,6 +176,7 @@ function findMaxWeightLoss(weightLossPerProgram) {
 export function calculateDaysInEachProgram(dates, selectedTrainings) {
   // this is the data foramt
   //step 1: modify the data format to be like this yyyy-mm-dd
+  console.log("selec ", selectedTrainings);
   const modifiedData = [];
   for (let i = 0; i < dates.length; i++) {
     const training = dates[i].split(","); // Split by comma
@@ -175,6 +185,7 @@ export function calculateDaysInEachProgram(dates, selectedTrainings) {
     const modifiedTraining = `${date},${name}`;
     modifiedData.push(modifiedTraining);
   }
+  console.log(modifiedData);
   // Step 2: Calculate total days in each program , HOW ?
   // Cardio Workout: 4 days : started at 2023-06-19, ended at 2023-06-22 => 3 days + started at 2023-06-22 ended at 2023-06-22 => 4 days
   // HIIT Circuit: 1 day : started at 2023-06-22, ended at 2023-06-22 => 1 day
@@ -210,11 +221,18 @@ export function calculateDaysInEachProgram(dates, selectedTrainings) {
     .forEach((key) => {
       sortedAverageWeightLossPerDay[key] = averageWeightLossPerDay[key];
     });
+  console.log("000000",sortedAverageWeightLossPerDay);
 
   // Average weight loss per day: {Cardio Workout: 21.333333333333332, " HIIT Circuit": 1}
   // Step 5: Find the program with the most average weight loss per day
-  const min = findMaxAverageWeightLossPerDay(averageWeightLossPerDay);
-  const max = findMinAverageWeightLossPerDay(averageWeightLossPerDay);
+  //min is the last element key in the sorted array
+  const min = Object.keys(sortedAverageWeightLossPerDay)[
+    Object.keys(sortedAverageWeightLossPerDay).length - 1
+  ];
+  
+
+  //max is the first element key in the sorted array
+  const max = Object.keys(sortedAverageWeightLossPerDay)[0];
   // Max average weight loss per day: HIIT Circuit
   // Step 6: Return all the data
   return {
@@ -236,28 +254,4 @@ function calculateDaysBetweenDates(date1, date2) {
   const timeDifference = dateObject2.getTime() - dateObject1.getTime();
   const daysDifference = timeDifference / (1000 * 3600 * 24);
   return daysDifference;
-}
-// Find the program with the most average weight loss per day
-function findMaxAverageWeightLossPerDay(averageWeightLossPerDay) {
-  let maxAverageWeightLossPerDay = 0;
-  let maxProgram = "";
-  for (const program in averageWeightLossPerDay) {
-    if (averageWeightLossPerDay[program] > maxAverageWeightLossPerDay) {
-      maxAverageWeightLossPerDay = averageWeightLossPerDay[program];
-      maxProgram = program;
-    }
-  }
-  return maxProgram;
-}
-// Find the program with the least average weight loss per day
-function findMinAverageWeightLossPerDay(averageWeightLossPerDay) {
-  let minAverageWeightLossPerDay = 0;
-  let minProgram = "";
-  for (const program in averageWeightLossPerDay) {
-    if (averageWeightLossPerDay[program] < minAverageWeightLossPerDay) {
-      minAverageWeightLossPerDay = averageWeightLossPerDay[program];
-      minProgram = program;
-    }
-  }
-  return minProgram;
 }
