@@ -6,6 +6,7 @@ function Footer() {
     <footer className="container">
      
       <MDBBtn
+        floating
         className="m-1"
         style={{ backgroundColor: "#333333" }}
         href="https://github.com/RomRL/FitnessWeb"
