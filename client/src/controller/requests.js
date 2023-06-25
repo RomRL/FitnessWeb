@@ -22,7 +22,6 @@ const createRequest = (method, url, data) => {
   });
 
 };
-
 //-----------------------Training-----------------------//
 //Get all trainings
 export const getTrainings = async () => {
