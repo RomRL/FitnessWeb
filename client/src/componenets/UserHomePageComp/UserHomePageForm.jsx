@@ -33,7 +33,6 @@ import {
 
 // UserHomePageForm function 
 function UserHomePageForm({ data, user, height, setHeight, fetchUser }) {
-    console.log("data", data);
     return (
         <MDBContainer className="py-4">
             <MDBRow className="py-2 g-4">

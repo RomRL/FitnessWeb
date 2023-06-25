@@ -18,7 +18,7 @@ function AboutUsOurWork() {
             </p>
             <MDBRow >
                 <MDBCol className="min-column">
-                <img className="mb-2" src={getURL("analyticsIcon")} alt="picture" width={50} />
+                <img className="mb-2" src={getURL("analyticsIcon")} alt="" width={50} />
                     <h4>Analytics</h4>
                     <p>
                         Our analystic in the project is to show the user his progress in the workout plan. he give the user a lot of information and statistics about his progress. 
@@ -28,7 +28,7 @@ function AboutUsOurWork() {
                 </MDBCol>
 
                 <MDBCol className="min-column">
-                <img className="mb-2" src={getURL("designIcon")} alt="picture" width={50} />
+                <img className="mb-2" src={getURL("designIcon")} alt="" width={50} />
                     <h4>Design</h4>
                     <p>
                         Our design is to give the user the best experience in the website. we used bootstrap and mdbreact. our app can be used in mobile and desktop.
@@ -38,7 +38,7 @@ function AboutUsOurWork() {
                 </MDBCol>
 
                 <MDBCol className="min-column">
-                <img className="mb-2" src={getURL("developmentIcon")} alt="picture" width={50} />
+                <img className="mb-2" src={getURL("developmentIcon")} alt="" width={50} />
                     <h4>Development</h4>
                     <p>
                         Our development is based on react app. we used components to make the app more organized and easy to use.

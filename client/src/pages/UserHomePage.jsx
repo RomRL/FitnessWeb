@@ -57,7 +57,6 @@ function UserHomePage() {
 
   // fetch user data from server and set first values 
   const fetchUser = async () => {
-    console.log("fetching user");
     const response = await getUser();
     if (response === false) {
       setLoading(false);

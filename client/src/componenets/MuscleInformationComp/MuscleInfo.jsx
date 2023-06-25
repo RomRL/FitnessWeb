@@ -34,7 +34,7 @@ function MuscleInfo({ muscle, dataVals }) {
                 </p>
               ) : index === 1 ? (
                 <p>
-                  <img src={dataVals.link[index]} alt="Picture" />
+                  <img src={dataVals.link[index]}  />
                 </p>
               ) : index === 2 ? (
                 <p>
