@@ -33,7 +33,7 @@ function AboutUsCard(props) {
             floating
             className="m-1 card"
             style={{ backgroundColor: "#25d366" }}
-            href={`https://api.whatsapp.com/send?phone=${number}`}
+            href={`https://api.whatsapp.com/send?phone=${number}&text=Hello%20${name}!%20I%20would%20like%20to%20contact%20you%20regarding%20your%20project%20on%20GitHub,it%20looks%20amazing!`}
           >
             <MDBIcon fab icon="whatsapp" />
           </MDBBtn>

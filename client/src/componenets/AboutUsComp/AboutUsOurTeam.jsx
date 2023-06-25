@@ -2,7 +2,8 @@ import React from "react";
 import { MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import AboutUsCard from "./AboutCard.jsx";
 import getURL from "../../assets/assetsUrls.js";
-
+//Our team component that is used to display the team members of the website
+//Includes the team members cards
 function AboutUsOurTeam() {
   return (
     <MDBContainer className="text-center">
