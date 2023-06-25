@@ -1,5 +1,5 @@
 /**
- * @module MIMainComponent
+ * MIMainComponent
  * it is the main component of the Muscle Information page
  * It uses MuscleSelect.jsx and MuscleInfo.jsx
  * It shows the list of muscles and handles the selection of a muscle 

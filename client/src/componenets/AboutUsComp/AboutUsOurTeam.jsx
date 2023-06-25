@@ -1,3 +1,9 @@
+/**
+ * AboutUsOurTeam.jsx is used to render our team members.
+ * This is the third section in the about us page
+ * its shows the people who created this website and their contact info
+ * rom harel and daniel maman
+ */
 import React from "react";
 import { MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import AboutUsCard from "./AboutCard.jsx";

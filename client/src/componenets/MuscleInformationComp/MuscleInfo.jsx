@@ -1,5 +1,5 @@
 /**
- * @fileoverview MuscleInfo component displays the information about the muscle that the user has selected.
+ * MuscleInfo component displays the information about the muscle that the user has selected.
  * It is used in MIMainComponent.jsx
  * It shows the information about the muscle and handles the selection of a muscle
  */
@@ -34,7 +34,7 @@ function MuscleInfo({ muscle, dataVals }) {
                 </p>
               ) : index === 1 ? (
                 <p>
-                  <img src={dataVals.link[index]} alt="Picture" />
+                  <img src={dataVals.link[index]}  />
                 </p>
               ) : index === 2 ? (
                 <p>

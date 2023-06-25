@@ -1,3 +1,7 @@
+/**
+ * util_home_page.js
+ * this file contains all the functions that are used in the user home page
+ */
 // Calculate the average weight in the training
 export function calculateAverage(weights) {
   let sum = 0;
@@ -11,14 +15,12 @@ export function calculateAverage(weights) {
 export function calculateMax(weights) {
 
   let max = weights[0];
-  console.log("-max[0]",max);
   for (let i = 1; i < weights.length; i++) {
     if (weights[i] > max) {
       max = weights[i];
     }
   }
   if (max != null) {
-    console.log("-max",max);
     return max;
   }
 }
@@ -50,18 +52,14 @@ export function calculateNormalWeight(height, weight) {
     }
   }
 
-
+// Calculate the min weight in the training
 export function calculateMin(weights) {
   let min = weights[0];
-  console.log("-min[0]",min);
-
   for (let i = 1; i < weights.length; i++) {
     if (weights[i] < min) {
       min = weights[i];
     }
   }
-  console.log("-min",min);
-
   return min;
 }
 
@@ -172,7 +170,6 @@ function findMaxWeightLoss(weightLossPerProgram) {
 export function calculateDaysInEachProgram(dates, selectedTrainings) {
   // this is the data foramt
   //step 1: modify the data format to be like this yyyy-mm-dd
-  console.log("selec ", selectedTrainings);
   const modifiedData = [];
   for (let i = 0; i < dates.length; i++) {
     const training = dates[i].split(","); // Split by comma
@@ -181,7 +178,6 @@ export function calculateDaysInEachProgram(dates, selectedTrainings) {
     const modifiedTraining = `${date},${name}`;
     modifiedData.push(modifiedTraining);
   }
-  console.log(modifiedData);
   // Step 2: Calculate total days in each program , HOW ?
   // Cardio Workout: 4 days : started at 2023-06-19, ended at 2023-06-22 => 3 days + started at 2023-06-22 ended at 2023-06-22 => 4 days
   // HIIT Circuit: 1 day : started at 2023-06-22, ended at 2023-06-22 => 1 day
@@ -217,7 +213,6 @@ export function calculateDaysInEachProgram(dates, selectedTrainings) {
     .forEach((key) => {
       sortedAverageWeightLossPerDay[key] = averageWeightLossPerDay[key];
     });
-  console.log("000000",sortedAverageWeightLossPerDay);
 
   // Average weight loss per day: {Cardio Workout: 21.333333333333332, " HIIT Circuit": 1}
   // Step 5: Find the program with the most average weight loss per day

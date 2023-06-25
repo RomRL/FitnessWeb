@@ -1,3 +1,7 @@
+/**
+ * AboutGeneral.jsx is the general info about the website
+ * this is the seconed section in the about us page
+ */
 import React from "react";
 import { MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import getURL from "../../assets/assetsUrls";

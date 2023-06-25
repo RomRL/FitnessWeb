@@ -1,3 +1,7 @@
+/**
+ * @file AboutUsHeader.jsx is the header component for the AboutUsComp component.
+ * This is the first section in the about us page
+ */
 import React from "react";
 //About us header component that is used to display the header of the about us page including the jumbotron and the background image
 function AboutUsHeader() {

@@ -1,3 +1,8 @@
+/**
+ * AboutUsOurWork.jsx is used to render the our work section in about us page
+ * This is the last section in the about us page
+ * its shows the user what we did in this project
+ */
 import React from "react";
 import { MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import getURL from "../../assets/assetsUrls";
@@ -13,7 +18,7 @@ function AboutUsOurWork() {
             </p>
             <MDBRow >
                 <MDBCol className="min-column">
-                <img className="mb-2" src={getURL("analyticsIcon")} alt="picture" width={50} />
+                <img className="mb-2" src={getURL("analyticsIcon")} alt="" width={50} />
                     <h4>Analytics</h4>
                     <p className="px-2 mb-5 pb-3 lead blue-grey-text">
                         Our analystic in the project is to show the user his progress in the workout plan. he give the user a lot of information and statistics about his progress. 
@@ -23,7 +28,7 @@ function AboutUsOurWork() {
                 </MDBCol>
 
                 <MDBCol className="min-column">
-                <img className="mb-2" src={getURL("designIcon")} alt="picture" width={50} />
+                <img className="mb-2" src={getURL("designIcon")} alt="" width={50} />
                     <h4>Design</h4>
                     <p className="px-2 mb-5 pb-3 lead blue-grey-text">
                         Our design is to give the user the best experience in the website. we used mdbootstrap . our app can be used in mobile and desktop.
@@ -33,7 +38,7 @@ function AboutUsOurWork() {
                 </MDBCol>
 
                 <MDBCol className="min-column">
-                <img className="mb-2" src={getURL("developmentIcon")} alt="picture" width={50} />
+                <img className="mb-2" src={getURL("developmentIcon")} alt="" width={50} />
                     <h4>Development</h4>
                     <p className="px-1 mb-5 pb-3 lead blue-grey-text">
                         Our development is based on react app. we used components to make the app more organized and easy to use.

@@ -1,5 +1,5 @@
 /**
- * @file LoginModal.jsx is a modal component that is used to display the login status
+ * LoginModal.jsx is a modal component that is used to display the login status
  * of the user. It is used in LoginComponent.jsx
  */
 import React from "react";
