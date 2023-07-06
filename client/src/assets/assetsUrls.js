@@ -18,7 +18,7 @@ const allURLS = {
   rom: "https://media.licdn.com/dms/image/C4E03AQFb60JR7ANxHA/profile-displayphoto-shrink_800_800/0/1660213298031?e=1692835200&v=beta&t=L_jEiKGrIiiJdJ0_YraTThVFgwBc0tOTslu66HXRyoQ",
   romGit: "https://github.com/RomRL",
   romLinkDin: "https://www.linkedin.com/in/rom-harel-3477bb238/",
-  daniel: "https://media.licdn.com/dms/image/D4E35AQHxPw1r8QH6Gg/profile-framedphoto-shrink_800_800/0/1659987065661?e=1688234400&v=beta&t=EBQqw12On2eoj8FrD7OjKXTGS4FaKu6t4RlMPtnOR1M",
+  daniel: "https://media.licdn.com/dms/image/D4E35AQHxPw1r8QH6Gg/profile-framedphoto-shrink_200_200/0/1659987065661?e=1689264000&v=beta&t=WSRxqV7P5uVYLnKzulAeOFwpCXOrCWZOWrtNXh0e8wE",
   danielGit: "https://github.com/sbhtknni",
   danielLinkDin: "https://www.linkedin.com/in/danielmaman-softwareengineer/",
   infoIcon: "https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_info_outline_48px-512.png",
